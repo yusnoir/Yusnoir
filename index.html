@@ -92,7 +92,8 @@
 
   <style>
     * { -webkit-tap-highlight-color: transparent; outline: none !important; }
-    input::placeholder, textarea::placeholder { color: rgba(85,85,85,0.5) !important; opacity: 1; }
+    input::placeholder, textarea::placeholder { color: transparent !important; opacity: 0; }
+    input:not(:focus):placeholder-shown::placeholder, textarea:not(:focus):placeholder-shown::placeholder { color: transparent !important; }
     body { background-color: #0A0A0A; color: #FFFFFF; font-family: 'Inter', sans-serif; scroll-behavior: smooth; margin: 0; cursor: pointer; }
     #progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: #E11D2E; z-index: 9999; width: 0%; transition: width 0.1s; }
 
@@ -207,7 +208,7 @@
     .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.99); z-index: 6000; display: none; overflow-y: auto; padding: 40px 20px; }
     .legal-modal.active { display: block; }
     .legal-content { max-width: 900px; margin: 0 auto; font-size: 10px; line-height: 1.6; color: #d1d1d1; text-align: left; padding-bottom: 100px; }
-    .close-modal { position: fixed; top: 20px; right: 20px; color: #E11D2E; font-weight: bold; cursor: pointer; border: 1px solid #E11D2E; padding: 10px 15px; background: black; z-index: 7000; text-transform: uppercase; }
+    .close-modal { display:block; margin-left:auto; margin-bottom:20px; color: #E11D2E; font-weight: bold; cursor: pointer; border: 1px solid #E11D2E; padding: 8px 14px; background: black; text-transform: uppercase; font-size:9px; letter-spacing:0.2em; }
 
     /* Checkbox */
     .checkbox-wrap { display: flex; align-items: flex-start; gap: 12px; margin-top: 10px; cursor: pointer; }
@@ -274,6 +275,7 @@
         "price-note": "Mindestbuchung 1 Stunde · Anzahlung erforderlich",
         "process-title": "Der Prozess",
         "nav-process": "Der Prozess",
+        "nav-faq": "Deine Fragen",
         "process-1-title": "Anfrage senden",
         "process-1-body": "Füll das Formular vollständig aus: Körperstelle, Größe, Stil und deine Idee. Je präziser du bist, desto gezielter kann ich antworten. Füge Referenzbilder bei — auch wenn es nur eine Stimmung ist, die du transportieren möchtest.",
         "process-2-title": "Gespräch & Anzahlung",
@@ -328,6 +330,7 @@
         "price-note": "1 hour minimum · Deposit required",
         "process-title": "The Process",
         "nav-process": "The Process",
+        "nav-faq": "Your Questions",
         "process-1-title": "Send your request",
         "process-1-body": "Fill out the booking form completely: placement, size, style and your idea. The more detail you provide, the better I can respond. Attach reference images — even if it's just a mood or feeling you want to capture.",
         "process-2-title": "Consultation & Deposit",
@@ -382,6 +385,7 @@
         "price-note": "Mínimo 1 hora · Se requiere depósito",
         "process-title": "El Proceso",
         "nav-process": "El Proceso",
+        "nav-faq": "Tus Preguntas",
         "process-1-title": "Enviar solicitud",
         "process-1-body": "Rellena el formulario con todos los detalles: zona del cuerpo, tamaño, estilo y tu idea. Cuanta más información aportes, mejor podré responderte. Añade fotos de referencia — aunque solo sea un estado de ánimo o una imagen que te inspire.",
         "process-2-title": "Consulta & Depósito",
@@ -420,15 +424,15 @@
     const legalData = {
       de: {
         legal: `<h2 style="${H}">Allgemeine Geschäftsbedingungen — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Stand: Januar 2026 · Gültig für alle Studios in Zürich (CH) und Hamburg (DE) · Giuseppe Cardona, eingetragener Tätowierer</p><div style="${G}"><section><h3 style="${S}">1. Buchung & Anzahlung</h3><p>Jede Terminbuchung erfordert eine nicht erstattungsfähige Anzahlung. Diese Anzahlung wird vom Gesamtbetrag abgezogen und dient als Reservierungsgarantie. Ohne Anzahlung gilt kein Termin als bestätigt.</p></section><section><h3 style="${S}">2. Stornierung & Umbuchung</h3><p>Stornierungen oder Verschiebungen müssen mindestens 48 Stunden vor dem vereinbarten Termin schriftlich mitgeteilt werden. Bei Nichteinhaltung verfällt die Anzahlung vollständig.</p></section><section><h3 style="${S}">3. Gesundheit & Kontraindikationen</h3><p>Der Kunde ist verpflichtet, vollständig über relevante Erkrankungen zu informieren. Das Tätowieren unter Alkohol- oder Drogeneinfluss ist strikt untersagt.</p></section><section><h3 style="${S}">4. Mindestalter</h3><p>Tätowierungen werden ausschließlich an Personen ab 18 Jahren durchgeführt. Ein gültiger Lichtbildausweis ist vorzuzeigen.</p></section><section><h3 style="${S}">5. Urheberrecht</h3><p>Alle Designs sind urheberrechtlich geschütztes Eigentum des Künstlers. Die Nutzung für KI-Training ist ausdrücklich verboten.</p></section><section><h3 style="${S}">6. Nachsorge</h3><p>Die Heilung liegt in der Verantwortung des Kunden. Schäden durch unsachgemäße Pflege begründen keinen Anspruch auf kostenlosen Nachstich.</p></section></div>`,
-        privacy: `<h2 style="${H}">Datenschutzerklärung — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Gemäß DSGVO (EU 2016/679) und Schweizer DSG · Verantwortlicher: Giuseppe Cardona</p><div style="${GM}"><section><h3 style="${S}">Welche Daten wir erheben</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, E-Mail, Telefon, Alter und projektbezogene Informationen über das Buchungsformular.</p></section><section><h3 style="${S}">Zweck</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Terminverwaltung und Kommunikation. Keine Weitergabe an Dritte.</p></section><section><h3 style="${S}">Ihre Rechte</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Auskunft, Berichtigung, Löschung gemäß DSGVO/DSG. Kontakt: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
+        privacy: `<h2 style="${H}">Datenschutzerklärung — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Gemäß DSGVO (EU 2016/679) und Schweizer DSG · Verantwortlicher: Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${GM}"><section><h3 style="${S}">1. Welche Daten wir erheben</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, E-Mail-Adresse, Telefonnummer, Alter, gewünschte Körperstelle, Tätowierungsgröße, Motivbeschreibung und Referenzbilder — ausschließlich über das Buchungsformular dieser Website.</p></section><section><h3 style="${S}">2. Zweck der Verarbeitung</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Die Daten werden ausschließlich zur Bearbeitung von Terminanfragen und zur direkten Kommunikation mit dem Kunden verwendet. Es erfolgt keine Weitergabe an Dritte, keine Verarbeitung zu Werbezwecken und keine automatisierte Entscheidungsfindung.</p></section><section><h3 style="${S}">3. Speicherung & Aufbewahrung</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Formulardaten werden über Formspree (formspree.io) übermittelt und per E-Mail an den Verantwortlichen zugestellt. Es werden keine Daten dauerhaft auf dieser Website gespeichert. Formspree verarbeitet Daten gemäß seiner eigenen Datenschutzrichtlinie.</p></section><section><h3 style="${S}">4. Cookies & Tracking</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Diese Website verwendet keine Tracking-Cookies und keine Analyse-Tools von Drittanbietern. Es werden ausschließlich technisch notwendige Informationen im lokalen Speicher des Browsers abgelegt (z. B. Formularfortschritt, Cookie-Einwilligung).</p></section><section><h3 style="${S}">5. Ihre Rechte</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Widerspruch gemäß DSGVO und Schweizer DSG. Für alle datenschutzrelevanten Anfragen wenden Sie sich bitte an: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
       },
       en: {
         legal: `<h2 style="${H}">Terms & Conditions — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Effective January 2026 · Zürich (CH) and Hamburg (DE) · Giuseppe Cardona</p><div style="${G}"><section><h3 style="${S}">1. Booking & Deposit</h3><p>Every appointment requires a non-refundable deposit. No appointment is confirmed without a deposit.</p></section><section><h3 style="${S}">2. Cancellation</h3><p>Cancellations must be submitted in writing at least 48 hours before the appointment. Failure results in full forfeiture of the deposit.</p></section><section><h3 style="${S}">3. Health</h3><p>Clients must disclose relevant medical conditions. Tattooing under the influence of alcohol or drugs is strictly prohibited.</p></section><section><h3 style="${S}">4. Age Requirement</h3><p>Tattoos are performed exclusively on individuals aged 18 and over. Valid ID is mandatory.</p></section><section><h3 style="${S}">5. Copyright</h3><p>All designs are the exclusive intellectual property of the artist. Use for AI training is expressly prohibited.</p></section><section><h3 style="${S}">6. Aftercare</h3><p>Healing is the client's responsibility. Damage from improper care does not entitle the client to a free touch-up.</p></section></div>`,
-        privacy: `<h2 style="${H}">Privacy Policy — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Under GDPR (EU 2016/679) and Swiss DSG · Controller: Giuseppe Cardona</p><div style="${GM}"><section><h3 style="${S}">Data We Collect</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, email, phone, age and project information submitted via the booking form.</p></section><section><h3 style="${S}">Purpose</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Appointment management and communication. No data shared with third parties.</p></section><section><h3 style="${S}">Your Rights</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Access, rectify and erase your data under GDPR/DSG. Contact: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
+        privacy: `<h2 style="${H}">Privacy Policy — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Under GDPR (EU 2016/679) and Swiss DSG · Controller: Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${GM}"><section><h3 style="${S}">1. Data We Collect</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, email address, phone number, age, desired body placement, tattoo size, design description and reference images — collected exclusively through the booking form on this website.</p></section><section><h3 style="${S}">2. Purpose of Processing</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Data is used solely to process booking requests and communicate directly with the client. No data is shared with third parties, used for advertising, or subject to automated decision-making.</p></section><section><h3 style="${S}">3. Storage & Retention</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Form submissions are transmitted via Formspree (formspree.io) and delivered by email to the controller. No data is permanently stored on this website. Formspree processes data according to its own privacy policy.</p></section><section><h3 style="${S}">4. Cookies & Tracking</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">This website uses no tracking cookies and no third-party analytics. Only technically necessary data is stored locally in your browser (e.g. form progress, cookie consent).</p></section><section><h3 style="${S}">5. Your Rights</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">You have the right to access, rectify, erase, restrict processing and object under GDPR and Swiss DSG. For all privacy-related requests please contact: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
       },
       es: {
         legal: `<h2 style="${H}">Términos y Condiciones — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Vigente enero 2026 · Zúrich (CH) y Hamburgo (DE) · Giuseppe Cardona</p><div style="${G}"><section><h3 style="${S}">1. Reserva y Depósito</h3><p>Toda reserva requiere un depósito no reembolsable. Ninguna cita se confirma sin depósito previo.</p></section><section><h3 style="${S}">2. Cancelación</h3><p>Las cancelaciones deben comunicarse por escrito con 48h de antelación. El incumplimiento conlleva la pérdida del depósito.</p></section><section><h3 style="${S}">3. Salud</h3><p>El cliente debe informar sobre condiciones médicas relevantes. Tatuar bajo efectos de alcohol o drogas está prohibido.</p></section><section><h3 style="${S}">4. Edad mínima</h3><p>Solo mayores de 18 años. Es obligatorio presentar documento de identidad oficial.</p></section><section><h3 style="${S}">5. Derechos de autor</h3><p>Todos los diseños son propiedad del artista. El uso para entrenamiento de IA está expresamente prohibido.</p></section><section><h3 style="${S}">6. Cuidados</h3><p>La cicatrización es responsabilidad del cliente. Los daños por cuidados inadecuados no dan derecho a retoque gratuito.</p></section></div>`,
-        privacy: `<h2 style="${H}">Política de Privacidad — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Conforme al RGPD (UE 2016/679) y DSG suizo · Responsable: Giuseppe Cardona</p><div style="${GM}"><section><h3 style="${S}">Datos que recopilamos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Nombre, email, teléfono, edad e información del proyecto enviados mediante el formulario.</p></section><section><h3 style="${S}">Finalidad</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Gestión de citas y comunicación. Ningún dato se cede a terceros.</p></section><section><h3 style="${S}">Sus derechos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Acceso, rectificación y supresión conforme al RGPD/DSG. Contacto: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
+        privacy: `<h2 style="${H}">Política de Privacidad — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Conforme al RGPD (UE 2016/679) y DSG suizo · Responsable: Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${GM}"><section><h3 style="${S}">1. Datos que recopilamos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Nombre, dirección de email, teléfono, edad, zona corporal deseada, tamaño del tatuaje, descripción del motivo e imágenes de referencia — exclusivamente a través del formulario de reserva de esta web.</p></section><section><h3 style="${S}">2. Finalidad del tratamiento</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Los datos se utilizan únicamente para gestionar solicitudes de cita y comunicarse directamente con el cliente. No se ceden datos a terceros, no se usan con fines publicitarios ni se aplican decisiones automatizadas.</p></section><section><h3 style="${S}">3. Almacenamiento y conservación</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Los envíos del formulario se transmiten a través de Formspree (formspree.io) y se entregan por email al responsable. No se almacenan datos de forma permanente en esta web. Formspree trata los datos según su propia política de privacidad.</p></section><section><h3 style="${S}">4. Cookies y seguimiento</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Esta web no utiliza cookies de seguimiento ni herramientas de análisis de terceros. Solo se almacena localmente en tu navegador información técnica necesaria (p. ej. progreso del formulario, consentimiento de cookies).</p></section><section><h3 style="${S}">5. Tus derechos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Tienes derecho de acceso, rectificación, supresión, limitación del tratamiento y oposición conforme al RGPD y DSG suizo. Para cualquier consulta sobre privacidad escríbenos a: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
       }
     };
 
@@ -497,7 +501,7 @@
     </div>
     <div class="nav-wrap">
       <button onclick="openModal('proceso')" class="nav-link" data-key="nav-process">Der Prozess</button>
-      <button onclick="openModal('faq')" class="nav-link">Deine Fragen</button>
+      <button onclick="openModal('faq')" class="nav-link" data-key="nav-faq">Deine Fragen</button>
     </div>
   </div>
 
@@ -717,8 +721,8 @@
   <span data-key="autosave-restored" style="font-size:9px;text-transform:uppercase;letter-spacing:0.15em;color:#4ade80;"></span>
 </div>
 
-<form id="tattoo-form" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="max-w-lg mx-auto flex flex-col">
-  <input type="hidden" name="form-name" value="booking">
+<form id="tattoo-form" action="https://formspree.io/f/xqeyqjwl" method="POST" class="max-w-lg mx-auto flex flex-col">
+  
   <p style="display:none;"><input name="bot-field"></p>
 
   <!-- ── PASO 1: DATOS BÁSICOS ────────────────────────────────── -->
@@ -1334,8 +1338,10 @@ window.addEventListener('load', function() {
   function updateFloatingBtn() {
     if (!floatingBtn) return;
     var booking = document.getElementById('booking');
-    var bookingVisible = booking && booking.getBoundingClientRect().top < window.innerHeight * 0.8;
-    if (bookingVisible) {
+    var bookingRect = booking ? booking.getBoundingClientRect() : null;
+    var bookingVisible = bookingRect && bookingRect.top < window.innerHeight && bookingRect.bottom > 0;
+    var scrolledToBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 80;
+    if (bookingVisible || scrolledToBottom) {
       floatingBtn.style.opacity = '0';
       floatingBtn.style.pointerEvents = 'none';
     } else {
