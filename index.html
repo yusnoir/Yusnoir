@@ -36,7 +36,7 @@
   <meta property="og:url" content="https://yusnoir.netlify.app">
   <meta property="og:title" content="YUS NOIR | Black & Grey Realism Tattoo">
   <meta property="og:description" content="Custom Black & Grey Realismus Tattoos. Giuseppe Cardona — Zürich & Hamburg. Terminanfragen jetzt stellen.">
-  <meta property="og:image" content="https://yusnoir.netlify.app/images/hero.jpg">
+  <meta property="og:image" content="https://yusnoir.github.io/Yusnoir/images/hero.jpg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="de_DE">
@@ -49,7 +49,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="YUS NOIR | Black & Grey Realism Tattoo">
   <meta name="twitter:description" content="Custom Black & Grey Realismus Tattoos. Giuseppe Cardona — Zürich & Hamburg.">
-  <meta name="twitter:image" content="https://yusnoir.netlify.app/images/hero.jpg">
+  <meta name="twitter:image" content="https://yusnoir.github.io/Yusnoir/images/hero.jpg">
 
   <!-- ═══ SCHEMA.ORG ════════════════════════════════════════════════════ -->
 
@@ -61,7 +61,7 @@
     "description": "Black & Grey Realismus Tattoo Artist. Custom Tattoos in Zürich und Hamburg.",
     "url": "https://yusnoir.netlify.app",
     "logo": "https://yusnoir.netlify.app/images/logo.png",
-    "image": "https://yusnoir.netlify.app/images/hero.jpg",
+    "image": "https://yusnoir.github.io/Yusnoir/images/hero.jpg",
     "founder": { "@type": "Person", "name": "Giuseppe Cardona" },
     "email": "el.tatuador@outlook.es",
     "sameAs": ["https://www.instagram.com/yus.noir"],
@@ -104,7 +104,7 @@
     .step-dot.all-done { background: #4ade80; border-color: #4ade80; }
 
     /* Floating CTA */
-    #floating-cta { position: fixed; right: 24px; bottom: 24px; z-index: 4000; transition: all 0.4s ease; }
+    #floating-cta { position: fixed; left: 24px; right: 24px; bottom: 24px; z-index: 4000; transition: opacity 0.4s ease; opacity: 0; pointer-events: none; }
 
     /* Header */
     .lang-header { position: absolute; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent); }
@@ -205,10 +205,10 @@
     #lightbox-next { right:0; }
 
     /* Legal modals */
-    .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.99); z-index: 6000; display: none; overflow-y: auto; padding: 40px 20px; }
+    .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.99); z-index: 6000; display: none; overflow-y: auto; padding: 80px 20px 40px; }
     .legal-modal.active { display: block; }
     .legal-content { max-width: 900px; margin: 0 auto; font-size: 10px; line-height: 1.6; color: #d1d1d1; text-align: left; padding-bottom: 100px; }
-    .close-modal { display:block; margin-left:auto; margin-bottom:20px; color: #E11D2E; font-weight: bold; cursor: pointer; border: 1px solid #E11D2E; padding: 8px 14px; background: black; text-transform: uppercase; font-size:9px; letter-spacing:0.2em; }
+    .close-modal { position:fixed; top:20px; right:20px; color:rgba(255,255,255,0.3); font-size:26px; cursor:pointer; line-height:1; transition:color 0.2s; background:none; border:none; padding:4px 8px; z-index:7000; } .close-modal:hover { color:white; }
 
     /* Checkbox */
     .checkbox-wrap { display: flex; align-items: flex-start; gap: 12px; margin-top: 10px; cursor: pointer; }
@@ -298,6 +298,7 @@
         "floating": "TERMINE",
         "NAME": "NAME", "EMAIL": "E-MAIL", "PHONE": "TELEFON", "AGE": "ALTER",
         "PLACE": "KÖRPERSTELLE", "SIZE": "GRÖSSE (CM)", "IDEA": "DEINE IDEE",
+        "label-name": "NAME *", "label-email": "E-MAIL *", "label-phone": "TELEFON *", "label-age": "ALTER *", "label-size": "GRÖSSE (CM) *", "label-idea": "DEINE IDEE *",
         "legal-1": "Rechtliche Bestimmungen", "legal-2": "Datenschutz",
         "required-note": "* Pflichtfelder",
         "autosave-restored": "Deine Eingaben wurden wiederhergestellt",
@@ -353,6 +354,7 @@
         "floating": "BOOKING",
         "NAME": "NAME", "EMAIL": "E-MAIL", "PHONE": "PHONE", "AGE": "AGE",
         "PLACE": "PLACEMENT", "SIZE": "SIZE (CM)", "IDEA": "YOUR IDEA",
+        "label-name": "NAME *", "label-email": "E-MAIL *", "label-phone": "PHONE *", "label-age": "AGE *", "label-size": "SIZE (CM) *", "label-idea": "YOUR IDEA *",
         "legal-1": "Legal Terms", "legal-2": "Privacy",
         "required-note": "* Required fields",
         "autosave-restored": "Your data has been restored",
@@ -408,6 +410,7 @@
         "floating": "CITAS",
         "NAME": "NOMBRE", "EMAIL": "EMAIL", "PHONE": "TELÉFONO", "AGE": "EDAD",
         "PLACE": "ZONA DEL CUERPO", "SIZE": "TAMAÑO (CM)", "IDEA": "TU IDEA",
+        "label-name": "NOMBRE *", "label-email": "EMAIL *", "label-phone": "TELÉFONO *", "label-age": "EDAD *", "label-size": "TAMAÑO (CM) *", "label-idea": "TU IDEA *",
         "legal-1": "Términos Legales", "legal-2": "Privacidad",
         "required-note": "* Campos obligatorios",
         "autosave-restored": "Tus datos han sido recuperados",
@@ -424,15 +427,15 @@
     const legalData = {
       de: {
         legal: `<h2 style="${H}">Allgemeine Geschäftsbedingungen — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Stand: Januar 2026 · Gültig für alle Studios in Zürich (CH) und Hamburg (DE) · Giuseppe Cardona, eingetragener Tätowierer</p><div style="${G}"><section><h3 style="${S}">1. Buchung & Anzahlung</h3><p>Jede Terminbuchung erfordert eine nicht erstattungsfähige Anzahlung. Diese Anzahlung wird vom Gesamtbetrag abgezogen und dient als Reservierungsgarantie. Ohne Anzahlung gilt kein Termin als bestätigt.</p></section><section><h3 style="${S}">2. Stornierung & Umbuchung</h3><p>Stornierungen oder Verschiebungen müssen mindestens 48 Stunden vor dem vereinbarten Termin schriftlich mitgeteilt werden. Bei Nichteinhaltung verfällt die Anzahlung vollständig.</p></section><section><h3 style="${S}">3. Gesundheit & Kontraindikationen</h3><p>Der Kunde ist verpflichtet, vollständig über relevante Erkrankungen zu informieren. Das Tätowieren unter Alkohol- oder Drogeneinfluss ist strikt untersagt.</p></section><section><h3 style="${S}">4. Mindestalter</h3><p>Tätowierungen werden ausschließlich an Personen ab 18 Jahren durchgeführt. Ein gültiger Lichtbildausweis ist vorzuzeigen.</p></section><section><h3 style="${S}">5. Urheberrecht</h3><p>Alle Designs sind urheberrechtlich geschütztes Eigentum des Künstlers. Die Nutzung für KI-Training ist ausdrücklich verboten.</p></section><section><h3 style="${S}">6. Nachsorge</h3><p>Die Heilung liegt in der Verantwortung des Kunden. Schäden durch unsachgemäße Pflege begründen keinen Anspruch auf kostenlosen Nachstich.</p></section></div>`,
-        privacy: `<h2 style="${H}">Datenschutzerklärung — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Gemäß DSGVO (EU 2016/679) und Schweizer DSG · Verantwortlicher: Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${GM}"><section><h3 style="${S}">1. Welche Daten wir erheben</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, E-Mail-Adresse, Telefonnummer, Alter, gewünschte Körperstelle, Tätowierungsgröße, Motivbeschreibung und Referenzbilder — ausschließlich über das Buchungsformular dieser Website.</p></section><section><h3 style="${S}">2. Zweck der Verarbeitung</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Die Daten werden ausschließlich zur Bearbeitung von Terminanfragen und zur direkten Kommunikation mit dem Kunden verwendet. Es erfolgt keine Weitergabe an Dritte, keine Verarbeitung zu Werbezwecken und keine automatisierte Entscheidungsfindung.</p></section><section><h3 style="${S}">3. Speicherung & Aufbewahrung</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Formulardaten werden über Formspree (formspree.io) übermittelt und per E-Mail an den Verantwortlichen zugestellt. Es werden keine Daten dauerhaft auf dieser Website gespeichert. Formspree verarbeitet Daten gemäß seiner eigenen Datenschutzrichtlinie.</p></section><section><h3 style="${S}">4. Cookies & Tracking</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Diese Website verwendet keine Tracking-Cookies und keine Analyse-Tools von Drittanbietern. Es werden ausschließlich technisch notwendige Informationen im lokalen Speicher des Browsers abgelegt (z. B. Formularfortschritt, Cookie-Einwilligung).</p></section><section><h3 style="${S}">5. Ihre Rechte</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Widerspruch gemäß DSGVO und Schweizer DSG. Für alle datenschutzrelevanten Anfragen wenden Sie sich bitte an: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
+        privacy: `<h2 style="${H}">Datenschutzerklärung — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Gemäß DSGVO (EU 2016/679) und Schweizer DSG · Verantwortlicher: Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${GM}"><section><h3 style="${S}">1. Welche Daten wir erheben</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, E-Mail-Adresse, Telefonnummer, Alter, gewünschte Körperstelle, Tätowierungsgröße, Motivbeschreibung und Referenzbilder — ausschließlich über das Buchungsformular dieser Website.</p></section><section><h3 style="${S}">2. Zweck der Verarbeitung</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Die Daten werden ausschließlich zur Bearbeitung von Terminanfragen und zur direkten Kommunikation mit dem Kunden verwendet. Es erfolgt keine Weitergabe an Dritte, keine Verarbeitung zu Werbezwecken und keine automatisierte Entscheidungsfindung.</p></section><section><h3 style="${S}">3. Speicherung & Aufbewahrung</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Formulardaten werden über Web3Forms (web3forms.com) übermittelt und per E-Mail an den Verantwortlichen zugestellt. Es werden keine Daten dauerhaft auf dieser Website gespeichert. Web3Forms verarbeitet Daten gemäß seiner eigenen Datenschutzrichtlinie.</p></section><section><h3 style="${S}">4. Cookies & Tracking</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Diese Website verwendet keine Tracking-Cookies und keine Analyse-Tools von Drittanbietern. Es werden ausschließlich technisch notwendige Informationen im lokalen Speicher des Browsers abgelegt (z. B. Formularfortschritt, Cookie-Einwilligung).</p></section><section><h3 style="${S}">5. Ihre Rechte</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Sie haben das Recht auf Auskunft, Berichtigung, Löschung, Einschränkung der Verarbeitung und Widerspruch gemäß DSGVO und Schweizer DSG. Für alle datenschutzrelevanten Anfragen wenden Sie sich bitte an: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
       },
       en: {
         legal: `<h2 style="${H}">Terms & Conditions — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Effective January 2026 · Zürich (CH) and Hamburg (DE) · Giuseppe Cardona</p><div style="${G}"><section><h3 style="${S}">1. Booking & Deposit</h3><p>Every appointment requires a non-refundable deposit. No appointment is confirmed without a deposit.</p></section><section><h3 style="${S}">2. Cancellation</h3><p>Cancellations must be submitted in writing at least 48 hours before the appointment. Failure results in full forfeiture of the deposit.</p></section><section><h3 style="${S}">3. Health</h3><p>Clients must disclose relevant medical conditions. Tattooing under the influence of alcohol or drugs is strictly prohibited.</p></section><section><h3 style="${S}">4. Age Requirement</h3><p>Tattoos are performed exclusively on individuals aged 18 and over. Valid ID is mandatory.</p></section><section><h3 style="${S}">5. Copyright</h3><p>All designs are the exclusive intellectual property of the artist. Use for AI training is expressly prohibited.</p></section><section><h3 style="${S}">6. Aftercare</h3><p>Healing is the client's responsibility. Damage from improper care does not entitle the client to a free touch-up.</p></section></div>`,
-        privacy: `<h2 style="${H}">Privacy Policy — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Under GDPR (EU 2016/679) and Swiss DSG · Controller: Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${GM}"><section><h3 style="${S}">1. Data We Collect</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, email address, phone number, age, desired body placement, tattoo size, design description and reference images — collected exclusively through the booking form on this website.</p></section><section><h3 style="${S}">2. Purpose of Processing</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Data is used solely to process booking requests and communicate directly with the client. No data is shared with third parties, used for advertising, or subject to automated decision-making.</p></section><section><h3 style="${S}">3. Storage & Retention</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Form submissions are transmitted via Formspree (formspree.io) and delivered by email to the controller. No data is permanently stored on this website. Formspree processes data according to its own privacy policy.</p></section><section><h3 style="${S}">4. Cookies & Tracking</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">This website uses no tracking cookies and no third-party analytics. Only technically necessary data is stored locally in your browser (e.g. form progress, cookie consent).</p></section><section><h3 style="${S}">5. Your Rights</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">You have the right to access, rectify, erase, restrict processing and object under GDPR and Swiss DSG. For all privacy-related requests please contact: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
+        privacy: `<h2 style="${H}">Privacy Policy — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Under GDPR (EU 2016/679) and Swiss DSG · Controller: Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${GM}"><section><h3 style="${S}">1. Data We Collect</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, email address, phone number, age, desired body placement, tattoo size, design description and reference images — collected exclusively through the booking form on this website.</p></section><section><h3 style="${S}">2. Purpose of Processing</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Data is used solely to process booking requests and communicate directly with the client. No data is shared with third parties, used for advertising, or subject to automated decision-making.</p></section><section><h3 style="${S}">3. Storage & Retention</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Form submissions are transmitted via Web3Forms (web3forms.com) and delivered by email to the controller. No data is permanently stored on this website. Web3Forms processes data according to its own privacy policy.</p></section><section><h3 style="${S}">4. Cookies & Tracking</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">This website uses no tracking cookies and no third-party analytics. Only technically necessary data is stored locally in your browser (e.g. form progress, cookie consent).</p></section><section><h3 style="${S}">5. Your Rights</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">You have the right to access, rectify, erase, restrict processing and object under GDPR and Swiss DSG. For all privacy-related requests please contact: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
       },
       es: {
         legal: `<h2 style="${H}">Términos y Condiciones — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Vigente enero 2026 · Zúrich (CH) y Hamburgo (DE) · Giuseppe Cardona</p><div style="${G}"><section><h3 style="${S}">1. Reserva y Depósito</h3><p>Toda reserva requiere un depósito no reembolsable. Ninguna cita se confirma sin depósito previo.</p></section><section><h3 style="${S}">2. Cancelación</h3><p>Las cancelaciones deben comunicarse por escrito con 48h de antelación. El incumplimiento conlleva la pérdida del depósito.</p></section><section><h3 style="${S}">3. Salud</h3><p>El cliente debe informar sobre condiciones médicas relevantes. Tatuar bajo efectos de alcohol o drogas está prohibido.</p></section><section><h3 style="${S}">4. Edad mínima</h3><p>Solo mayores de 18 años. Es obligatorio presentar documento de identidad oficial.</p></section><section><h3 style="${S}">5. Derechos de autor</h3><p>Todos los diseños son propiedad del artista. El uso para entrenamiento de IA está expresamente prohibido.</p></section><section><h3 style="${S}">6. Cuidados</h3><p>La cicatrización es responsabilidad del cliente. Los daños por cuidados inadecuados no dan derecho a retoque gratuito.</p></section></div>`,
-        privacy: `<h2 style="${H}">Política de Privacidad — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Conforme al RGPD (UE 2016/679) y DSG suizo · Responsable: Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${GM}"><section><h3 style="${S}">1. Datos que recopilamos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Nombre, dirección de email, teléfono, edad, zona corporal deseada, tamaño del tatuaje, descripción del motivo e imágenes de referencia — exclusivamente a través del formulario de reserva de esta web.</p></section><section><h3 style="${S}">2. Finalidad del tratamiento</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Los datos se utilizan únicamente para gestionar solicitudes de cita y comunicarse directamente con el cliente. No se ceden datos a terceros, no se usan con fines publicitarios ni se aplican decisiones automatizadas.</p></section><section><h3 style="${S}">3. Almacenamiento y conservación</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Los envíos del formulario se transmiten a través de Formspree (formspree.io) y se entregan por email al responsable. No se almacenan datos de forma permanente en esta web. Formspree trata los datos según su propia política de privacidad.</p></section><section><h3 style="${S}">4. Cookies y seguimiento</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Esta web no utiliza cookies de seguimiento ni herramientas de análisis de terceros. Solo se almacena localmente en tu navegador información técnica necesaria (p. ej. progreso del formulario, consentimiento de cookies).</p></section><section><h3 style="${S}">5. Tus derechos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Tienes derecho de acceso, rectificación, supresión, limitación del tratamiento y oposición conforme al RGPD y DSG suizo. Para cualquier consulta sobre privacidad escríbenos a: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
+        privacy: `<h2 style="${H}">Política de Privacidad — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Conforme al RGPD (UE 2016/679) y DSG suizo · Responsable: Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${GM}"><section><h3 style="${S}">1. Datos que recopilamos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Nombre, dirección de email, teléfono, edad, zona corporal deseada, tamaño del tatuaje, descripción del motivo e imágenes de referencia — exclusivamente a través del formulario de reserva de esta web.</p></section><section><h3 style="${S}">2. Finalidad del tratamiento</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Los datos se utilizan únicamente para gestionar solicitudes de cita y comunicarse directamente con el cliente. No se ceden datos a terceros, no se usan con fines publicitarios ni se aplican decisiones automatizadas.</p></section><section><h3 style="${S}">3. Almacenamiento y conservación</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Los envíos del formulario se transmiten a través de Web3Forms (web3forms.com) y se entregan por email al responsable. No se almacenan datos de forma permanente en esta web. Web3Forms trata los datos según su propia política de privacidad.</p></section><section><h3 style="${S}">4. Cookies y seguimiento</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Esta web no utiliza cookies de seguimiento ni herramientas de análisis de terceros. Solo se almacena localmente en tu navegador información técnica necesaria (p. ej. progreso del formulario, consentimiento de cookies).</p></section><section><h3 style="${S}">5. Tus derechos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Tienes derecho de acceso, rectificación, supresión, limitación del tratamiento y oposición conforme al RGPD y DSG suizo. Para cualquier consulta sobre privacidad escríbenos a: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
       }
     };
 
@@ -721,7 +724,7 @@
   <span data-key="autosave-restored" style="font-size:9px;text-transform:uppercase;letter-spacing:0.15em;color:#4ade80;"></span>
 </div>
 
-<form id="tattoo-form" action="https://formspree.io/f/xqeyqjwl" method="POST" class="max-w-lg mx-auto flex flex-col">
+<form id="tattoo-form" class="max-w-lg mx-auto flex flex-col">
   
   <p style="display:none;"><input name="bot-field"></p>
 
@@ -737,7 +740,7 @@
       <div class="step-dot" id="dot-1"></div>
       <div class="field-wrap">
         <input data-p="NAME" name="nombre" type="text" placeholder=" " required id="f-nombre" enterkeyhint="next" inputmode="text" autocomplete="name"/>
-        <label class="field-label" for="f-nombre">NAME *</label>
+        <label class="field-label" data-key="label-name" for="f-nombre">NAME *</label>
         <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-1">✓</span>
       </div>
     </div>
@@ -746,7 +749,7 @@
       <div class="step-dot" id="dot-2"></div>
       <div class="field-wrap">
         <input data-p="EMAIL" name="email" type="email" placeholder=" " required id="f-email" enterkeyhint="next" autocomplete="email"/>
-        <label class="field-label" for="f-email">E-MAIL *</label>
+        <label class="field-label" data-key="label-email" for="f-email">E-MAIL *</label>
         <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-2">✓</span>
       </div>
     </div>
@@ -755,7 +758,7 @@
       <div class="step-dot" id="dot-3"></div>
       <div class="field-wrap">
         <input data-p="PHONE" name="telefono" type="tel" placeholder=" " required id="f-telefono" enterkeyhint="next" inputmode="tel" autocomplete="tel"/>
-        <label class="field-label" for="f-telefono">TELEFON *</label>
+        <label class="field-label" data-key="label-phone" for="f-telefono">TELEFON *</label>
         <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-3">✓</span>
       </div>
     </div>
@@ -764,7 +767,7 @@
       <div class="step-dot" id="dot-4"></div>
       <div class="field-wrap">
         <input data-p="AGE" name="edad" type="number" placeholder=" " required id="f-edad" enterkeyhint="done" inputmode="numeric" min="18" max="99"/>
-        <label class="field-label" for="f-edad">ALTER *</label>
+        <label class="field-label" data-key="label-age" for="f-edad">ALTER *</label>
         <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-4">✓</span>
       </div>
     </div>
@@ -859,7 +862,7 @@
       <div class="step-dot" id="dot-6"></div>
       <div class="field-wrap">
         <input data-p="SIZE" name="tamano" type="text" placeholder=" " required id="f-tamano" enterkeyhint="next" inputmode="text"/>
-        <label class="field-label" for="f-tamano">GRÖSSE (CM) *</label>
+        <label class="field-label" data-key="label-size" for="f-tamano">GRÖSSE (CM) *</label>
         <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-6">✓</span>
       </div>
     </div>
@@ -870,7 +873,7 @@
       <div style="flex:1;">
         <div style="position:relative;">
           <textarea id="idea-textarea" name="idea" enterkeyhint="done" data-p="IDEA" placeholder=" " minlength="50" required style="height:80px;resize:none;overflow:hidden;padding-top:24px;padding-bottom:10px;padding-right:24px;"></textarea>
-          <label class="field-label" for="idea-textarea" style="position:absolute;left:10px;top:18px;font-size:9px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(85,85,85,0.5);pointer-events:none;transition:all 0.2s ease;">DEINE IDEE *</label>
+          <label class="field-label" for="idea-textarea" style="position:absolute;left:10px;top:18px;font-size:9px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(85,85,85,0.5);pointer-events:none;transition:all 0.2s ease;" data-key="label-idea">DEINE IDEE *</label>
         </div>
         <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding:0 2px;">
           <span id="char-hint" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:#555;transition:color 0.3s;">Minimum 50 Zeichen</span>
@@ -963,18 +966,18 @@
 <!-- ═══ MODALES LEGALES ════════════════════════════════════════════════ -->
 
 <div id="modal-legal" class="legal-modal">
-  <span class="close-modal" onclick="closeModal('legal')">CLOSE [X]</span>
+  <span class="close-modal" onclick="closeModal('legal')">×</span>
   <div class="legal-content" id="legal-body-content"></div>
 </div>
 <div id="modal-privacy" class="legal-modal">
-  <span class="close-modal" onclick="closeModal('privacy')">CLOSE [X]</span>
+  <span class="close-modal" onclick="closeModal('privacy')">×</span>
   <div class="legal-content" id="privacy-body-content"></div>
 </div>
 
 <!-- ═══ MODAL PROCESO ════════════════════════════════════════════════ -->
 
 <div id="modal-proceso" class="legal-modal">
-  <span class="close-modal" onclick="closeModal('proceso')">CLOSE [X]</span>
+  <span class="close-modal" onclick="closeModal('proceso')">×</span>
   <div style="max-width:600px;margin:60px auto 40px;">
     <h2 data-key="process-title" style="font-size:1.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:white;margin-bottom:48px;font-style:italic;">Der Prozess</h2>
     <div style="display:flex;flex-direction:column;">
@@ -992,7 +995,7 @@
 <!-- ═══ MODAL FAQ ══════════════════════════════════════════════════════ -->
 
 <div id="modal-faq" class="legal-modal">
-  <span class="close-modal" onclick="closeModal('faq')">CLOSE [X]</span>
+  <span class="close-modal" onclick="closeModal('faq')">×</span>
   <div style="max-width:600px;margin:60px auto 40px;">
     <h2 data-key="faq-title" style="font-size:1.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:white;margin-bottom:48px;font-style:italic;">Deine Fragen</h2>
     <div id="faq-modal-list">
@@ -1016,8 +1019,8 @@
 
 <!-- ═══ FLOATING CTA (móvil) ════════════════════════════════════════ -->
 
-<button id="floating-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'});" class="md:hidden" style="position:fixed;left:24px;right:24px;bottom:24px;z-index:4000;padding:18px 32px;border-radius:14px;background:#E11D2E;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,29,46,0.35);transition:opacity 0.4s ease;">
-  <span data-key="floating" style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.4em;color:white;">TERMINE</span>
+<button id="floating-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'});" style="position:fixed;left:24px;right:24px;bottom:24px;z-index:4000;padding:18px 32px;border-radius:14px;background:#E11D2E;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,29,46,0.35);transition:opacity 0.4s ease;opacity:0;pointer-events:none;">
+  <span data-key="floating" style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:white;">TERMINE</span>
 </button>
 
 <!-- ═══ VOLVER ARRIBA ════════════════════════════════════════════════ -->
@@ -1306,31 +1309,107 @@ window.addEventListener('load', function() {
   // ── SUBMIT ───────────────────────────────────────────────────────────
   var tattooForm = document.getElementById('tattoo-form');
   var successMsg = document.getElementById('success-msg');
+
+  // ── PHOTO COMPRESSION ────────────────────────────────────────────────
+  function compressImage(file, maxPx, quality) {
+    return new Promise(function(resolve) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var img = new Image();
+        img.onload = function() {
+          var w = img.width, h = img.height;
+          if (w > maxPx || h > maxPx) {
+            var ratio = Math.min(maxPx / w, maxPx / h);
+            w = Math.round(w * ratio); h = Math.round(h * ratio);
+          }
+          var canvas = document.createElement('canvas');
+          canvas.width = w; canvas.height = h;
+          canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+          canvas.toBlob(function(blob) { resolve(blob); }, 'image/jpeg', quality);
+        };
+        img.src = e.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+  }
+
+  function blobToBase64(blob) {
+    return new Promise(function(resolve) {
+      var reader = new FileReader();
+      reader.onloadend = function() { resolve(reader.result.split(',')[1]); };
+      reader.readAsDataURL(blob);
+    });
+  }
+
   if (tattooForm) {
     tattooForm.addEventListener('submit', function(e) {
       e.preventDefault();
       var t = translations[currentLang];
-      tattooForm.style.opacity = '0';
-      tattooForm.style.transition = 'opacity 0.4s ease';
-      // Also hide step indicator
-      var si = document.getElementById('step-indicator');
-      if (si) { si.style.opacity = '0'; si.style.transition = 'opacity 0.4s'; }
-      setTimeout(function() {
-        tattooForm.style.display = 'none';
-        if (si) si.style.display = 'none';
-        var title = document.getElementById('success-title');
-        var body  = document.getElementById('success-body');
-        var ig    = document.getElementById('success-ig');
-        if (title) title.innerText = t['success-title'];
-        if (body)  body.innerText  = t['success-body'];
-        if (ig)    ig.innerText    = t['success-ig'];
-        successMsg.style.display = 'block';
-        successMsg.style.opacity = '0';
-        successMsg.style.transition = 'opacity 0.6s ease';
-        setTimeout(function() { successMsg.style.opacity = '1'; }, 50);
-        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        try { localStorage.removeItem('yusnoir_form'); } catch(e) {}
-      }, 400);
+      var btn = document.getElementById('submit-btn');
+      if (btn) { btn.disabled = true; btn.textContent = '...'; }
+
+      // Collect form data
+      var formData = {
+        access_key: '0369d497-7980-4a42-bbe7-7e6de2722059',
+        subject: 'Nueva solicitud de tatuaje — YUS NOIR',
+        from_name: 'YUS NOIR Booking',
+        nombre: document.getElementById('f-nombre').value,
+        email: document.getElementById('f-email').value,
+        telefono: document.getElementById('f-telefono').value,
+        edad: document.getElementById('f-edad').value,
+        zona: document.getElementById('zona-input').value,
+        tamano: document.getElementById('f-tamano').value,
+        idea: document.getElementById('idea-textarea').value
+      };
+
+      // Compress and attach photos
+      var photoInput = document.getElementById('ref-photos');
+      var photoFiles = photoInput && photoInput.files ? Array.from(photoInput.files) : [];
+
+      Promise.all(photoFiles.map(function(file, i) {
+        return compressImage(file, 800, 0.75).then(function(blob) {
+          return blobToBase64(blob).then(function(b64) {
+            return { name: 'foto_' + (i+1) + '.jpg', data: b64, type: 'image/jpeg' };
+          });
+        });
+      })).then(function(attachments) {
+        if (attachments.length > 0) formData.attachments = attachments;
+
+        return fetch('https://api.web3forms.com/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify(formData)
+        });
+      }).then(function(res) { return res.json(); }).then(function(data) {
+        if (data.success) {
+          tattooForm.style.opacity = '0';
+          tattooForm.style.transition = 'opacity 0.4s ease';
+          var si = document.getElementById('step-indicator');
+          if (si) { si.style.opacity = '0'; si.style.transition = 'opacity 0.4s'; }
+          setTimeout(function() {
+            tattooForm.style.display = 'none';
+            if (si) si.style.display = 'none';
+            var title = document.getElementById('success-title');
+            var body  = document.getElementById('success-body');
+            var ig    = document.getElementById('success-ig');
+            if (title) title.innerText = t['success-title'];
+            if (body)  body.innerText  = t['success-body'];
+            if (ig)    ig.innerText    = t['success-ig'];
+            successMsg.style.display = 'block';
+            successMsg.style.opacity = '0';
+            successMsg.style.transition = 'opacity 0.6s ease';
+            setTimeout(function() { successMsg.style.opacity = '1'; }, 50);
+            successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            try { localStorage.removeItem('yusnoir_form'); } catch(e) {}
+          }, 400);
+        } else {
+          if (btn) { btn.disabled = false; btn.textContent = t['btn-send'] || 'Anfrage jetzt senden →'; }
+          alert('Error al enviar. Por favor inténtalo de nuevo.');
+        }
+      }).catch(function() {
+        if (btn) { btn.disabled = false; btn.textContent = t['btn-send'] || 'Anfrage jetzt senden →'; }
+        alert('Error de conexión. Por favor inténtalo de nuevo.');
+      });
     });
   }
 
@@ -1341,7 +1420,8 @@ window.addEventListener('load', function() {
     var bookingRect = booking ? booking.getBoundingClientRect() : null;
     var bookingVisible = bookingRect && bookingRect.top < window.innerHeight && bookingRect.bottom > 0;
     var scrolledToBottom = (window.innerHeight + window.scrollY) >= document.documentElement.scrollHeight - 80;
-    if (bookingVisible || scrolledToBottom) {
+    var scrolledEnough = window.scrollY > 300;
+    if (!scrolledEnough || bookingVisible || scrolledToBottom) {
       floatingBtn.style.opacity = '0';
       floatingBtn.style.pointerEvents = 'none';
     } else {
