@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport"/>
+  <title>YUS NOIR | Black & Grey Realism Tattoo — Zürich & Hamburg</title>
+
+  <!-- ═══ PERFORMANCE: preconnect ══════════════════════════════════════ -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net">
+  <link rel="preconnect" href="https://cdn.tailwindcss.com">
+  <link rel="dns-prefetch" href="https://www.instagram.com">
+
+  <!-- ═══ FAVICON ══════════════════════════════════════════════════════ -->
+
+  <link rel="icon" type="image/png" href="images/logo.png">
+  <link rel="apple-touch-icon" href="images/logo.png">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="YUS NOIR">
+
+  <!-- ═══ SEO ══════════════════════════════════════════════════════════ -->
+
+  <meta name="description" content="YUS NOIR — Giuseppe Cardona. Black & Grey Realismus Tattoo Artist. Custom Tattoos in Zürich und Hamburg. Termine auf Anfrage.">
+  <meta name="keywords" content="tattoo zürich, tattoo hamburg, black and grey tattoo, realismus tattoo, custom tattoo, tätowierer zürich, tätowierer hamburg, yus noir, giuseppe cardona">
+  <meta name="author" content="Giuseppe Cardona — YUS NOIR">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://yusnoir.netlify.app">
+
+  <!-- ═══ OPEN GRAPH ════════════════════════════════════════════════════ -->
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://yusnoir.netlify.app">
+  <meta property="og:title" content="YUS NOIR | Black & Grey Realism Tattoo">
+  <meta property="og:description" content="Custom Black & Grey Realismus Tattoos. Giuseppe Cardona — Zürich & Hamburg. Terminanfragen jetzt stellen.">
+  <meta property="og:image" content="https://yusnoir.netlify.app/images/hero.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:locale:alternate" content="en_GB">
+  <meta property="og:locale:alternate" content="es_ES">
+  <meta property="og:site_name" content="YUS NOIR">
+
+  <!-- ═══ TWITTER CARD ══════════════════════════════════════════════════ -->
+
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="YUS NOIR | Black & Grey Realism Tattoo">
+  <meta name="twitter:description" content="Custom Black & Grey Realismus Tattoos. Giuseppe Cardona — Zürich & Hamburg.">
+  <meta name="twitter:image" content="https://yusnoir.netlify.app/images/hero.jpg">
+
+  <!-- ═══ SCHEMA.ORG ════════════════════════════════════════════════════ -->
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "YUS NOIR",
+    "description": "Black & Grey Realismus Tattoo Artist. Custom Tattoos in Zürich und Hamburg.",
+    "url": "https://yusnoir.netlify.app",
+    "logo": "https://yusnoir.netlify.app/images/logo.png",
+    "image": "https://yusnoir.netlify.app/images/hero.jpg",
+    "founder": { "@type": "Person", "name": "Giuseppe Cardona" },
+    "email": "el.tatuador@outlook.es",
+    "sameAs": ["https://www.instagram.com/yus.noir"],
+    "areaServed": [
+      { "@type": "City", "name": "Zürich" },
+      { "@type": "City", "name": "Hamburg" }
+    ],
+    "serviceType": "Tattoo Studio"
+  }
+  </script>
+
+  <!-- ═══ PERFORMANCE: Swiper CSS preload ══════════════════════════════ -->
+
+  <link rel="preload" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"></noscript>
+
+  <!-- ═══ PERFORMANCE: Google Fonts con display=swap ════════════════════ -->
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+
+  <!-- ═══ TAILWIND ══════════════════════════════════════════════════════ -->
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms"></script>
+
+  <script>
+    tailwind.config = { theme: { extend: { colors: { brand: { black: '#0A0A0A', red: '#E11D2E' } } } } }
+  </script>
+
+  <style>
+    * { -webkit-tap-highlight-color: transparent; outline: none !important; }
+    input::placeholder, textarea::placeholder { color: rgba(85,85,85,0.5) !important; opacity: 1; }
+    body { background-color: #0A0A0A; color: #FFFFFF; font-family: 'Inter', sans-serif; scroll-behavior: smooth; margin: 0; cursor: pointer; }
+    #progress-bar { position: fixed; top: 0; left: 0; height: 2px; background: #E11D2E; z-index: 9999; width: 0%; transition: width 0.1s; }
+
+    /* Step dots */
+    .step-dot { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); transition: background 0.3s ease, transform 0.3s ease, border-color 0.3s ease; flex-shrink: 0; }
+    .step-dot.done { background: #E11D2E; border-color: #E11D2E; transform: scale(1.3); }
+    .step-dot.active { border-color: #E11D2E; transform: scale(1.15); }
+    .step-dot.all-done { background: #4ade80; border-color: #4ade80; }
+
+    /* Floating CTA */
+    #floating-cta { position: fixed; right: 24px; bottom: 24px; z-index: 4000; transition: all 0.4s ease; }
+
+    /* Header */
+    .lang-header { position: absolute; top: 0; left: 0; right: 0; z-index: 50; display: flex; justify-content: space-between; align-items: center; padding: 22px 28px; background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent); }
+    .lang-wrap { display: flex; gap: 12px; }
+    .nav-wrap { display: flex; gap: 24px; align-items: center; }
+
+    /* Logo — FIX PERFORMANCE: sin base64, usa src="images/logo.png" */
+    .brand-logo-img { width: 95%; max-width: 520px; filter: invert(1) contrast(150%) brightness(1.2); mix-blend-mode: screen; opacity: 0; animation: fadeInLogo 2s ease forwards; margin-bottom: 1.5rem; }
+    .footer-logo-img { max-width: 100px; filter: invert(1) brightness(1.5); margin-bottom: 0.5rem; opacity: 0.8; }
+
+    /* Animations */
+    @keyframes fadeInLogo { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes pulse { 0%,100% { opacity:1; transform:scale(1); } 50% { opacity:0.5; transform:scale(0.8); } }
+    .hero-line { opacity: 0; animation: fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards; }
+    .hero-line-1 { animation-delay: 0.3s; }
+    .hero-line-2 { animation-delay: 0.55s; }
+    .hero-line-3 { animation-delay: 0.75s; }
+    .hero-line-4 { animation-delay: 0.95s; }
+    .hero-line-5 { animation-delay: 1.15s; }
+    .hero-line-6 { animation-delay: 1.35s; }
+
+    /* Stats */
+    .stat-container { display: flex; justify-content: space-around; align-items: center; width: 100%; gap: 10px; padding: 0 10px; }
+    .stat-card { transition: all 0.4s ease; flex: 1; display: flex; flex-direction: column; align-items: center; }
+    .stat-number { font-size: clamp(2.5rem, 10vw, 4.5rem); font-weight: 700; color: white; line-height: 1; text-shadow: 0 0 20px rgba(225, 29, 46, 0.1); transition: 0.3s; white-space: nowrap; }
+    .stat-card:hover .stat-number { text-shadow: 0 0 25px rgba(225, 29, 46, 0.6); color: #E11D2E; transform: scale(1.05); }
+    .stat-label { font-size: 7px; text-transform: uppercase; letter-spacing: 0.2em; color: #E11D2E; margin-top: 12px; font-weight: 700; text-align: center; }
+    .stat-divider { width: 1px; height: 60px; background: rgba(225,29,46,0.15); }
+
+    /* Body map */
+    .bzone { fill: #1a1a1a; stroke: #333; stroke-width: 1; transition: fill 0.15s, stroke 0.15s; cursor: pointer; }
+    .bzone:hover { fill: #2a1a1a; stroke: #E11D2E; }
+    .bzone.selected { fill: #E11D2E22; stroke: #E11D2E; stroke-width: 1.5; }
+    /* UX MÓVIL FIX: zonas táctiles ampliadas */
+    @media (max-width: 768px) {
+      .bzone { stroke-width: 1.5; }
+    }
+
+    /* FAQ */
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .faq-q { width:100%; display:flex; justify-content:space-between; align-items:center; padding:20px 0; background:none; border:none; color:white; font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:0.2em; cursor:pointer; text-align:left; }
+    .faq-icon { color:#E11D2E; font-size:20px; font-weight:300; transition:transform 0.3s; flex-shrink:0; margin-left:16px; }
+    .faq-q.open .faq-icon { transform:rotate(45deg); }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s cubic-bezier(0.22,1,0.36,1); }
+    .faq-a.open { max-height:200px; }
+    .faq-a p { font-size:11px; color:#666; line-height:1.9; letter-spacing:0.05em; padding-bottom:20px; }
+
+    /* Success */
+    @keyframes checkDraw { to { stroke-dashoffset: 0; } }
+    @keyframes circlePulse { 0%,100% { box-shadow: 0 0 0 0 rgba(74,222,128,0); } 50% { box-shadow: 0 0 30px 8px rgba(74,222,128,0.15); } }
+    .success-circle { width:80px; height:80px; border-radius:50%; border:1.5px solid #4ade80; display:flex; align-items:center; justify-content:center; margin:0 auto 32px; animation: circlePulse 2.5s ease infinite; }
+    .success-check { width:32px; height:32px; }
+    .success-check path { stroke:#4ade80; stroke-width:2.5; fill:none; stroke-linecap:round; stroke-linejoin:round; stroke-dasharray:50; stroke-dashoffset:50; animation: checkDraw 0.6s 0.3s cubic-bezier(0.22,1,0.36,1) forwards; }
+
+    /* Form */
+    .focus-group { transition: all 0.5s ease; opacity: 1; filter: blur(0); position: relative; z-index: 10; margin-bottom: 2.5rem; }
+    #tattoo-form:focus-within .focus-group:not(:focus-within) { opacity: 0.35; filter: blur(5px); }
+    input, textarea, select { background: rgba(255, 255, 255, 0.03) !important; border: none !important; border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important; color: white !important; width: 100%; padding: 18px 10px; border-radius: 0 !important; outline: none !important; box-shadow: none !important; -webkit-appearance: none; appearance: none; }
+    input:focus, textarea:focus, select:focus { outline: none !important; box-shadow: none !important; border-bottom-color: rgba(225,29,46,0.5) !important; }
+
+    /* NUEVO: floating label */
+    .field-wrap { position: relative; flex: 1; }
+    .field-wrap .field-label { position: absolute; left: 10px; top: 18px; font-size: 9px; text-transform: uppercase; letter-spacing: 0.2em; color: rgba(85,85,85,0.5); pointer-events: none; transition: all 0.2s ease; }
+    .field-wrap input:focus ~ .field-label,
+    .field-wrap input:not(:placeholder-shown) ~ .field-label,
+    .field-wrap textarea:focus ~ .field-label,
+    .field-wrap textarea:not(:placeholder-shown) ~ .field-label { top: 2px; font-size: 7px; color: #E11D2E; letter-spacing: 0.15em; }
+    /* Con floating label, el placeholder debe ser invisible */
+    .field-wrap input { padding-top: 24px; padding-bottom: 10px; }
+    .field-wrap textarea { padding-top: 24px; padding-bottom: 10px; }
+
+    /* NUEVO: form progress sticky */
+    #form-sticky-progress { position: sticky; top: 0; z-index: 100; background: rgba(10,10,10,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0; margin-bottom: 1.5rem; display: none; }
+    #form-sticky-progress.visible { display: block; }
+    #form-sticky-bar { height: 2px; background: rgba(255,255,255,0.06); border-radius: 1px; overflow: hidden; }
+    #form-sticky-bar-fill { height: 100%; background: #E11D2E; transition: width 0.4s ease; width: 0%; border-radius: 1px; }
+
+    /* Scroll reveal */
+    .reveal-on-scroll { opacity: 0; transform: translateY(30px); transition: 1.2s cubic-bezier(0.22, 1, 0.36, 1); }
+    .reveal-on-scroll.is-visible { opacity: 1; transform: translateY(0); }
+
+    /* Gallery */
+    .swiper-slide { width: 280px; filter: grayscale(100%); transition: 0.8s ease; opacity: 0.3; }
+    .swiper-slide img { width: 100%; height: 400px; object-fit: cover; border-radius: 2px; cursor: pointer; }
+    .swiper-slide-active { filter: grayscale(0%); opacity: 1; transform: scale(1.05); }
+    .swiper-pagination-bullet-active { background: #E11D2E !important; }
+
+    /* Lightbox */
+    #lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.95); z-index:9999; align-items:center; justify-content:center; }
+    #lightbox.open { display:flex; animation: fadeUp 0.3s ease forwards; }
+    #lightbox img { max-width:92vw; max-height:88vh; object-fit:contain; border-radius:2px; }
+    #lightbox-close { position:absolute; top:20px; right:24px; color:white; font-size:28px; cursor:pointer; opacity:0.6; line-height:1; }
+    #lightbox-close:hover { opacity:1; }
+    #lightbox-prev, #lightbox-next { position:absolute; top:50%; transform:translateY(-50%); color:white; font-size:28px; cursor:pointer; opacity:0.5; padding:20px; user-select:none; }
+    #lightbox-prev:hover, #lightbox-next:hover { opacity:1; }
+    #lightbox-prev { left:0; }
+    #lightbox-next { right:0; }
+
+    /* Legal modals */
+    .legal-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.99); z-index: 6000; display: none; overflow-y: auto; padding: 40px 20px; }
+    .legal-modal.active { display: block; }
+    .legal-content { max-width: 900px; margin: 0 auto; font-size: 10px; line-height: 1.6; color: #d1d1d1; text-align: left; padding-bottom: 100px; }
+    .close-modal { position: fixed; top: 20px; right: 20px; color: #E11D2E; font-weight: bold; cursor: pointer; border: 1px solid #E11D2E; padding: 10px 15px; background: black; z-index: 7000; text-transform: uppercase; }
+
+    /* Checkbox */
+    .checkbox-wrap { display: flex; align-items: flex-start; gap: 12px; margin-top: 10px; cursor: pointer; }
+    .checkbox-wrap input { appearance: none; -webkit-appearance: none; width: 18px; height: 18px; border: 1px solid #E11D2E; background: transparent; cursor: pointer; position: relative; flex-shrink: 0; }
+    .checkbox-wrap input:checked { background-color: #E11D2E; }
+    .checkbox-wrap input:checked::after { content: '✓'; position: absolute; color: white; font-size: 12px; left: 3px; top: -1px; }
+
+    /* Submit button */
+    #submit-btn { background-color: #1a1a1a; transition: all 0.4s ease; }
+    #submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+    #submit-btn:not(:disabled) { background-color: #E11D2E; }
+    #submit-btn:not(:disabled):hover { background-color: #c8172a; transform: translateY(-1px); box-shadow: 0 8px 32px rgba(225,29,46,0.35); }
+
+    /* Lang + nav */
+    .lang-btn { font-size: 9px; text-transform: uppercase; letter-spacing: 0.1em; background: none; border: none; cursor: pointer; transition: all 0.2s; opacity: 0.4; color: white; font-weight: 400; }
+    .lang-btn.active { opacity: 1; color: #E11D2E; font-weight: 700; }
+    .nav-link { font-size: 9px; text-transform: uppercase; letter-spacing: 0.15em; color: rgba(255,255,255,0.45); text-decoration: none; transition: color 0.2s; font-weight: 400; background: none; border: none; cursor: pointer; }
+    .nav-link:hover { color: white; }
+
+    /* NUEVO: Hero headline */
+    .hero-headline { font-size: clamp(2rem, 8vw, 3.8rem); font-weight: 700; text-transform: uppercase; letter-spacing: -0.02em; line-height: 1.05; color: white; text-align: center; }
+    .hero-headline span { color: #E11D2E; }
+
+    /* NUEVO: hero social proof pills */
+    .hero-proof { display: inline-flex; align-items: center; gap: 6px; padding: 6px 14px; border: 1px solid rgba(255,255,255,0.1); border-radius: 100px; background: rgba(255,255,255,0.04); }
+    .hero-proof-dot { width: 4px; height: 4px; border-radius: 50%; background: #4ade80; flex-shrink: 0; }
+
+    /* NUEVO: hero CTA secundario */
+    .hero-cta-secondary { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; border: 1px solid rgba(255,255,255,0.15); border-radius: 2px; text-decoration: none; transition: all 0.3s ease; }
+    .hero-cta-secondary:hover { border-color: rgba(225,29,46,0.5); background: rgba(225,29,46,0.06); }
+
+    /* Process */
+    .process-step { display:flex; align-items:flex-start; gap:20px; }
+    .process-connector { width:1px; height:36px; background:linear-gradient(to bottom, #E11D2E33, transparent); margin-left:13px; }
+  </style>
+
+  <script>
+    // ── TRADUCCIONES ─────────────────────────────────────────────────────
+    const translations = {
+      de: {
+        // COPY OPTIMIZADO: nuevo copy hero
+        "hero-headline": "Deine Haut.\nDeine Geschichte.",
+        "hero-sub": "Black & Grey Realismus — kein Template, kein Kompromiss",
+        "hero-proof": "Über 1.500 Tattoos · 10+ Jahre",
+        "hero-cta": "Termin anfragen",
+        "gallery-link": "Folgen",
+        "stat-1": "Jahre Erf.", "stat-2": "Tattoos", "stat-3": "Custom",
+        "book-title": "Terminanfragen",
+        "btn-send": "Anfrage jetzt senden →",
+        "btn-next": "Weiter →",
+        "btn-back": "Zurück",
+        "step-label-1": "Du",
+        "step-label-2": "Tattoo",
+        "success-title": "Anfrage erhalten",
+        "success-body": "Deine Anfrage ist eingegangen.\nIch antworte dir innerhalb von 48 Stunden.\n— Giuseppe",
+        "success-ig": "Galerie auf Instagram ansehen →",
+        "success-video-label": "Schau zu, wie ein Tattoo entsteht →",
+        "reply-note": "Antwort innerhalb von 48 Stunden",
+        "check-text": "Ich habe die Buchungsbedingungen gelesen und stimme ihnen zu",
+        "copy": "© 2026 YUS NOIR",
+        "artist-bio": "\"Ich bin Giuseppe. Über ein Jahrzehnt, Visionen in Haut verwandelt — kein Template, kein Kompromiss. Nur deine Geschichte, genau so wie du sie dir vorstellst.\"",
+        "artist-specialty": "Spezialist für High-Contrast Black & Grey Realismus.",
+        "price-line": "Ab 150 € / Std. · Hamburg &nbsp;·&nbsp; Ab 200 CHF / Std. · Zürich",
+        "price-note": "Mindestbuchung 1 Stunde · Anzahlung erforderlich",
+        "process-title": "Der Prozess",
+        "nav-process": "Der Prozess",
+        "process-1-title": "Anfrage senden",
+        "process-1-body": "Füll das Formular vollständig aus: Körperstelle, Größe, Stil und deine Idee. Je präziser du bist, desto gezielter kann ich antworten. Füge Referenzbilder bei — auch wenn es nur eine Stimmung ist, die du transportieren möchtest.",
+        "process-2-title": "Gespräch & Anzahlung",
+        "process-2-body": "Ich melde mich innerhalb von 48 Stunden. Wir besprechen deine Vision, klären Details und ich beantworte alle Fragen. Sobald wir uns einig sind, wird der Termin mit einer Anzahlung verbindlich reserviert. Kein Termin ohne Anzahlung.",
+        "process-3-title": "Design & Custom Session",
+        "process-3-body": "Ich entwickle das Motiv exklusiv für dich — kein Template, kein Recycling. Am Tag der Session zeige ich dir das finale Design. Wir besprechen es gemeinsam, passen es bei Bedarf an. Erst wenn du vollständig zufrieden bist, beginnen wir. Die Session findet in Zürich oder Hamburg statt.",
+        "process-4-title": "Nachsorge & Für immer",
+        "process-4-body": "Nach der Session erkläre ich dir persönlich die Nachsorge und du erhältst alle Anweisungen schriftlich. Die ersten 2 Wochen sind entscheidend für das Ergebnis. Ein gut gepflegtes Tattoo behält seine Schärfe und Tiefe über Jahre. Bei Fragen bin ich auch nach der Session erreichbar.",
+        "faq-title": "Deine Fragen",
+        "faq-1-q": "Tut es weh?",
+        "faq-1-a": "Ja, ein Tattoo ist mit Schmerzen verbunden — aber es ist gut aushaltbar. Das Empfinden variiert stark je nach Körperstelle: Rippen, Hände, Füße und Kniekehlen sind empfindlicher. Oberarm, Oberschenkel und Schulterblatt gelten als angenehmer. Die meisten Kunden beschreiben es als ein intensives, rhythmisches Kratzen. Kurze Pausen sind jederzeit möglich.",
+        "faq-2-q": "Wie lange dauert eine Session?",
+        "faq-2-a": "Das hängt stark von Größe und Komplexität ab. Ein kleines Motiv kann in 1–2 Stunden fertig sein. Mittlere Projekte benötigen 3–5 Stunden. Große oder detailreiche Werke werden auf mehrere Sessions aufgeteilt, damit Qualität und deine Körperbelastung optimal bleiben. Jede Sitzung wird im Voraus abgestimmt.",
+        "faq-3-q": "Wie pflege ich mein Tattoo?",
+        "faq-3-a": "Direkt nach der Session wird das Tattoo abgedeckt. In den ersten 2 Wochen: täglich sanft reinigen, eine dünne Schicht parfumfreie Feuchtigkeitscreme auftragen und Sonne, Schwimmbad und Sauna meiden. Kein Kratzen — auch wenn es juckt. Nach der Abheilung empfehle ich regelmäßigen Sonnenschutz, um die Schärfe langfristig zu erhalten.",
+        "faq-4-q": "Kann ich ein fremdes Motiv mitbringen?",
+        "faq-4-a": "Referenzbilder sind sehr willkommen und helfen mir, deinen Stil zu verstehen. Ich steche jedoch keine 1:1-Kopien anderer Künstler — das wäre weder fair noch original. Ich verwende deine Referenzen als Inspiration und entwerfe ein völlig einzigartiges, personalisiertes Motiv, das zu deiner Körperform und Haut passt.",
+        "faq-5-q": "Wie weit im Voraus muss ich buchen?",
+        "faq-5-a": "Je nach Saison und Auslastung kann die Wartezeit zwischen 4 und 12 Wochen betragen. Für große Projekte oder bestimmte Wunschtermine empfehle ich, so früh wie möglich anzufragen. Dringende Anfragen können manchmal bei Stornierungen eingeschoben werden — es lohnt sich zu fragen.",
+        "floating": "TERMINE",
+        "NAME": "NAME", "EMAIL": "E-MAIL", "PHONE": "TELEFON", "AGE": "ALTER",
+        "PLACE": "KÖRPERSTELLE", "SIZE": "GRÖSSE (CM)", "IDEA": "DEINE IDEE",
+        "legal-1": "Rechtliche Bestimmungen", "legal-2": "Datenschutz",
+        "required-note": "* Pflichtfelder",
+        "autosave-restored": "Deine Eingaben wurden wiederhergestellt",
+        "photo-label": "Referenzbilder",
+        "photo-hint": "Min. 1 — Max. 8 Fotos"
+      },
+      en: {
+        "hero-headline": "Your Skin.\nYour Story.",
+        "hero-sub": "Black & Grey Realism — no templates, no shortcuts",
+        "hero-proof": "1,500+ tattoos · 10+ years",
+        "hero-cta": "Book a session",
+        "gallery-link": "Follow",
+        "stat-1": "Years Exp.", "stat-2": "Tattoos", "stat-3": "Custom",
+        "book-title": "Booking Inquiries",
+        "btn-send": "Send inquiry now →",
+        "btn-next": "Continue →",
+        "btn-back": "Back",
+        "step-label-1": "You",
+        "step-label-2": "Tattoo",
+        "success-title": "Request received",
+        "success-body": "Your request has been received.\nI'll get back to you within 48 hours.\n— Giuseppe",
+        "success-ig": "View gallery on Instagram →",
+        "success-video-label": "Watch how a tattoo comes to life →",
+        "reply-note": "Response within 48 hours",
+        "check-text": "I have read and agree to the booking conditions",
+        "copy": "© 2026 YUS NOIR",
+        "artist-bio": "\"I'm Giuseppe. Over a decade turning visions into skin — no templates, no shortcuts. Just your story, exactly as you imagine it.\"",
+        "artist-specialty": "High-Contrast Black & Grey Realism specialist.",
+        "price-line": "From €150 / hr · Hamburg &nbsp;·&nbsp; From CHF 200 / hr · Zürich",
+        "price-note": "1 hour minimum · Deposit required",
+        "process-title": "The Process",
+        "nav-process": "The Process",
+        "process-1-title": "Send your request",
+        "process-1-body": "Fill out the booking form completely: placement, size, style and your idea. The more detail you provide, the better I can respond. Attach reference images — even if it's just a mood or feeling you want to capture.",
+        "process-2-title": "Consultation & Deposit",
+        "process-2-body": "I'll reply within 48 hours. We talk through your vision, clarify details and I answer any questions you have. Once we're aligned, the appointment is confirmed with a deposit. No deposit, no booking.",
+        "process-3-title": "Custom Design & Session",
+        "process-3-body": "I develop your design exclusively for you — no templates, no recycled artwork. On session day I present the final piece. We review it together and adjust if needed. Only once you're fully happy do we begin. Sessions take place in Zürich or Hamburg.",
+        "process-4-title": "Aftercare & Forever",
+        "process-4-body": "After the session I walk you through the aftercare in person and provide written instructions. The first 2 weeks are critical for the final result. A well-maintained tattoo keeps its sharpness and depth for years. I'm available for questions even after your session.",
+        "faq-title": "Your Questions",
+        "faq-1-q": "Does it hurt?",
+        "faq-1-a": "Yes, getting tattooed involves discomfort — but it's very manageable. Pain varies greatly by placement: ribs, hands, feet and the back of the knee are more sensitive. The upper arm, thigh and shoulder blade tend to be easier. Most clients describe the sensation as an intense, rhythmic scratching. Short breaks are always possible whenever you need them.",
+        "faq-2-q": "How long does a session take?",
+        "faq-2-a": "It depends on the size and complexity of the piece. A small tattoo can be finished in 1–2 hours. Medium projects typically take 3–5 hours. Large or highly detailed work is split across multiple sessions to maintain quality and respect your body's limits. Every session is planned and agreed on in advance.",
+        "faq-3-q": "How do I care for my tattoo?",
+        "faq-3-a": "Right after the session the tattoo will be wrapped. For the first 2 weeks: clean it gently daily, apply a thin layer of fragrance-free moisturiser and avoid sun, pools and saunas. Do not scratch — even when it itches. Once healed, regular SPF application helps preserve the sharpness and contrast of your tattoo long-term.",
+        "faq-4-q": "Can I bring a reference design?",
+        "faq-4-a": "Reference images are very welcome — they help me understand your taste and direction. However, I don't copy other artists' work 1:1. That wouldn't be fair or original. Instead, I use your references as inspiration and create a completely unique, personalised design adapted to your body shape and skin.",
+        "faq-5-q": "How far in advance should I book?",
+        "faq-5-a": "Depending on the season and my schedule, wait times range from 4 to 12 weeks. For large projects or specific date requests, I recommend getting in touch as early as possible. Urgent requests sometimes fit into cancellation slots — it's always worth asking.",
+        "floating": "BOOKING",
+        "NAME": "NAME", "EMAIL": "E-MAIL", "PHONE": "PHONE", "AGE": "AGE",
+        "PLACE": "PLACEMENT", "SIZE": "SIZE (CM)", "IDEA": "YOUR IDEA",
+        "legal-1": "Legal Terms", "legal-2": "Privacy",
+        "required-note": "* Required fields",
+        "autosave-restored": "Your data has been restored",
+        "photo-label": "Reference photos",
+        "photo-hint": "Min. 1 — Max. 8 photos"
+      },
+      es: {
+        "hero-headline": "Tu Piel.\nTu Historia.",
+        "hero-sub": "Realismo Black & Grey — sin plantillas, sin atajos",
+        "hero-proof": "Más de 1.500 tatuajes · 10+ años",
+        "hero-cta": "Solicitar cita",
+        "gallery-link": "Sígueme en Instagram",
+        "stat-1": "Años Exp.", "stat-2": "Tatuajes", "stat-3": "Personalizado",
+        "book-title": "Solicitud de Cita",
+        "btn-send": "Enviar solicitud ahora →",
+        "btn-next": "Continuar →",
+        "btn-back": "Volver",
+        "step-label-1": "Tú",
+        "step-label-2": "Tattoo",
+        "success-title": "Solicitud recibida",
+        "success-body": "Tu solicitud ha sido recibida.\nMe pondré en contacto contigo en un plazo de 48 horas.\n— Giuseppe",
+        "success-ig": "Ver galería en Instagram →",
+        "success-video-label": "Mira cómo nace un tatuaje →",
+        "reply-note": "Respuesta en un plazo de 48 horas",
+        "check-text": "He leído y acepto las condiciones de reserva",
+        "copy": "© 2026 YUS NOIR",
+        "artist-bio": "\"Soy Giuseppe. Más de una década convirtiendo visiones en piel — sin plantillas, sin atajos. Solo tu historia, exactamente como la imaginas.\"",
+        "artist-specialty": "Especialista en Realismo Black & Grey de alto contraste.",
+        "price-line": "Desde 150 € / hora · Hamburg &nbsp;·&nbsp; Desde 200 CHF / hora · Zürich",
+        "price-note": "Mínimo 1 hora · Se requiere depósito",
+        "process-title": "El Proceso",
+        "nav-process": "El Proceso",
+        "process-1-title": "Enviar solicitud",
+        "process-1-body": "Rellena el formulario con todos los detalles: zona del cuerpo, tamaño, estilo y tu idea. Cuanta más información aportes, mejor podré responderte. Añade fotos de referencia — aunque solo sea un estado de ánimo o una imagen que te inspire.",
+        "process-2-title": "Consulta & Depósito",
+        "process-2-body": "Te respondo en un plazo de 48 horas. Hablamos de tu visión, aclaramos los detalles y resuelvo todas tus dudas. Una vez de acuerdo, la cita queda confirmada con un depósito. Sin depósito no hay reserva.",
+        "process-3-title": "Diseño custom & Sesión",
+        "process-3-body": "Desarrollo el diseño exclusivamente para ti — sin plantillas, sin reciclaje. El día de la sesión te presento el arte final. Lo revisamos juntos y hacemos ajustes si es necesario. Solo cuando estés completamente satisfecho empezamos. Las sesiones se realizan en Zúrich o Hamburgo.",
+        "process-4-title": "Cuidados & Para siempre",
+        "process-4-body": "Al terminar la sesión te explico personalmente los cuidados y te entrego las instrucciones por escrito. Las primeras 2 semanas son clave para el resultado final. Un tatuaje bien cuidado mantiene su nitidez y profundidad durante años. Estoy disponible para cualquier duda incluso después de la sesión.",
+        "faq-title": "Tus dudas",
+        "faq-1-q": "¿Duele?",
+        "faq-1-a": "Sí, hacerse un tatuaje implica molestias — pero son muy llevaderas. El dolor varía mucho según la zona: costillas, manos, pies y la parte posterior de la rodilla son más sensibles. El brazo superior, el muslo y el escápula suelen ser más cómodos. La mayoría lo describe como un raspado intenso y rítmico. Puedes pedir una pausa en cualquier momento.",
+        "faq-2-q": "¿Cuánto dura una sesión?",
+        "faq-2-a": "Depende del tamaño y la complejidad del diseño. Un motivo pequeño puede terminarse en 1–2 horas. Los proyectos medianos requieren entre 3 y 5 horas. Los trabajos grandes o muy detallados se dividen en varias sesiones para mantener la calidad y respetar los límites de tu cuerpo. Cada sesión se planifica y acuerda con antelación.",
+        "faq-3-q": "¿Cómo cuido mi tatuaje?",
+        "faq-3-a": "Al terminar la sesión el tatuaje quedará cubierto. Durante las primeras 2 semanas: lávalo suavemente cada día, aplica una capa fina de crema hidratante sin perfume y evita el sol, la piscina y la sauna. No rasques — aunque pique. Una vez cicatrizado, usar protección solar con regularidad ayuda a preservar la nitidez y el contraste a largo plazo.",
+        "faq-4-q": "¿Puedo traer un diseño de referencia?",
+        "faq-4-a": "Las fotos de referencia son muy bienvenidas y me ayudan a entender tu estilo y dirección. Sin embargo, no copio el trabajo de otros artistas al pie de la letra — no sería justo ni original. Uso tus referencias como inspiración y creo un diseño completamente único y personalizado, adaptado a tu cuerpo y tu piel.",
+        "faq-5-q": "¿Con cuánta antelación debo reservar?",
+        "faq-5-a": "Según la temporada y mi agenda, el tiempo de espera oscila entre 4 y 12 semanas. Para proyectos grandes o fechas concretas, recomiendo contactar con la mayor antelación posible. Las solicitudes urgentes a veces encajan en huecos por cancelaciones — siempre vale la pena preguntar.",
+        "floating": "CITAS",
+        "NAME": "NOMBRE", "EMAIL": "EMAIL", "PHONE": "TELÉFONO", "AGE": "EDAD",
+        "PLACE": "ZONA DEL CUERPO", "SIZE": "TAMAÑO (CM)", "IDEA": "TU IDEA",
+        "legal-1": "Términos Legales", "legal-2": "Privacidad",
+        "required-note": "* Campos obligatorios",
+        "autosave-restored": "Tus datos han sido recuperados",
+        "photo-label": "Fotos de referencia",
+        "photo-hint": "Máx. 8 fotos — Toca para añadir"
+      }
+    };
+
+    const S = 'color:#E11D2E;font-weight:700;text-transform:uppercase;margin:1.8rem 0 0.5rem;font-size:0.65rem;letter-spacing:0.15em;border-bottom:1px solid rgba(225,29,46,0.2);padding-bottom:0.4rem';
+    const H = 'color:#E11D2E;font-size:1.1rem;font-weight:700;text-transform:uppercase;margin-bottom:2rem;padding-bottom:1rem;border-bottom:1px solid rgba(255,255,255,0.1)';
+    const G = 'display:grid;grid-template-columns:1fr 1fr;gap:2rem;font-size:9px;line-height:1.8;color:#d1d1d1';
+    const GM = 'display:grid;grid-template-columns:1fr;gap:1.5rem;font-size:9px;line-height:1.8;color:#d1d1d1';
+
+    const legalData = {
+      de: {
+        legal: `<h2 style="${H}">Allgemeine Geschäftsbedingungen — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Stand: Januar 2026 · Gültig für alle Studios in Zürich (CH) und Hamburg (DE) · Giuseppe Cardona, eingetragener Tätowierer</p><div style="${G}"><section><h3 style="${S}">1. Buchung & Anzahlung</h3><p>Jede Terminbuchung erfordert eine nicht erstattungsfähige Anzahlung. Diese Anzahlung wird vom Gesamtbetrag abgezogen und dient als Reservierungsgarantie. Ohne Anzahlung gilt kein Termin als bestätigt.</p></section><section><h3 style="${S}">2. Stornierung & Umbuchung</h3><p>Stornierungen oder Verschiebungen müssen mindestens 48 Stunden vor dem vereinbarten Termin schriftlich mitgeteilt werden. Bei Nichteinhaltung verfällt die Anzahlung vollständig.</p></section><section><h3 style="${S}">3. Gesundheit & Kontraindikationen</h3><p>Der Kunde ist verpflichtet, vollständig über relevante Erkrankungen zu informieren. Das Tätowieren unter Alkohol- oder Drogeneinfluss ist strikt untersagt.</p></section><section><h3 style="${S}">4. Mindestalter</h3><p>Tätowierungen werden ausschließlich an Personen ab 18 Jahren durchgeführt. Ein gültiger Lichtbildausweis ist vorzuzeigen.</p></section><section><h3 style="${S}">5. Urheberrecht</h3><p>Alle Designs sind urheberrechtlich geschütztes Eigentum des Künstlers. Die Nutzung für KI-Training ist ausdrücklich verboten.</p></section><section><h3 style="${S}">6. Nachsorge</h3><p>Die Heilung liegt in der Verantwortung des Kunden. Schäden durch unsachgemäße Pflege begründen keinen Anspruch auf kostenlosen Nachstich.</p></section></div>`,
+        privacy: `<h2 style="${H}">Datenschutzerklärung — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Gemäß DSGVO (EU 2016/679) und Schweizer DSG · Verantwortlicher: Giuseppe Cardona</p><div style="${GM}"><section><h3 style="${S}">Welche Daten wir erheben</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, E-Mail, Telefon, Alter und projektbezogene Informationen über das Buchungsformular.</p></section><section><h3 style="${S}">Zweck</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Terminverwaltung und Kommunikation. Keine Weitergabe an Dritte.</p></section><section><h3 style="${S}">Ihre Rechte</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Auskunft, Berichtigung, Löschung gemäß DSGVO/DSG. Kontakt: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
+      },
+      en: {
+        legal: `<h2 style="${H}">Terms & Conditions — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Effective January 2026 · Zürich (CH) and Hamburg (DE) · Giuseppe Cardona</p><div style="${G}"><section><h3 style="${S}">1. Booking & Deposit</h3><p>Every appointment requires a non-refundable deposit. No appointment is confirmed without a deposit.</p></section><section><h3 style="${S}">2. Cancellation</h3><p>Cancellations must be submitted in writing at least 48 hours before the appointment. Failure results in full forfeiture of the deposit.</p></section><section><h3 style="${S}">3. Health</h3><p>Clients must disclose relevant medical conditions. Tattooing under the influence of alcohol or drugs is strictly prohibited.</p></section><section><h3 style="${S}">4. Age Requirement</h3><p>Tattoos are performed exclusively on individuals aged 18 and over. Valid ID is mandatory.</p></section><section><h3 style="${S}">5. Copyright</h3><p>All designs are the exclusive intellectual property of the artist. Use for AI training is expressly prohibited.</p></section><section><h3 style="${S}">6. Aftercare</h3><p>Healing is the client's responsibility. Damage from improper care does not entitle the client to a free touch-up.</p></section></div>`,
+        privacy: `<h2 style="${H}">Privacy Policy — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Under GDPR (EU 2016/679) and Swiss DSG · Controller: Giuseppe Cardona</p><div style="${GM}"><section><h3 style="${S}">Data We Collect</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Name, email, phone, age and project information submitted via the booking form.</p></section><section><h3 style="${S}">Purpose</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Appointment management and communication. No data shared with third parties.</p></section><section><h3 style="${S}">Your Rights</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Access, rectify and erase your data under GDPR/DSG. Contact: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
+      },
+      es: {
+        legal: `<h2 style="${H}">Términos y Condiciones — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Vigente enero 2026 · Zúrich (CH) y Hamburgo (DE) · Giuseppe Cardona</p><div style="${G}"><section><h3 style="${S}">1. Reserva y Depósito</h3><p>Toda reserva requiere un depósito no reembolsable. Ninguna cita se confirma sin depósito previo.</p></section><section><h3 style="${S}">2. Cancelación</h3><p>Las cancelaciones deben comunicarse por escrito con 48h de antelación. El incumplimiento conlleva la pérdida del depósito.</p></section><section><h3 style="${S}">3. Salud</h3><p>El cliente debe informar sobre condiciones médicas relevantes. Tatuar bajo efectos de alcohol o drogas está prohibido.</p></section><section><h3 style="${S}">4. Edad mínima</h3><p>Solo mayores de 18 años. Es obligatorio presentar documento de identidad oficial.</p></section><section><h3 style="${S}">5. Derechos de autor</h3><p>Todos los diseños son propiedad del artista. El uso para entrenamiento de IA está expresamente prohibido.</p></section><section><h3 style="${S}">6. Cuidados</h3><p>La cicatrización es responsabilidad del cliente. Los daños por cuidados inadecuados no dan derecho a retoque gratuito.</p></section></div>`,
+        privacy: `<h2 style="${H}">Política de Privacidad — YUS NOIR</h2><p style="font-size:9px;color:#888;margin-bottom:2rem">Conforme al RGPD (UE 2016/679) y DSG suizo · Responsable: Giuseppe Cardona</p><div style="${GM}"><section><h3 style="${S}">Datos que recopilamos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Nombre, email, teléfono, edad e información del proyecto enviados mediante el formulario.</p></section><section><h3 style="${S}">Finalidad</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Gestión de citas y comunicación. Ningún dato se cede a terceros.</p></section><section><h3 style="${S}">Sus derechos</h3><p style="font-size:9px;line-height:1.8;color:#d1d1d1">Acceso, rectificación y supresión conforme al RGPD/DSG. Contacto: <a href="mailto:el.tatuador@outlook.es" style="color:#E11D2E">el.tatuador@outlook.es</a></p></section></div>`
+      }
+    };
+
+    let currentLang = 'de';
+
+    function changeLang(lang) {
+      currentLang = lang;
+      ['de','en','es'].forEach(function(l) {
+        var btn = document.getElementById('btn-' + l);
+        if (btn) btn.classList.remove('active');
+      });
+      var activeBtn = document.getElementById('btn-' + lang);
+      if (activeBtn) activeBtn.classList.add('active');
+
+      var t = translations[lang];
+      document.querySelectorAll('[data-key]').forEach(function(el) {
+        var key = el.getAttribute('data-key');
+        if (t[key] !== undefined) {
+          if (key === 'hero-headline') {
+            el.innerHTML = t[key].replace(/\n/g, '<br>');
+          } else {
+            el.innerText = t[key];
+          }
+        }
+      });
+      document.querySelectorAll('[data-p]').forEach(function(el) {
+        var key = el.getAttribute('data-p');
+        if (t[key] !== undefined) el.placeholder = t[key];
+      });
+      document.dispatchEvent(new CustomEvent('langchange', { detail: lang }));
+      if (legalData[lang]) {
+        var lc = document.getElementById('legal-body-content');
+        var pc = document.getElementById('privacy-body-content');
+        if (lc) lc.innerHTML = legalData[lang].legal;
+        if (pc) pc.innerHTML = legalData[lang].privacy;
+      }
+    }
+
+    function openModal(id) {
+      document.getElementById('legal-body-content').innerHTML = legalData[currentLang].legal;
+      document.getElementById('privacy-body-content').innerHTML = legalData[currentLang].privacy;
+      document.getElementById('modal-' + id).classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeModal(id) {
+      document.getElementById('modal-' + id).classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+  </script>
+
+</head>
+<body class="antialiased overflow-x-hidden">
+
+<div id="progress-bar"></div>
+
+<!-- ═══ HERO ══════════════════════════════════════════════════════════ -->
+
+<header class="relative w-full overflow-hidden flex flex-col items-center text-center px-6 pt-24 pb-16 bg-brand-black justify-center" style="min-height: 800px;">
+  <div class="lang-header">
+    <div class="lang-wrap">
+      <button onclick="changeLang('de')" id="btn-de" class="lang-btn active">DE</button>
+      <span style="color:rgba(255,255,255,0.15);font-size:9px;">|</span>
+      <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
+      <span style="color:rgba(255,255,255,0.15);font-size:9px;">|</span>
+      <button onclick="changeLang('es')" id="btn-es" class="lang-btn">ES</button>
+    </div>
+    <div class="nav-wrap">
+      <button onclick="openModal('proceso')" class="nav-link" data-key="nav-process">Der Prozess</button>
+      <button onclick="openModal('faq')" class="nav-link">Deine Fragen</button>
+    </div>
+  </div>
+
+  <!-- FIX PERFORMANCE: logo desde archivo, sin base64 -->
+
+  <img alt="Hero background" class="absolute inset-0 w-full h-full object-cover grayscale brightness-50" src="images/hero.jpg">
+  <div class="absolute inset-0 bg-gradient-to-b from-black/30 via-black/60 to-brand-black z-[1]"></div>
+
+  <div class="relative z-10 flex flex-col items-center w-full max-w-2xl mx-auto">
+
+```
+<!-- Logo -->
+<img src="images/logo.png" alt="YUS NOIR" class="brand-logo-img">
+
+<!-- NUEVO COPY: H1 — el más importante de la página, antes no existía -->
+<h1 data-key="hero-headline" class="hero-headline hero-line hero-line-1" style="margin-bottom:1.2rem;">
+  Deine Haut.<br>Deine Geschichte.
+</h1>
+
+<!-- NUEVO COPY: Subheadline con propuesta de valor -->
+<p data-key="hero-sub" class="hero-line hero-line-2" style="font-size:11px;text-transform:uppercase;letter-spacing:0.3em;color:rgba(255,255,255,0.45);margin-bottom:0.8rem;">
+  Black &amp; Grey Realismus — kein Template, kein Kompromiss
+</p>
+
+<p class="hero-line hero-line-3" style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.25);">Zürich — Hamburg</p>
+
+<!-- Urgency bar -->
+<div class="hero-line hero-line-4" style="margin-top:32px;">
+  <div id="urgency-bar" style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid rgba(225,29,46,0.35);border-radius:2px;background:rgba(225,29,46,0.06);backdrop-filter:blur(4px);">
+    <span style="width:5px;height:5px;border-radius:50%;background:#E11D2E;display:inline-block;animation:pulse 1.5s infinite;flex-shrink:0;"></span>
+    <span id="urgency-text" style="font-size:8px;text-transform:uppercase;letter-spacing:0.2em;color:#E11D2E;"></span>
+  </div>
+</div>
+```
+
+  </div>
+</header>
+
+<!-- ═══ GALERÍA ════════════════════════════════════════════════════════ -->
+
+<section class="px-4 bg-brand-black py-20 reveal-on-scroll">
+  <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="images/tattoo-1.jpg" alt="Tattoo 1"></div>
+      <div class="swiper-slide"><img src="images/tattoo-5.jpg" alt="Tattoo 5"></div>
+      <div class="swiper-slide"><img src="images/tattoo-6.jpg" alt="Tattoo 6"></div>
+      <div class="swiper-slide"><img src="images/tattoo-7.jpg" alt="Tattoo 7"></div>
+      <div class="swiper-slide"><img src="images/tattoo-9.jpg" alt="Tattoo 9"></div>
+      <div class="swiper-slide"><img src="images/tattoo-10.jpg" alt="Tattoo 10"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ RESEÑAS ════════════════════════════════════════════════════════ -->
+
+<section class="bg-brand-black py-20 reveal-on-scroll" style="border-top:1px solid rgba(255,255,255,0.05);">
+  <div class="max-w-lg mx-auto px-6">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:32px;">
+      <div class="h-px flex-1" style="background:rgba(255,255,255,0.06);"></div>
+      <p style="font-size:8px;text-transform:uppercase;letter-spacing:0.3em;color:#444;">Google Reviews</p>
+      <div class="h-px flex-1" style="background:rgba(255,255,255,0.06);"></div>
+    </div>
+    <div class="swiper reviewSwiper" style="overflow:hidden;">
+      <div class="swiper-wrapper" id="review-wrapper" style="align-items:stretch;">
+          <div class="swiper-slide" style="height:auto;">
+            <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:2px;padding:24px;height:100%;box-sizing:border-box;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:#2a2a2a;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <span style="font-size:13px;color:#888;font-weight:600;">T</span>
+                </div>
+                <div>
+                  <p style="font-size:11px;color:white;font-weight:600;letter-spacing:0.03em;">Tamara Lisa Fehleisen</p>
+                  <div style="display:flex;gap:2px;margin-top:3px;"><span style="color:#F5A623;font-size:10px;">★★★★★</span></div>
+                </div>
+              </div>
+              <p class="review-text" style="font-size:11px;color:#888;line-height:1.8;letter-spacing:0.02em;">"Yus hat mir gestern ein Fineline-Tattoo gestochen. Mit dem Ergebnis bin ich supersuper zufrieden. Die angenehmste Tattooerfahrung, die ich jemals hatte. Yus hat sich ausgiebig Zeit für meine Wünsche genommen & durch seine angenehme Art sind die drei Stunden wie im Flug vergangen. Immer wieder gerne!"</p>
+            </div>
+          </div>
+          <div class="swiper-slide" style="height:auto;">
+            <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:2px;padding:24px;height:100%;box-sizing:border-box;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:#1e3a5f;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <span style="font-size:13px;color:#6aa3d4;font-weight:600;">N</span>
+                </div>
+                <div>
+                  <p style="font-size:11px;color:white;font-weight:600;letter-spacing:0.03em;">Nina Becker</p>
+                  <div style="display:flex;gap:2px;margin-top:3px;"><span style="color:#F5A623;font-size:10px;">★★★★★</span></div>
+                </div>
+              </div>
+              <p class="review-text" style="font-size:11px;color:#888;line-height:1.8;letter-spacing:0.02em;">"Habe mir mein erstes Tattoo von Yus stechen lassen. Einfach nur toll. Von Anfang bis Ende hab ich mich super wohl gefühlt. Schon beim ersten Reinkommen hatte ich ein gutes Bauchgefühl. Super Atmosphäre und klasse Leute. War sicher nicht das letzte Mal da."</p>
+            </div>
+          </div>
+          <div class="swiper-slide" style="height:auto;">
+            <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:2px;padding:24px;height:100%;box-sizing:border-box;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:#3a2a1e;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <span style="font-size:13px;color:#c4956a;font-weight:600;">G</span>
+                </div>
+                <div>
+                  <p style="font-size:11px;color:white;font-weight:600;letter-spacing:0.03em;">Gabriel Selber</p>
+                  <div style="display:flex;gap:2px;margin-top:3px;"><span style="color:#F5A623;font-size:10px;">★★★★★</span></div>
+                </div>
+              </div>
+              <p class="review-text" style="font-size:11px;color:#888;line-height:1.8;letter-spacing:0.02em;">"Super sauberes und detailreiches Tattoo — bin absolut begeistert vom Ergebnis! Professionelle Arbeit, angenehme Atmosphäre und top Hygiene. Komme auf jeden Fall wieder!"</p>
+            </div>
+          </div>
+          <div class="swiper-slide" style="height:auto;">
+            <div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:2px;padding:24px;height:100%;box-sizing:border-box;">
+              <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+                <div style="width:36px;height:36px;border-radius:50%;background:#2a2a2a;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+                  <span style="font-size:13px;color:#888;font-weight:600;">A</span>
+                </div>
+                <div>
+                  <p style="font-size:11px;color:white;font-weight:600;letter-spacing:0.03em;">Annette Sommer</p>
+                  <div style="display:flex;gap:2px;margin-top:3px;"><span style="color:#F5A623;font-size:10px;">★★★★★</span></div>
+                </div>
+              </div>
+              <p class="review-text" style="font-size:11px;color:#888;line-height:1.8;letter-spacing:0.02em;">"War gestern für mein Tattoo da. Die Vorbesprechung schon sehr gut. Ich wurde von Yus auf alles hingewiesen — auch was die Größe, Körperstelle etc. angeht. Das Stechen war ganz angenehm und preislich völlig im Rahmen."</p>
+            </div>
+          </div>
+      </div>
+      <div class="review-pagination" style="display:flex;justify-content:center;gap:6px;margin-top:20px;"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ THE ARTIST ════════════════════════════════════════════════════ -->
+
+<section class="px-6 bg-zinc-950 border-y border-white/5 py-32 reveal-on-scroll">
+  <div class="max-w-2xl mx-auto text-center flex flex-col items-center">
+    <h3 class="text-white text-3xl font-bold uppercase tracking-tighter mb-8 italic">THE ARTIST</h3>
+    <div class="w-40 h-40 rounded-full overflow-hidden border-2 border-brand-red/30 p-1 mb-8 shadow-[0_0_50px_rgba(225,29,46,0.15)]">
+      <img alt="Giuseppe Cardona — YUS NOIR" class="w-full h-full object-cover rounded-full grayscale" src="images/portrait.jpg">
+    </div>
+    <p data-key="artist-bio" class="text-zinc-300 text-sm leading-[2] mb-16 font-light italic px-4">"Ich bin Giuseppe. Über ein Jahrzehnt, Visionen in Haut verwandelt — kein Template, kein Kompromiss. Nur deine Geschichte, genau so wie du sie dir vorstellst."</p>
+    <div class="stat-container">
+      <div class="stat-card"><p class="stat-number" id="stat-num-1">10+</p><p data-key="stat-1" class="stat-label">Jahre Erf.</p></div>
+      <div class="stat-divider"></div>
+      <div class="stat-card"><p class="stat-number" id="stat-num-2">1.5k</p><p data-key="stat-2" class="stat-label">Tattoos</p></div>
+      <div class="stat-divider"></div>
+      <div class="stat-card"><p class="stat-number" id="stat-num-3">100%</p><p data-key="stat-3" class="stat-label">Custom</p></div>
+    </div>
+    <!-- Specialty line -->
+    <p data-key="artist-specialty" style="font-size:9px;text-transform:uppercase;letter-spacing:0.25em;color:#E11D2E;margin-top:32px;font-weight:600;">Spezialist für High-Contrast Black & Grey Realismus.</p>
+
+```
+<a href="instagram://user?username=yus.noir" onclick="setTimeout(function(){window.location='https://www.instagram.com/yus.noir'},500)" target="_blank" style="display:inline-flex;align-items:center;gap:10px;margin-top:24px;padding:12px 24px;border:1px solid rgba(255,255,255,0.08);border-radius:2px;text-decoration:none;transition:border-color 0.2s,background 0.2s;" onmouseover="this.style.borderColor='rgba(225,29,46,0.4)';this.style.background='rgba(225,29,46,0.05)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.08)';this.style.background='transparent';">
+  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="rgba(255,255,255,0.5)" stroke="none"/></svg>
+  <span data-key="gallery-link" style="font-size:9px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.4);font-weight:400;">Folgen</span>
+</a>
+```
+
+  </div>
+</section>
+
+<!-- ═══ PRECIO ══════════════════════════════════════════════════════════ -->
+
+<section class="reveal-on-scroll" style="border-top:1px solid rgba(255,255,255,0.05);border-bottom:1px solid rgba(255,255,255,0.05);background:#0d0d0d;padding:24px;">
+  <div style="max-width:400px;margin:0 auto;text-align:center;">
+    <div style="display:flex;align-items:center;justify-content:center;gap:0;">
+      <!-- Hamburg -->
+      <div style="flex:1;text-align:center;">
+        <p style="font-size:7px;text-transform:uppercase;letter-spacing:0.25em;color:#555;margin-bottom:6px;">Hamburg</p>
+        <p style="font-size:16px;font-weight:700;color:white;letter-spacing:-0.02em;">150 <span style="font-size:11px;font-weight:400;color:rgba(255,255,255,0.5);">€ / Std.</span></p>
+      </div>
+      <!-- Divider -->
+      <div style="width:1px;height:36px;background:rgba(255,255,255,0.08);flex-shrink:0;margin:0 20px;"></div>
+      <!-- Zürich -->
+      <div style="flex:1;text-align:center;">
+        <p style="font-size:7px;text-transform:uppercase;letter-spacing:0.25em;color:#555;margin-bottom:6px;">Zürich</p>
+        <p style="font-size:16px;font-weight:700;color:white;letter-spacing:-0.02em;">200 <span style="font-size:11px;font-weight:400;color:rgba(255,255,255,0.5);">CHF / Std.</span></p>
+      </div>
+    </div>
+    <p data-key="price-note" style="font-size:7px;text-transform:uppercase;letter-spacing:0.2em;color:#3a3a3a;margin-top:16px;">Mindestbuchung 1 Stunde · Anzahlung erforderlich</p>
+  </div>
+</section>
+
+<!-- ═══ FORMULARIO DE BOOKING ══════════════════════════════════════════ -->
+
+<section class="px-8 bg-brand-black py-24 reveal-on-scroll" id="booking">
+  <div class="text-center mb-10">
+    <h2 data-key="book-title" class="text-3xl font-bold uppercase tracking-tighter text-white">Terminanfragen</h2>
+    <div class="h-0.5 w-10 bg-brand-red mx-auto mt-4 opacity-80"></div>
+  </div>
+
+  <div style="max-width:500px;margin:0 auto;">
+
+```
+<!-- Sticky progress bar -->
+<div id="form-sticky-progress">
+  <div id="form-sticky-bar"><div id="form-sticky-bar-fill"></div></div>
+</div>
+
+<!-- STEP INDICATOR -->
+<div id="step-indicator" style="display:flex;align-items:center;justify-content:center;gap:0;margin-bottom:40px;">
+  <!-- Step 1 -->
+  <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+    <div id="step-circle-1" style="width:28px;height:28px;border-radius:50%;border:1px solid #E11D2E;background:#E11D2E;display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
+      <span style="font-size:9px;font-weight:700;color:white;letter-spacing:0;">1</span>
+    </div>
+    <span id="step-label-1" data-key="step-label-1" style="font-size:7px;text-transform:uppercase;letter-spacing:0.15em;color:#E11D2E;transition:color 0.3s;">Du</span>
+  </div>
+  <!-- Connector -->
+  <div id="step-connector" style="width:60px;height:1px;background:rgba(255,255,255,0.1);margin-bottom:18px;transition:background 0.4s;"></div>
+  <!-- Step 2 -->
+  <div style="display:flex;flex-direction:column;align-items:center;gap:6px;">
+    <div id="step-circle-2" style="width:28px;height:28px;border-radius:50%;border:1px solid rgba(255,255,255,0.15);background:transparent;display:flex;align-items:center;justify-content:center;transition:all 0.3s;">
+      <span style="font-size:9px;font-weight:700;color:rgba(255,255,255,0.3);letter-spacing:0;">2</span>
+    </div>
+    <span id="step-label-2" data-key="step-label-2" style="font-size:7px;text-transform:uppercase;letter-spacing:0.15em;color:#444;transition:color 0.3s;">Tattoo</span>
+  </div>
+</div>
+
+<!-- Autosave banner -->
+<div id="autosave-banner" style="display:none;align-items:center;gap:8px;margin-bottom:1.2rem;padding:8px 14px;border:1px solid rgba(74,222,128,0.3);border-radius:2px;background:rgba(74,222,128,0.05);transition:opacity 0.6s;">
+  <span style="font-size:14px;">✓</span>
+  <span data-key="autosave-restored" style="font-size:9px;text-transform:uppercase;letter-spacing:0.15em;color:#4ade80;"></span>
+</div>
+
+<form id="tattoo-form" name="booking" method="POST" data-netlify="true" netlify-honeypot="bot-field" class="max-w-lg mx-auto flex flex-col">
+  <input type="hidden" name="form-name" value="booking">
+  <p style="display:none;"><input name="bot-field"></p>
+
+  <!-- ── PASO 1: DATOS BÁSICOS ────────────────────────────────── -->
+  <div id="form-step-1">
+
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;">
+      <span data-key="required-note" style="font-size:8px;color:#444;letter-spacing:0.1em;">* Pflichtfelder</span>
+      <span id="form-progress-text" style="font-size:8px;letter-spacing:0.1em;color:#555;transition:color 0.3s;"></span>
+    </div>
+
+    <div class="focus-group" style="display:flex;align-items:center;gap:14px;">
+      <div class="step-dot" id="dot-1"></div>
+      <div class="field-wrap">
+        <input data-p="NAME" name="nombre" type="text" placeholder=" " required id="f-nombre" enterkeyhint="next" inputmode="text" autocomplete="name"/>
+        <label class="field-label" for="f-nombre">NAME *</label>
+        <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-1">✓</span>
+      </div>
+    </div>
+
+    <div class="focus-group" style="display:flex;align-items:center;gap:14px;">
+      <div class="step-dot" id="dot-2"></div>
+      <div class="field-wrap">
+        <input data-p="EMAIL" name="email" type="email" placeholder=" " required id="f-email" enterkeyhint="next" autocomplete="email"/>
+        <label class="field-label" for="f-email">E-MAIL *</label>
+        <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-2">✓</span>
+      </div>
+    </div>
+
+    <div class="focus-group" style="display:flex;align-items:center;gap:14px;">
+      <div class="step-dot" id="dot-3"></div>
+      <div class="field-wrap">
+        <input data-p="PHONE" name="telefono" type="tel" placeholder=" " required id="f-telefono" enterkeyhint="next" inputmode="tel" autocomplete="tel"/>
+        <label class="field-label" for="f-telefono">TELEFON *</label>
+        <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-3">✓</span>
+      </div>
+    </div>
+
+    <div class="focus-group" style="display:flex;align-items:center;gap:14px;">
+      <div class="step-dot" id="dot-4"></div>
+      <div class="field-wrap">
+        <input data-p="AGE" name="edad" type="number" placeholder=" " required id="f-edad" enterkeyhint="done" inputmode="numeric" min="18" max="99"/>
+        <label class="field-label" for="f-edad">ALTER *</label>
+        <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-4">✓</span>
+      </div>
+    </div>
+
+    <!-- Urgency reminder justo antes del botón -->
+    <div id="step1-urgency" style="display:flex;align-items:center;gap:8px;margin-bottom:24px;padding:10px 14px;border:1px solid rgba(225,29,46,0.2);border-radius:2px;background:rgba(225,29,46,0.04);">
+      <span style="width:4px;height:4px;border-radius:50%;background:#E11D2E;flex-shrink:0;animation:pulse 1.5s infinite;"></span>
+      <span id="urgency-text-2" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:#E11D2E;"></span>
+    </div>
+
+    <button type="button" id="btn-next" style="width:100%;background:#E11D2E;color:white;padding:20px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.4em;border:none;cursor:pointer;border-radius:2px;transition:all 0.3s;opacity:0.4;" disabled>
+      <span data-key="btn-next">Weiter →</span>
+    </button>
+    <p style="font-size:8px;color:#333;text-align:center;margin-top:12px;letter-spacing:0.1em;text-transform:uppercase;">Schritt 1 von 2</p>
+  </div>
+
+  <!-- ── PASO 2: DETALLES DEL TATTOO ─────────────────────────── -->
+  <div id="form-step-2" style="display:none;opacity:0;transition:opacity 0.4s ease;">
+
+    <!-- Back button -->
+    <button type="button" id="btn-back" style="display:inline-flex;align-items:center;gap:6px;background:none;border:none;color:#555;font-size:8px;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;padding:0;margin-bottom:32px;">
+      <span>←</span> <span data-key="btn-back">Zurück</span>
+    </button>
+
+    <!-- Body map -->
+    <div class="focus-group" style="display:flex;align-items:flex-start;gap:14px;">
+      <div class="step-dot" id="dot-5" style="margin-top:14px;"></div>
+      <div style="flex:1;">
+        <input data-p="PLACE" name="zona" id="zona-input" type="hidden" required/>
+        <div id="bodymap-wrap">
+          <p id="bodymap-label" style="font-size:9px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(85,85,85,0.5);margin-bottom:12px;">Körperstelle wählen</p>
+          <div style="display:flex;gap:12px;align-items:flex-start;">
+            <div style="flex:1;text-align:center;">
+              <p style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#444;margin-bottom:6px;">Vorne</p>
+              <svg id="body-front" viewBox="-5 -5 110 230" style="width:100%;max-width:110px;cursor:pointer;" xmlns="http://www.w3.org/2000/svg">
+                <ellipse data-zone="Kopf" cx="50" cy="14" rx="14" ry="15" class="bzone"/>
+                <rect data-zone="Hals" x="42" y="26" width="16" height="10" rx="2" class="bzone"/>
+                <ellipse data-zone="Linke Schulter" cx="26" cy="38" rx="12" ry="9" class="bzone"/>
+                <ellipse data-zone="Rechte Schulter" cx="74" cy="38" rx="12" ry="9" class="bzone"/>
+                <rect data-zone="Brust" x="31" y="34" width="38" height="26" rx="3" class="bzone"/>
+                <rect data-zone="Bauch" x="32" y="58" width="36" height="24" rx="3" class="bzone"/>
+                <rect data-zone="Linker Oberarm" x="12" y="44" width="15" height="28" rx="4" class="bzone"/>
+                <rect data-zone="Rechter Oberarm" x="73" y="44" width="15" height="28" rx="4" class="bzone"/>
+                <rect data-zone="Linker Unterarm" x="8" y="72" width="14" height="28" rx="4" class="bzone"/>
+                <rect data-zone="Rechter Unterarm" x="78" y="72" width="14" height="28" rx="4" class="bzone"/>
+                <ellipse data-zone="Linke Hand" cx="15" cy="107" rx="9" ry="8" class="bzone"/>
+                <ellipse data-zone="Rechte Hand" cx="85" cy="107" rx="9" ry="8" class="bzone"/>
+                <rect data-zone="Hüfte" x="30" y="80" width="40" height="20" rx="3" class="bzone"/>
+                <rect data-zone="Linker Oberschenkel" x="31" y="100" width="17" height="36" rx="4" class="bzone"/>
+                <rect data-zone="Rechter Oberschenkel" x="52" y="100" width="17" height="36" rx="4" class="bzone"/>
+                <ellipse data-zone="Linkes Knie" cx="40" cy="141" rx="10" ry="9" class="bzone"/>
+                <ellipse data-zone="Rechtes Knie" cx="60" cy="141" rx="10" ry="9" class="bzone"/>
+                <rect data-zone="Linkes Schienbein" x="31" y="150" width="15" height="34" rx="4" class="bzone"/>
+                <rect data-zone="Rechtes Schienbein" x="54" y="150" width="15" height="34" rx="4" class="bzone"/>
+                <ellipse data-zone="Linker Fuß" cx="39" cy="189" rx="11" ry="8" class="bzone"/>
+                <ellipse data-zone="Rechter Fuß" cx="61" cy="189" rx="11" ry="8" class="bzone"/>
+              </svg>
+            </div>
+            <div style="flex:1;text-align:center;">
+              <p style="font-size:8px;letter-spacing:0.15em;text-transform:uppercase;color:#444;margin-bottom:6px;">Hinten</p>
+              <svg id="body-back" viewBox="-5 -5 110 230" style="width:100%;max-width:110px;cursor:pointer;" xmlns="http://www.w3.org/2000/svg">
+                <ellipse data-zone="Hinterkopf" cx="50" cy="14" rx="14" ry="15" class="bzone"/>
+                <rect data-zone="Nacken" x="42" y="26" width="16" height="10" rx="2" class="bzone"/>
+                <ellipse data-zone="Linkes Schulterblatt" cx="26" cy="38" rx="12" ry="9" class="bzone"/>
+                <ellipse data-zone="Rechtes Schulterblatt" cx="74" cy="38" rx="12" ry="9" class="bzone"/>
+                <rect data-zone="Oberer Rücken" x="31" y="34" width="38" height="22" rx="3" class="bzone"/>
+                <rect data-zone="Unterer Rücken" x="31" y="54" width="38" height="28" rx="3" class="bzone"/>
+                <rect data-zone="Linker Oberarm (hinten)" x="12" y="44" width="15" height="28" rx="4" class="bzone"/>
+                <rect data-zone="Rechter Oberarm (hinten)" x="73" y="44" width="15" height="28" rx="4" class="bzone"/>
+                <rect data-zone="Linker Unterarm (hinten)" x="8" y="72" width="14" height="28" rx="4" class="bzone"/>
+                <rect data-zone="Rechter Unterarm (hinten)" x="78" y="72" width="14" height="28" rx="4" class="bzone"/>
+                <rect data-zone="Gesäß" x="30" y="80" width="40" height="22" rx="5" class="bzone"/>
+                <rect data-zone="Linke Oberschenkelrückseite" x="31" y="103" width="17" height="34" rx="4" class="bzone"/>
+                <rect data-zone="Rechte Oberschenkelrückseite" x="52" y="103" width="17" height="34" rx="4" class="bzone"/>
+                <rect data-zone="Linke Wade" x="31" y="150" width="15" height="34" rx="4" class="bzone"/>
+                <rect data-zone="Rechte Wade" x="54" y="150" width="15" height="34" rx="4" class="bzone"/>
+                <ellipse data-zone="Linke Ferse" cx="39" cy="189" rx="11" ry="8" class="bzone"/>
+                <ellipse data-zone="Rechte Ferse" cx="61" cy="189" rx="11" ry="8" class="bzone"/>
+              </svg>
+            </div>
+          </div>
+          <div id="zone-selected" style="display:none;margin-top:14px;flex-wrap:wrap;gap:8px;align-items:center;">
+            <span id="zone-selected-text" style="display:flex;flex-wrap:wrap;gap:6px;"></span>
+          </div>
+          <p id="zone-limit-msg" style="display:none;font-size:9px;color:#E11D2E;letter-spacing:0.1em;text-transform:uppercase;margin-top:10px;"></p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Tamaño -->
+    <div class="focus-group" style="display:flex;align-items:center;gap:14px;">
+      <div class="step-dot" id="dot-6"></div>
+      <div class="field-wrap">
+        <input data-p="SIZE" name="tamano" type="text" placeholder=" " required id="f-tamano" enterkeyhint="next" inputmode="text"/>
+        <label class="field-label" for="f-tamano">GRÖSSE (CM) *</label>
+        <span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-6">✓</span>
+      </div>
+    </div>
+
+    <!-- Idea -->
+    <div class="focus-group" style="display:flex;align-items:flex-start;gap:14px;">
+      <div class="step-dot" id="dot-7" style="margin-top:20px;"></div>
+      <div style="flex:1;">
+        <div style="position:relative;">
+          <textarea id="idea-textarea" name="idea" enterkeyhint="done" data-p="IDEA" placeholder=" " minlength="50" required style="height:80px;resize:none;overflow:hidden;padding-top:24px;padding-bottom:10px;padding-right:24px;"></textarea>
+          <label class="field-label" for="idea-textarea" style="position:absolute;left:10px;top:18px;font-size:9px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(85,85,85,0.5);pointer-events:none;transition:all 0.2s ease;">DEINE IDEE *</label>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding:0 2px;">
+          <span id="char-hint" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:#555;transition:color 0.3s;">Minimum 50 Zeichen</span>
+          <span id="char-count" style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#555;transition:color 0.3s;">0 / 50</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Fotos -->
+    <div class="focus-group" style="display:flex;align-items:flex-start;gap:14px;">
+      <div class="step-dot" id="dot-8" style="margin-top:20px;"></div>
+      <div style="flex:1;">
+        <input type="file" id="ref-photos" accept="image/*" multiple style="display:none;">
+        <div id="upload-zone" onclick="document.getElementById('ref-photos').click()" style="position:relative;cursor:pointer;">
+          <div style="position:relative;background:rgba(255,255,255,0.03);border:none;border-bottom:1px solid rgba(255,255,255,0.1);padding:24px 10px 10px 10px;min-height:60px;transition:border-color 0.2s;">
+            <span data-key="photo-label" style="position:absolute;left:10px;top:6px;font-size:7px;text-transform:uppercase;letter-spacing:0.2em;color:#E11D2E;font-weight:400;pointer-events:none;">REFERENZBILDER *</span>
+            <div id="photo-preview" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;min-height:28px;align-items:center;">
+              <span id="photo-placeholder" style="font-size:9px;color:rgba(85,85,85,0.5);text-transform:uppercase;letter-spacing:0.1em;">Fotos hinzufügen</span>
+            </div>
+          </div>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding:0 2px;">
+          <span data-key="photo-hint" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:#555;">Min. 1 — Max. 8 Fotos</span>
+          <span id="photo-count" style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#555;">0 / 8</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Checkbox -->
+    <div class="focus-group" style="display:flex;align-items:center;gap:14px;">
+      <div class="step-dot" id="dot-9"></div>
+      <label class="checkbox-wrap" style="flex:1;">
+        <input type="checkbox" id="legal-check">
+        <span data-key="check-text" class="text-[9px] text-zinc-500 uppercase tracking-widest leading-relaxed">Ich habe die Buchungsbedingungen gelesen und stimme ihnen zu</span>
+      </label>
+    </div>
+
+    <!-- Submit -->
+    <!-- Urgency message encima del submit -->
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px;padding:12px 16px;border-left:2px solid #E11D2E;background:rgba(225,29,46,0.04);">
+      <p id="submit-urgency-text" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.35);font-style:italic;line-height:1.6;"></p>
+    </div>
+    <button type="submit" id="submit-btn" data-key="btn-send" class="w-full text-white py-8 uppercase text-[10px] tracking-[0.4em] transition-all" disabled>
+      Anfrage jetzt senden →
+    </button>
+    <p data-key="reply-note" style="font-size:8px;color:#444;text-align:center;margin-top:16px;letter-spacing:0.15em;text-transform:uppercase;">Antwort innerhalb von 48 Stunden</p>
+  </div>
+
+</form>
+
+<!-- Mensaje de éxito -->
+<div id="success-msg" style="display:none;max-width:500px;margin:0 auto;text-align:center;padding:60px 20px;">
+  <div class="success-circle">
+    <svg class="success-check" viewBox="0 0 32 32"><path d="M6 16 L13 23 L26 10"/></svg>
+  </div>
+  <h3 id="success-title" style="font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:white;margin-bottom:16px;">Anfrage erhalten</h3>
+  <p id="success-body" style="font-size:11px;color:#666;line-height:2;text-transform:uppercase;letter-spacing:0.15em;white-space:pre-line;">Deine Anfrage ist eingegangen.&#10;Ich antworte dir innerhalb von 48 Stunden.&#10;— Giuseppe</p>
+  <div style="height:1px;width:40px;background:#E11D2E;margin:28px auto;opacity:0.5;"></div>
+
+  <!-- Vídeo placeholder — reemplazar VIDEO_ID con el ID de YouTube/Instagram -->
+  <div id="success-video-wrap" style="margin:0 auto 28px;border-radius:4px;overflow:hidden;background:#111;border:1px solid rgba(255,255,255,0.06);aspect-ratio:9/16;max-height:400px;max-width:225px;display:flex;align-items:center;justify-content:center;cursor:pointer;position:relative;" onclick="loadSuccessVideo(this)">
+    <div style="text-align:center;">
+      <div style="width:52px;height:52px;border-radius:50%;border:1.5px solid rgba(225,29,46,0.5);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="#E11D2E"><path d="M8 5v14l11-7z"/></svg>
+      </div>
+      <p id="success-video-label" data-key="success-video-label" style="font-size:8px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.4);">Schau zu, wie ein Tattoo entsteht →</p>
+    </div>
+  </div>
+
+  <a href="https://www.instagram.com/yus.noir" target="_blank" id="success-ig" style="font-size:9px;text-transform:uppercase;letter-spacing:0.4em;color:#E11D2E;text-decoration:none;">Galerie auf Instagram ansehen →</a>
+</div>
+```
+
+  </div>
+</section>
+
+<!-- ═══ FOOTER ════════════════════════════════════════════════════════ -->
+
+<footer class="py-12 text-center border-t border-white/5 bg-black">
+  <div class="flex flex-col items-center gap-4">
+    <img src="images/logo.png" alt="YUS NOIR" class="footer-logo-img">
+    <p data-key="copy" class="text-[8px] tracking-[0.35em] text-zinc-500 uppercase mb-6">© 2026 YUS NOIR</p>
+  </div>
+  <div class="flex justify-center gap-8 text-[7px] uppercase tracking-[0.2em]">
+    <span onclick="openModal('legal')" data-key="legal-1" class="hover:text-brand-red cursor-pointer transition-colors text-zinc-600">Rechtliche Bestimmungen</span>
+    <span onclick="openModal('privacy')" data-key="legal-2" class="hover:text-brand-red cursor-pointer transition-colors text-zinc-600">Datenschutz</span>
+  </div>
+</footer>
+
+<!-- ═══ MODALES LEGALES ════════════════════════════════════════════════ -->
+
+<div id="modal-legal" class="legal-modal">
+  <span class="close-modal" onclick="closeModal('legal')">CLOSE [X]</span>
+  <div class="legal-content" id="legal-body-content"></div>
+</div>
+<div id="modal-privacy" class="legal-modal">
+  <span class="close-modal" onclick="closeModal('privacy')">CLOSE [X]</span>
+  <div class="legal-content" id="privacy-body-content"></div>
+</div>
+
+<!-- ═══ MODAL PROCESO ════════════════════════════════════════════════ -->
+
+<div id="modal-proceso" class="legal-modal">
+  <span class="close-modal" onclick="closeModal('proceso')">CLOSE [X]</span>
+  <div style="max-width:600px;margin:60px auto 40px;">
+    <h2 data-key="process-title" style="font-size:1.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:white;margin-bottom:48px;font-style:italic;">Der Prozess</h2>
+    <div style="display:flex;flex-direction:column;">
+      <div style="display:flex;gap:24px;"><div style="font-size:11px;font-weight:700;color:#E11D2E;letter-spacing:0.2em;padding-top:3px;min-width:28px;">01</div><div style="flex:1;padding-bottom:8px;"><p data-key="process-1-title" style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:white;margin-bottom:10px;">Anfrage senden</p><p data-key="process-1-body" style="font-size:12px;color:#888;line-height:1.9;letter-spacing:0.03em;">Füll das Formular vollständig aus: Körperstelle, Größe, Stil und deine Idee.</p></div></div>
+      <div style="width:1px;height:40px;background:linear-gradient(to bottom,#E11D2E44,transparent);margin-left:13px;"></div>
+      <div style="display:flex;gap:24px;"><div style="font-size:11px;font-weight:700;color:#E11D2E;letter-spacing:0.2em;padding-top:3px;min-width:28px;">02</div><div style="flex:1;padding-bottom:8px;"><p data-key="process-2-title" style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:white;margin-bottom:10px;">Gespräch &amp; Anzahlung</p><p data-key="process-2-body" style="font-size:12px;color:#888;line-height:1.9;letter-spacing:0.03em;">Ich melde mich innerhalb von 48 Stunden. Wir besprechen deine Vision und reservieren den Termin.</p></div></div>
+      <div style="width:1px;height:40px;background:linear-gradient(to bottom,#E11D2E44,transparent);margin-left:13px;"></div>
+      <div style="display:flex;gap:24px;"><div style="font-size:11px;font-weight:700;color:#E11D2E;letter-spacing:0.2em;padding-top:3px;min-width:28px;">03</div><div style="flex:1;padding-bottom:8px;"><p data-key="process-3-title" style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:white;margin-bottom:10px;">Design &amp; Custom Session</p><p data-key="process-3-body" style="font-size:12px;color:#888;line-height:1.9;letter-spacing:0.03em;">Diseño exclusivo para ti. La sesión se realiza en Zürich o Hamburg.</p></div></div>
+      <div style="width:1px;height:40px;background:linear-gradient(to bottom,#E11D2E44,transparent);margin-left:13px;"></div>
+      <div style="display:flex;gap:24px;"><div style="font-size:11px;font-weight:700;color:#E11D2E;letter-spacing:0.2em;padding-top:3px;min-width:28px;">04</div><div style="flex:1;"><p data-key="process-4-title" style="font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:white;margin-bottom:10px;">Nachsorge &amp; Für immer</p><p data-key="process-4-body" style="font-size:12px;color:#888;line-height:1.9;letter-spacing:0.03em;">Instrucciones de cuidado escritas. Disponible para dudas también después de la sesión.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ MODAL FAQ ══════════════════════════════════════════════════════ -->
+
+<div id="modal-faq" class="legal-modal">
+  <span class="close-modal" onclick="closeModal('faq')">CLOSE [X]</span>
+  <div style="max-width:600px;margin:60px auto 40px;">
+    <h2 data-key="faq-title" style="font-size:1.6rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:white;margin-bottom:48px;font-style:italic;">Deine Fragen</h2>
+    <div id="faq-modal-list">
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-key="faq-1-q">Tut es weh?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-key="faq-1-a" style="font-size:12px;color:#888;line-height:1.9;">Ja, ein Tattoo ist mit Schmerzen verbunden — aber gut aushaltbar.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-key="faq-2-q">Wie lange dauert eine Session?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-key="faq-2-a" style="font-size:12px;color:#888;line-height:1.9;">Abhängig von Größe und Komplexität: 1–2h klein, 3–5h mittel, mehrere Sessions für große Motive.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-key="faq-3-q">Wie pflege ich mein Tattoo?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-key="faq-3-a" style="font-size:12px;color:#888;line-height:1.9;">2 Wochen: täglich reinigen, Feuchtigkeitscreme, kein Kratzen, kein Sonnenbad.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-key="faq-4-q">Kann ich ein fremdes Motiv mitbringen?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-key="faq-4-a" style="font-size:12px;color:#888;line-height:1.9;">Referenzbilder willkommen — ich steche keine 1:1-Kopien, sondern schaffe ein einzigartiges Motiv.</p></div></div>
+      <div class="faq-item"><button class="faq-q" onclick="toggleFaq(this)"><span data-key="faq-5-q">Wie weit im Voraus muss ich buchen?</span><span class="faq-icon">+</span></button><div class="faq-a"><p data-key="faq-5-a" style="font-size:12px;color:#888;line-height:1.9;">4–12 Wochen Wartezeit. Für große Projekte so früh wie möglich anfragen.</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LIGHTBOX ══════════════════════════════════════════════════════ -->
+
+<div id="lightbox">
+  <span id="lightbox-close" onclick="closeLightbox()">✕</span>
+  <span id="lightbox-prev" onclick="lightboxNav(-1)">&#8249;</span>
+  <img id="lightbox-img" src="" alt="">
+  <span id="lightbox-next" onclick="lightboxNav(1)">&#8250;</span>
+</div>
+
+<!-- ═══ FLOATING CTA (móvil) ════════════════════════════════════════ -->
+
+<button id="floating-cta" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'});" class="md:hidden" style="position:fixed;left:24px;right:24px;bottom:24px;z-index:4000;padding:18px 32px;border-radius:14px;background:#E11D2E;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,29,46,0.35);transition:opacity 0.4s ease;">
+  <span data-key="floating" style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.4em;color:white;">TERMINE</span>
+</button>
+
+<!-- ═══ VOLVER ARRIBA ════════════════════════════════════════════════ -->
+
+<button id="back-top" onclick="window.scrollTo({top:0,behavior:'smooth'})" aria-label="Volver arriba" style="position:fixed;bottom:90px;right:20px;z-index:3998;width:42px;height:42px;border-radius:50%;background:#0a0a0a;border:1px solid rgba(255,255,255,0.12);color:white;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s ease,border-color 0.3s ease;">↑</button>
+
+<!-- ═══ BANNER DE COOKIES ══════════════════════════════════════════ -->
+
+<div id="cookie-banner" style="position:fixed;bottom:0;left:0;right:0;z-index:5000;background:rgba(12,12,12,0.97);backdrop-filter:blur(12px);border-top:1px solid rgba(255,255,255,0.07);padding:20px 24px;display:flex;flex-direction:column;gap:14px;transform:translateY(100%);transition:transform 0.4s cubic-bezier(0.22,1,0.36,1);">
+  <div style="display:flex;align-items:flex-start;gap:12px;">
+    <span style="font-size:18px;flex-shrink:0;margin-top:2px;">🍪</span>
+    <div>
+      <p id="cookie-title" style="font-size:9px;text-transform:uppercase;letter-spacing:0.2em;color:white;margin-bottom:6px;font-weight:700;">Cookies & Datenschutz</p>
+      <p id="cookie-text" style="font-size:8px;color:#666;line-height:1.8;letter-spacing:0.05em;">Diese Website verwendet keine Tracking-Cookies. Das Kontaktformular wird über Netlify verarbeitet. Durch die Nutzung dieser Website stimmst du unserer <span onclick="openModal('privacy')" style="color:#E11D2E;cursor:pointer;text-decoration:underline;">Datenschutzerklärung</span> zu.</p>
+    </div>
+  </div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;">
+    <button id="cookie-reject" style="padding:10px 20px;font-size:8px;text-transform:uppercase;letter-spacing:0.2em;background:transparent;border:1px solid rgba(255,255,255,0.1);color:#666;border-radius:2px;cursor:pointer;">Ablehnen</button>
+    <button id="cookie-accept" style="padding:10px 24px;font-size:8px;text-transform:uppercase;letter-spacing:0.2em;background:#E11D2E;border:none;color:white;border-radius:2px;cursor:pointer;">Akzeptieren</button>
+  </div>
+</div>
+
+<!-- ═══ PERFORMANCE: scripts al final del body ══════════════════════ -->
+
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+<script>
+window.addEventListener('load', function() {
+
+  // ── SWIPERS ──────────────────────────────────────────────────────────
+  new Swiper(".mySwiper", {
+    effect: "coverflow",
+    centeredSlides: true,
+    slidesPerView: "auto",
+    loop: true,
+    autoplay: { delay: 3500 }
+  });
+  window._reviewSwiper = new Swiper(".reviewSwiper", {
+    slidesPerView: 1,
+    spaceBetween: 16,
+    loop: true,
+    autoplay: { delay: 4500, disableOnInteraction: false },
+    pagination: {
+      el: ".review-pagination",
+      clickable: true,
+      renderBullet: function(index, className) {
+        return '<span style="width:5px;height:5px;border-radius:50%;background:rgba(255,255,255,0.2);display:inline-block;cursor:pointer;transition:background 0.2s;" class="' + className + '"></span>';
+      }
+    }
+  });
+
+  // ── SCROLL REVEAL ────────────────────────────────────────────────────
+  var observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal-on-scroll').forEach(function(el) { observer.observe(el); });
+
+  // ── STAT COUNTERS ────────────────────────────────────────────────────
+  var stats = [
+    { id: 'stat-num-1', from: 0, to: 10,   suffix: '+',  duration: 1800 },
+    { id: 'stat-num-2', from: 0, to: 1500, suffix: '',   duration: 2000, format: function(v) { return v >= 1000 ? (v/1000).toFixed(1) + 'k' : v; } },
+    { id: 'stat-num-3', from: 0, to: 100,  suffix: '%',  duration: 1600 }
+  ];
+  var statsDone = false;
+  function animateCounter(stat) {
+    var el = document.getElementById(stat.id);
+    if (!el) return;
+    var start = null;
+    function step(ts) {
+      if (!start) start = ts;
+      var progress = Math.min((ts - start) / stat.duration, 1);
+      var ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      var val = Math.floor(stat.from + (stat.to - stat.from) * ease);
+      el.textContent = (stat.format ? stat.format(val) : val) + stat.suffix;
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var statSection = document.querySelector('.stat-container');
+  if (statSection) {
+    var statObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !statsDone) {
+          statsDone = true;
+          stats.forEach(function(s, i) { setTimeout(function() { animateCounter(s); }, i * 150); });
+        }
+      });
+    }, { threshold: 0.5 });
+    statObserver.observe(statSection);
+  }
+
+  // ── 2-STEP FORM LOGIC ────────────────────────────────────────────────
+  var currentStep = 1;
+  var step1El = document.getElementById('form-step-1');
+  var step2El = document.getElementById('form-step-2');
+  var btnNext = document.getElementById('btn-next');
+  var btnBack = document.getElementById('btn-back');
+  var submitBtn = document.getElementById('submit-btn');
+  var legalCheck = document.getElementById('legal-check');
+  var textarea = document.getElementById('idea-textarea');
+  var selectedFiles = [];
+  var floatingBtn = document.getElementById('floating-cta');
+
+  // Step 1 fields
+  var step1Fields = ['f-nombre', 'f-email', 'f-telefono', 'f-edad'];
+  // Step 2 fields
+  var step2TextFields = ['f-tamano', 'idea-textarea'];
+
+  function getField(id) { return document.getElementById(id); }
+
+  // ── STEP INDICATOR UPDATE ────────────────────────────────────────────
+  function updateStepIndicator(step) {
+    var c1 = document.getElementById('step-circle-1');
+    var c2 = document.getElementById('step-circle-2');
+    var l1 = document.getElementById('step-label-1');
+    var l2 = document.getElementById('step-label-2');
+    var conn = document.getElementById('step-connector');
+    if (step === 1) {
+      c1.style.background = '#E11D2E'; c1.style.borderColor = '#E11D2E';
+      c1.querySelector('span').style.color = 'white';
+      l1.style.color = '#E11D2E';
+      c2.style.background = 'transparent'; c2.style.borderColor = 'rgba(255,255,255,0.15)';
+      c2.querySelector('span').style.color = 'rgba(255,255,255,0.3)';
+      l2.style.color = '#444';
+      if (conn) conn.style.background = 'rgba(255,255,255,0.1)';
+    } else {
+      c1.style.background = '#4ade80'; c1.style.borderColor = '#4ade80';
+      c1.querySelector('span').innerHTML = '✓';
+      c1.querySelector('span').style.color = 'white';
+      l1.style.color = '#4ade80';
+      c2.style.background = '#E11D2E'; c2.style.borderColor = '#E11D2E';
+      c2.querySelector('span').style.color = 'white';
+      l2.style.color = '#E11D2E';
+      if (conn) conn.style.background = '#E11D2E';
+    }
+    // Update sticky progress bar: step 1 = 50%, step 2 depends on step2 completion
+    var barFill = document.getElementById('form-sticky-bar-fill');
+    if (barFill) barFill.style.width = (step === 1 ? '25' : '50') + '%';
+  }
+
+  // ── STEP 1 VALIDATION ────────────────────────────────────────────────
+  function isFieldOk(id) {
+    var el = getField(id);
+    if (!el || !el.value.trim()) return false;
+    if (id === 'f-email') return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());
+    if (id === 'f-edad') { var age = parseInt(el.value); return !isNaN(age) && age >= 18 && age <= 99; }
+    return true;
+  }
+  function checkStep1() {
+    var allOk = step1Fields.every(isFieldOk);
+    if (btnNext) {
+      btnNext.disabled = !allOk;
+      btnNext.style.opacity = allOk ? '1' : '0.4';
+    }
+    step1Fields.forEach(function(id, idx) {
+      var ok = isFieldOk(id);
+      var dot = document.getElementById('dot-' + (idx + 1));
+      var chk = document.getElementById('check-' + (idx + 1));
+      if (dot) { dot.classList.toggle('done', ok); }
+      if (chk) { chk.style.color = ok ? '#4ade80' : 'transparent'; }
+    });
+    return allOk;
+  }
+
+  // ── STEP 2 VALIDATION ────────────────────────────────────────────────
+  function checkStep2() {
+    var zonaOk   = document.getElementById('zona-input') && document.getElementById('zona-input').value.trim().length > 0;
+    var tamanoEl = getField('f-tamano');
+    var tamanoOk = tamanoEl && tamanoEl.value.trim().length > 0;
+    var ideaOk   = textarea && textarea.value.length >= 50;
+    var photosOk = selectedFiles.length >= 1;
+    var checkOk  = legalCheck && legalCheck.checked;
+
+    // Dots
+    var dot5 = document.getElementById('dot-5'); if (dot5) dot5.classList.toggle('done', zonaOk);
+    var dot6 = document.getElementById('dot-6'); if (dot6) dot6.classList.toggle('done', tamanoOk);
+    var dot7 = document.getElementById('dot-7'); if (dot7) dot7.classList.toggle('done', ideaOk);
+    var dot8 = document.getElementById('dot-8'); if (dot8) dot8.classList.toggle('done', photosOk);
+    var dot9 = document.getElementById('dot-9'); if (dot9) dot9.classList.toggle('done', checkOk);
+
+    // check-6
+    var chk6 = document.getElementById('check-6');
+    if (chk6) chk6.style.color = tamanoOk ? '#4ade80' : 'transparent';
+
+    var allOk = zonaOk && tamanoOk && ideaOk && photosOk && checkOk;
+
+    // Sticky bar
+    var filled = [zonaOk, tamanoOk, ideaOk, photosOk, checkOk].filter(Boolean).length;
+    var barFill = document.getElementById('form-sticky-bar-fill');
+    if (barFill) barFill.style.width = (50 + (filled / 5) * 50) + '%';
+
+    if (submitBtn) {
+      submitBtn.disabled = !allOk;
+      submitBtn.style.backgroundColor = allOk ? '#E11D2E' : '#1a1a1a';
+    }
+
+    // Progress text
+    var progressLabels = {
+      de: function(n,t){ return n + ' von ' + t + ' ausgefüllt'; },
+      en: function(n,t){ return n + ' of ' + t + ' completed'; },
+      es: function(n,t){ return n + ' de ' + t + ' completados'; }
+    };
+    var el = document.getElementById('form-progress-text');
+    if (el) {
+      var fn = progressLabels[currentLang] || progressLabels.de;
+      el.textContent = fn(filled, 5);
+      el.style.color = allOk ? '#4ade80' : filled > 0 ? '#E11D2E' : '#555';
+    }
+
+    return allOk;
+  }
+
+  // ── WIRE STEP 1 INPUTS ───────────────────────────────────────────────
+  step1Fields.forEach(function(id) {
+    var el = getField(id);
+    if (el) {
+      el.addEventListener('input', checkStep1);
+      el.addEventListener('blur', checkStep1);
+      el.addEventListener('change', checkStep1);
+    }
+  });
+
+  // ── NEXT BUTTON ──────────────────────────────────────────────────────
+  if (btnNext) {
+    btnNext.addEventListener('click', function() {
+      if (!checkStep1()) return;
+      currentStep = 2;
+      // Animate out step 1
+      step1El.style.opacity = '0';
+      step1El.style.transform = 'translateX(-20px)';
+      step1El.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+      setTimeout(function() {
+        step1El.style.display = 'none';
+        step2El.style.display = 'block';
+        step2El.style.opacity = '0';
+        step2El.style.transform = 'translateX(20px)';
+        step2El.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        setTimeout(function() {
+          step2El.style.opacity = '1';
+          step2El.style.transform = 'translateX(0)';
+        }, 30);
+        updateStepIndicator(2);
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 300);
+    });
+  }
+
+  // ── BACK BUTTON ──────────────────────────────────────────────────────
+  if (btnBack) {
+    btnBack.addEventListener('click', function() {
+      currentStep = 1;
+      step2El.style.opacity = '0';
+      step2El.style.transform = 'translateX(20px)';
+      setTimeout(function() {
+        step2El.style.display = 'none';
+        step1El.style.display = 'block';
+        step1El.style.opacity = '0';
+        step1El.style.transform = 'translateX(-20px)';
+        setTimeout(function() {
+          step1El.style.opacity = '1';
+          step1El.style.transform = 'translateX(0)';
+        }, 30);
+        updateStepIndicator(1);
+        document.getElementById('booking').scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 250);
+    });
+  }
+
+  // ── STEP 2 WIRE ──────────────────────────────────────────────────────
+  // Tamaño
+  var tamanoEl2 = getField('f-tamano');
+  if (tamanoEl2) { tamanoEl2.addEventListener('input', checkStep2); tamanoEl2.addEventListener('blur', checkStep2); }
+
+  // Idea textarea
+  if (textarea) { textarea.addEventListener('input', checkStep2); textarea.addEventListener('blur', checkStep2); }
+
+  // Zona (body map — hidden input)
+  var zonaEl = document.getElementById('zona-input');
+  if (zonaEl) zonaEl.addEventListener('change', checkStep2);
+
+  // Legal checkbox
+  if (legalCheck) legalCheck.addEventListener('change', checkStep2);
+
+  // Fotos — checkStep2 se llama desde renderPreviews()
+
+  // ── SUBMIT ───────────────────────────────────────────────────────────
+  var tattooForm = document.getElementById('tattoo-form');
+  var successMsg = document.getElementById('success-msg');
+  if (tattooForm) {
+    tattooForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      var t = translations[currentLang];
+      tattooForm.style.opacity = '0';
+      tattooForm.style.transition = 'opacity 0.4s ease';
+      // Also hide step indicator
+      var si = document.getElementById('step-indicator');
+      if (si) { si.style.opacity = '0'; si.style.transition = 'opacity 0.4s'; }
+      setTimeout(function() {
+        tattooForm.style.display = 'none';
+        if (si) si.style.display = 'none';
+        var title = document.getElementById('success-title');
+        var body  = document.getElementById('success-body');
+        var ig    = document.getElementById('success-ig');
+        if (title) title.innerText = t['success-title'];
+        if (body)  body.innerText  = t['success-body'];
+        if (ig)    ig.innerText    = t['success-ig'];
+        successMsg.style.display = 'block';
+        successMsg.style.opacity = '0';
+        successMsg.style.transition = 'opacity 0.6s ease';
+        setTimeout(function() { successMsg.style.opacity = '1'; }, 50);
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        try { localStorage.removeItem('yusnoir_form'); } catch(e) {}
+      }, 400);
+    });
+  }
+
+  // ── FLOATING CTA ─────────────────────────────────────────────────────
+  function updateFloatingBtn() {
+    if (!floatingBtn) return;
+    var booking = document.getElementById('booking');
+    var bookingVisible = booking && booking.getBoundingClientRect().top < window.innerHeight * 0.8;
+    if (bookingVisible) {
+      floatingBtn.style.opacity = '0';
+      floatingBtn.style.pointerEvents = 'none';
+    } else {
+      floatingBtn.style.opacity = '1';
+      floatingBtn.style.pointerEvents = 'auto';
+    }
+  }
+  updateFloatingBtn();
+
+  // ── SCROLL EVENTS ────────────────────────────────────────────────────
+  var bookingSection = document.getElementById('booking');
+  var stickyProgress = document.getElementById('form-sticky-progress');
+  window.addEventListener('scroll', function() {
+    var bar = document.getElementById('progress-bar');
+    if (bar) bar.style.width = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100 + '%';
+    updateFloatingBtn();
+    var btn = document.getElementById('back-top');
+    if (btn) {
+      if (window.scrollY > 400) { btn.style.opacity='1'; btn.style.pointerEvents='auto'; }
+      else { btn.style.opacity='0'; btn.style.pointerEvents='none'; }
+    }
+    if (bookingSection && stickyProgress) {
+      var bRect = bookingSection.getBoundingClientRect();
+      if (bRect.top < 0 && bRect.bottom > 0) stickyProgress.classList.add('visible');
+      else stickyProgress.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  // ── PHOTO UPLOAD ─────────────────────────────────────────────────────
+  var refInput   = document.getElementById('ref-photos');
+  var preview    = document.getElementById('photo-preview');
+  var photoCount = document.getElementById('photo-count');
+  var uploadZone = document.getElementById('upload-zone');
+
+  if (refInput) {
+    refInput.addEventListener('change', function() {
+      Array.from(this.files).forEach(function(file) {
+        if (selectedFiles.length >= 8) return;
+        if (!file.type.startsWith('image/')) return;
+        selectedFiles.push(file);
+      });
+      this.value = '';
+      renderPreviews();
+      checkStep2();
+    });
+  }
+
+  function renderPreviews() {
+    if (!preview) return;
+    preview.innerHTML = '';
+    selectedFiles.forEach(function(file, idx) {
+      var reader = new FileReader();
+      reader.onload = function(e) {
+        var wrap = document.createElement('div');
+        wrap.style.cssText = 'position:relative;width:64px;height:64px;border-radius:4px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);flex-shrink:0;';
+        var img = document.createElement('img');
+        img.src = e.target.result;
+        img.style.cssText = 'width:100%;height:100%;object-fit:cover;';
+        var del = document.createElement('div');
+        del.innerHTML = '✕';
+        del.style.cssText = 'position:absolute;top:4px;right:4px;font-size:13px;color:white;cursor:pointer;background:rgba(0,0,0,0.85);border-radius:50%;width:24px;height:24px;display:flex;align-items:center;justify-content:center;line-height:1;font-weight:700;';
+        del.addEventListener('click', function(ev) {
+          ev.stopPropagation();
+          selectedFiles.splice(idx, 1);
+          renderPreviews();
+          checkStep2();
+        });
+        wrap.appendChild(img);
+        wrap.appendChild(del);
+        preview.appendChild(wrap);
+      };
+      reader.readAsDataURL(file);
+    });
+    var count = selectedFiles.length;
+    if (photoCount) {
+      photoCount.innerText = count + ' / 8';
+      photoCount.style.color = count >= 8 ? '#E11D2E' : count > 0 ? '#4ade80' : '#555';
+    }
+    var photoPlaceholder = document.getElementById('photo-placeholder');
+    if (photoPlaceholder) photoPlaceholder.style.display = count > 0 ? 'none' : 'inline';
+    if (uploadZone) uploadZone.style.cursor = count >= 8 ? 'default' : 'pointer';
+  }
+
+  // ── TEXTAREA AUTOEXPAND + CONTADOR ───────────────────────────────────
+  if (textarea) {
+    textarea.addEventListener('input', function() {
+      this.style.height = 'auto';
+      this.style.height = this.scrollHeight + 'px';
+      var len = this.value.length;
+      var remaining = Math.max(0, 50 - len);
+      var charCount = document.getElementById('char-count');
+      var charHint  = document.getElementById('char-hint');
+      if (charCount) charCount.innerText = len + ' / 50';
+      var hintTexts = {
+        de: { wait: 'Noch ' + remaining + ' Zeichen', done: '✓ Fertig', min: 'Minimum 50 Zeichen' },
+        en: { wait: remaining + ' more characters', done: '✓ Done', min: 'Minimum 50 characters' },
+        es: { wait: 'Faltan ' + remaining + ' caracteres', done: '✓ Listo', min: 'Mínimo 50 caracteres' }
+      };
+      var ht = hintTexts[currentLang] || hintTexts.de;
+      if (len === 0) {
+        if (charCount) charCount.style.color = '#555';
+        if (charHint) { charHint.style.color = '#555'; charHint.innerText = ht.min; }
+      } else if (len < 50) {
+        if (charCount) charCount.style.color = '#E11D2E';
+        if (charHint) { charHint.style.color = '#E11D2E'; charHint.innerText = ht.wait; }
+      } else {
+        if (charCount) charCount.style.color = '#4ade80';
+        if (charHint) { charHint.style.color = '#4ade80'; charHint.innerText = ht.done; }
+      }
+      checkStep2();
+    });
+  }
+
+  // ── MOBILE SCROLL FIX ────────────────────────────────────────────────
+  document.querySelectorAll('#tattoo-form input, #tattoo-form textarea').forEach(function(input) {
+    input.addEventListener('focus', function() {
+      var self = this;
+      setTimeout(function() {
+        if (window.visualViewport) {
+          var vv = window.visualViewport;
+          var fieldRect = self.getBoundingClientRect();
+          var targetTop = vv.height * 0.28;
+          var scrollOffset = fieldRect.top - targetTop;
+          if (Math.abs(scrollOffset) > 30) window.scrollBy({ top: scrollOffset, behavior: 'smooth' });
+        } else {
+          window.scrollTo({ top: self.getBoundingClientRect().top + window.pageYOffset - 100, behavior: 'smooth' });
+        }
+      }, 300);
+    });
+  });
+
+  // Initial state
+  updateStepIndicator(1);
+  checkStep1();
+
+}); // end window.load
+
+// ── AUTOSAVE ────────────────────────────────────────────────────────────
+(function() {
+  var STORAGE_KEY = 'yusnoir_form';
+  var fields = [
+    { id: 'f-nombre',   key: 'nombre' },
+    { id: 'f-email',    key: 'email' },
+    { id: 'f-telefono', key: 'telefono' },
+    { id: 'f-edad',     key: 'edad' },
+    { id: 'f-tamano',   key: 'tamano' },
+    { id: 'f-idea',     key: 'idea' }
+  ];
+
+  function save() {
+    var data = {};
+    fields.forEach(function(f) {
+      var el = document.getElementById(f.id);
+      if (el) data[f.key] = el.value;
+    });
+    var zona = document.getElementById('zona-input');
+    if (zona) data.zona = zona.value;
+    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(data)); } catch(e) {}
+  }
+
+  function restore() {
+    var raw;
+    try { raw = localStorage.getItem(STORAGE_KEY); } catch(e) {}
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch(e) { return; }
+    var anyRestored = false;
+    fields.forEach(function(f) {
+      var el = document.getElementById(f.id);
+      if (el && data[f.key]) {
+        el.value = data[f.key];
+        el.dispatchEvent(new Event('input'));
+        anyRestored = true;
+      }
+    });
+    if (data.zona && data.zona.trim()) {
+      var zones = data.zona.split(', ');
+      zones.forEach(function(z) {
+        if (z) setTimeout(function(){ if(window.toggleZone) window.toggleZone(z); }, 200);
+      });
+      anyRestored = true;
+    }
+    if (anyRestored) {
+      var banner = document.getElementById('autosave-banner');
+      if (banner) {
+        banner.style.display = 'flex';
+        setTimeout(function() {
+          banner.style.opacity = '0';
+          setTimeout(function() { banner.style.display='none'; banner.style.opacity='1'; }, 600);
+        }, 3500);
+      }
+    }
+  }
+
+  function wireAutosave() {
+    fields.forEach(function(f) {
+      var el = document.getElementById(f.id);
+      if (el) {
+        el.addEventListener('input', save);
+        el.addEventListener('change', save);
+      }
+    });
+    var zona = document.getElementById('zona-input');
+    if (zona) { zona.addEventListener('change', save); zona.addEventListener('change', function(){ if(typeof checkStep2==='function') checkStep2(); }); }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function() { wireAutosave(); restore(); });
+  } else {
+    wireAutosave();
+    restore();
+  }
+})();
+
+// ── FIELD CHAIN (Enter/Next) ─────────────────────────────────────────────
+(function() {
+  var chain = ['f-nombre', 'f-email', 'f-telefono', 'f-edad', 'f-tamano', 'idea-textarea'];
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter') return;
+    var active = document.activeElement;
+    if (!active || !active.id) return;
+    var idx = chain.indexOf(active.id);
+    if (idx === -1) return;
+    if (active.tagName === 'TEXTAREA') return;
+    e.preventDefault();
+    var nextId = chain[idx + 1];
+    if (nextId) {
+      var next = document.getElementById(nextId);
+      if (next) next.focus();
+    } else {
+      active.blur();
+    }
+  });
+})();
+
+// ── URGENCY SLOTS ────────────────────────────────────────────────────────
+(function() {
+  var months = {
+    de: ['Januar','Februar','März','April','Mai','Juni','Juli','August','September','Oktober','November','Dezember'],
+    en: ['January','February','March','April','May','June','July','August','September','October','November','December'],
+    es: ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre']
+  };
+  var msgs = {
+    de: function(n, m) { return 'Nur noch ' + n + ' ' + (n === 1 ? 'Platz' : 'Plätze') + ' frei im ' + m; },
+    en: function(n, m) { return 'Only ' + n + ' slot' + (n === 1 ? '' : 's') + ' left in ' + m; },
+    es: function(n, m) { return 'Solo ' + n + ' ' + (n === 1 ? 'plaza' : 'plazas') + ' disponible' + (n === 1 ? '' : 's') + ' en ' + m; }
+  };
+  function getSlots() {
+    var day = new Date().getDate();
+    var total = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+    return Math.max(1, 5 - Math.floor((day / total) * 5));
+  }
+  var submitUrgency = {
+    de: 'Jede Idee verdient ein einzigartiges Tattoo — nicht irgendwann, jetzt.',
+    en: 'Every idea deserves a unique tattoo — not someday, now.',
+    es: 'Cada idea merece un tatuaje único — no algún día, ahora.'
+  };
+  function updateUrgency(lang) {
+    // Urgency bars (hero + step1)
+    var els = [document.getElementById('urgency-text'), document.getElementById('urgency-text-2')];
+    els.forEach(function(el) {
+      if (!el) return;
+      var now = new Date();
+      var monthName = (months[lang] || months.de)[now.getMonth()];
+      el.textContent = (msgs[lang] || msgs.de)(getSlots(), monthName);
+    });
+    // Submit urgency quote
+    var su = document.getElementById('submit-urgency-text');
+    if (su) su.textContent = submitUrgency[lang] || submitUrgency.de;
+    // Switch reviews by lang
+    var reviewsData = {"de": [["T", "#2a2a2a", "#888", "Tamara Lisa Fehleisen", "Yus hat mir gestern ein Fineline-Tattoo gestochen. Mit dem Ergebnis bin ich supersuper zufrieden. Die angenehmste Tattooerfahrung, die ich jemals hatte. Yus hat sich ausgiebig Zeit für meine Wünsche genommen & durch seine angenehme Art sind die drei Stunden wie im Flug vergangen. Immer wieder gerne!"], ["N", "#1e3a5f", "#6aa3d4", "Nina Becker", "Habe mir mein erstes Tattoo von Yus stechen lassen. Einfach nur toll. Von Anfang bis Ende hab ich mich super wohl gefühlt. Schon beim ersten Reinkommen hatte ich ein gutes Bauchgefühl. Super Atmosphäre und klasse Leute. War sicher nicht das letzte Mal da."], ["G", "#3a2a1e", "#c4956a", "Gabriel Selber", "Super sauberes und detailreiches Tattoo — bin absolut begeistert vom Ergebnis! Professionelle Arbeit, angenehme Atmosphäre und top Hygiene. Komme auf jeden Fall wieder!"], ["A", "#2a2a2a", "#888", "Annette Sommer", "War gestern für mein Tattoo da. Die Vorbesprechung schon sehr gut. Ich wurde von Yus auf alles hingewiesen — auch was die Größe, Körperstelle etc. angeht. Das Stechen war ganz angenehm und preislich völlig im Rahmen."]], "en": [["T", "#2a2a2a", "#888", "Tamara Lisa Fehleisen", "Yus did a fineline tattoo for me yesterday. I am beyond happy with the result — the best tattoo experience I have ever had. He took plenty of time for my wishes and his relaxed manner made three hours fly by. Would come back anytime!"], ["N", "#1e3a5f", "#6aa3d4", "Nina Becker", "Got my first tattoo done by Yus. Simply amazing. From start to finish I felt completely comfortable. From the moment I walked in I had a good feeling. Great atmosphere, great people. Definitely not the last time."], ["G", "#3a2a1e", "#c4956a", "Gabriel Selber", "Super clean and detailed tattoo — absolutely blown away by the result! Professional work, great atmosphere and top hygiene. Will definitely be back!"], ["A", "#2a2a2a", "#888", "Annette Sommer", "Went in for my tattoo yesterday. The consultation beforehand was excellent. Yus guided me through everything — placement, size, all of it. The session was very comfortable and the price was completely fair."]], "es": [["T", "#2a2a2a", "#888", "Tamara Lisa Fehleisen", "Yus me hizo un tatuaje fineline ayer. Estoy contentísima con el resultado — la mejor experiencia de tatuaje que he tenido jamás. Se tomó todo el tiempo del mundo para escuchar mis ideas y su simpatía hizo que tres horas pasaran volando. ¡Repetiría sin dudarlo!"], ["N", "#1e3a5f", "#6aa3d4", "Nina Becker", "Me hice mi primer tatuaje con Yus. Simplemente increíble. De principio a fin me sentí completamente a gusto. Desde que entré tuve muy buena sensación. Ambiente genial, gente estupenda. Seguro que no es la última vez."], ["G", "#3a2a1e", "#c4956a", "Gabriel Selber", "Tatuaje súper limpio y detallado — ¡el resultado me encanta! Trabajo profesional, ambiente agradable e higiene impecable. ¡Volvería sin dudarlo!"], ["A", "#2a2a2a", "#888", "Annette Sommer", "Fui ayer para mi tatuaje. La consulta previa fue muy buena. Yus me explicó todo: zona, tamaño, todo. La sesión fue muy cómoda y el precio completamente razonable."]]};
+    var wrapper = document.getElementById('review-wrapper');
+    if (wrapper && reviewsData[lang]) {
+      wrapper.innerHTML = reviewsData[lang].map(function(r) {
+        return '<div class="swiper-slide" style="height:auto;"><div style="background:#111;border:1px solid rgba(255,255,255,0.06);border-radius:2px;padding:24px;height:100%;box-sizing:border-box;"><div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;"><div style="width:36px;height:36px;border-radius:50%;background:' + r[1] + ';display:flex;align-items:center;justify-content:center;flex-shrink:0;"><span style="font-size:13px;color:' + r[2] + ';font-weight:600;">' + r[0] + '</span></div><div><p style="font-size:11px;color:white;font-weight:600;letter-spacing:0.03em;">' + r[3] + '</p><div style="display:flex;gap:2px;margin-top:3px;"><span style="color:#F5A623;font-size:10px;">★★★★★</span></div></div></div><p style="font-size:11px;color:#888;line-height:1.8;letter-spacing:0.02em;">\u201c' + r[4] + '\u201d</p></div></div>';
+      }).join('');
+      if (window._reviewSwiper) window._reviewSwiper.update();
+    }
+  }
+  updateUrgency('de');
+  document.addEventListener('langchange', function(e) { updateUrgency(e.detail); });
+})();
+
+// ── COOKIES ─────────────────────────────────────────────────────────────
+(function() {
+  var banner  = document.getElementById('cookie-banner');
+  var accept  = document.getElementById('cookie-accept');
+  var reject  = document.getElementById('cookie-reject');
+  if (!localStorage.getItem('cookies-yn')) {
+    setTimeout(function() { banner.style.transform = 'translateY(0)'; }, 1500);
+  }
+  function hideBanner() { banner.style.transform = 'translateY(100%)'; }
+  if (accept) accept.addEventListener('click', function() { localStorage.setItem('cookies-yn','accepted'); hideBanner(); });
+  if (reject) reject.addEventListener('click', function() { localStorage.setItem('cookies-yn','rejected'); hideBanner(); });
+  var cookieTexts = {
+    de: { title:'Cookies & Datenschutz', text:'Diese Website verwendet keine Tracking-Cookies. Das Kontaktformular wird über Netlify verarbeitet. Durch die Nutzung dieser Website stimmst du unserer ', link:'Datenschutzerklärung', after:' zu.', accept:'Akzeptieren', reject:'Ablehnen' },
+    en: { title:'Cookies & Privacy', text:'This website does not use tracking cookies. The contact form is processed via Netlify. By using this site you agree to our ', link:'Privacy Policy', after:'.', accept:'Accept', reject:'Decline' },
+    es: { title:'Cookies y Privacidad', text:'Esta web no utiliza cookies de seguimiento. El formulario es procesado por Netlify. Al usar este sitio aceptas nuestra ', link:'Política de Privacidad', after:'.', accept:'Aceptar', reject:'Rechazar' }
+  };
+  document.addEventListener('langchange', function(e) {
+    var t = cookieTexts[e.detail] || cookieTexts.de;
+    var title = document.getElementById('cookie-title');
+    var ca = document.getElementById('cookie-accept');
+    var cr = document.getElementById('cookie-reject');
+    if (title) title.innerText = t.title;
+    if (ca) ca.innerText = t.accept;
+    if (cr) cr.innerText = t.reject;
+    var text = document.getElementById('cookie-text');
+    if (text) text.innerHTML = t.text + '<span style="color:#E11D2E;cursor:pointer;text-decoration:underline;" onclick="openModal(\'privacy\')">' + t.link + '</span>' + t.after;
+  });
+})();
+
+// ── LIGHTBOX ─────────────────────────────────────────────────────────────
+var galleryImgs = Array.from(document.querySelectorAll('.swiper-slide img')).map(function(i){ return i.src; });
+var lbIndex = 0;
+function openLightbox(src) {
+  lbIndex = galleryImgs.indexOf(src);
+  if(lbIndex < 0) lbIndex = 0;
+  document.getElementById('lightbox-img').src = galleryImgs[lbIndex];
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function lightboxNav(dir) {
+  lbIndex = (lbIndex + dir + galleryImgs.length) % galleryImgs.length;
+  document.getElementById('lightbox-img').src = galleryImgs[lbIndex];
+}
+document.getElementById('lightbox').addEventListener('click', function(e){ if(e.target===this) closeLightbox(); });
+document.addEventListener('keydown', function(e){
+  if(!document.getElementById('lightbox').classList.contains('open')) return;
+  if(e.key==='Escape') closeLightbox();
+  if(e.key==='ArrowLeft') lightboxNav(-1);
+  if(e.key==='ArrowRight') lightboxNav(1);
+});
+document.querySelectorAll('.swiper-slide img').forEach(function(img){
+  img.addEventListener('click', function(){ openLightbox(this.src); });
+});
+
+// ── BODY MAP ──────────────────────────────────────────────────────────────
+(function() {
+  var selectedZones = [];
+  var MAX = 3;
+  var currentLangBM = 'de';
+  var limitMsgs = {
+    de: 'Max. 3 Zonen — entferne eine, um eine andere zu wählen',
+    en: 'Max. 3 zones — remove one to select another',
+    es: 'Máx. 3 zonas — elimina una para elegir otra'
+  };
+  var bmlabels = { de: 'Körperstelle wählen', en: 'Select placement', es: 'Selecciona la zona' };
+
+  function initBodyMap() {
+    document.querySelectorAll('.bzone').forEach(function(z) {
+      z.addEventListener('click', function() { toggleZone(this.getAttribute('data-zone')); });
+      // UX MÓVIL FIX: área táctil ampliada con pointer-events en toda la zona
+      z.style.pointerEvents = 'all';
+    });
+  }
+
+  window.toggleZone = function(zoneName) {
+    var idx = selectedZones.indexOf(zoneName);
+    if (idx !== -1) { selectedZones.splice(idx, 1); hideLimitMsg(); }
+    else {
+      if (selectedZones.length >= MAX) { showLimitMsg(); return; }
+      selectedZones.push(zoneName);
+      hideLimitMsg();
+    }
+    renderSelection();
+  };
+
+  function renderSelection() {
+    document.querySelectorAll('.bzone').forEach(function(z) {
+      z.classList.toggle('selected', selectedZones.indexOf(z.getAttribute('data-zone')) !== -1);
+    });
+    var input = document.getElementById('zona-input');
+    input.value = selectedZones.join(', ');
+    input.dispatchEvent(new Event('change'));
+    var box = document.getElementById('zone-selected');
+    var txt = document.getElementById('zone-selected-text');
+    txt.innerHTML = '';
+    if (selectedZones.length > 0) {
+      box.style.display = 'flex';
+      selectedZones.forEach(function(z, zIdx) {
+        var tag = document.createElement('span');
+        tag.style.cssText = 'display:inline-flex;align-items:center;gap:6px;background:#1a1a1a;border:1px solid rgba(225,29,46,0.3);padding:5px 10px;border-radius:2px;font-size:9px;text-transform:uppercase;letter-spacing:0.12em;color:white;';
+        var btn = document.createElement('button');
+        btn.textContent = '✕';
+        btn.style.cssText = 'background:none;border:none;color:#666;font-size:11px;cursor:pointer;padding:0;line-height:1;margin-left:2px;';
+        btn.setAttribute('data-remove', z);
+        btn.addEventListener('click', function(ev) {
+          ev.stopPropagation();
+          var i = selectedZones.indexOf(this.getAttribute('data-remove'));
+          if (i !== -1) selectedZones.splice(i, 1);
+          hideLimitMsg();
+          renderSelection();
+        });
+        tag.appendChild(document.createTextNode(z));
+        tag.appendChild(btn);
+        txt.appendChild(tag);
+      });
+    } else {
+      box.style.display = 'none';
+    }
+    var label = document.getElementById('bodymap-label');
+    var base = bmlabels[currentLangBM] || bmlabels.de;
+    label.textContent = selectedZones.length > 0 ? base + ' (' + selectedZones.length + '/' + MAX + ')' : base;
+    if (typeof checkStep2 === 'function') checkStep2();
+  }
+
+  function showLimitMsg() {
+    var el = document.getElementById('zone-limit-msg');
+    if (!el) return;
+    el.textContent = limitMsgs[currentLangBM] || limitMsgs.de;
+    el.style.display = 'block';
+    clearTimeout(el._t);
+    el._t = setTimeout(function() { el.style.display = 'none'; }, 2500);
+  }
+  function hideLimitMsg() {
+    var el = document.getElementById('zone-limit-msg');
+    if (el) el.style.display = 'none';
+  }
+
+  document.addEventListener('langchange', function(e) {
+    currentLangBM = e.detail;
+    var label = document.getElementById('bodymap-label');
+    if (label) {
+      var base = bmlabels[e.detail] || bmlabels.de;
+      label.textContent = selectedZones.length > 0 ? base + ' (' + selectedZones.length + '/' + MAX + ')' : base;
+    }
+  });
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initBodyMap);
+  } else {
+    initBodyMap();
+  }
+})();
+
+// ── FAQ TOGGLE ────────────────────────────────────────────────────────────
+function toggleFaq(btn) {
+  var answer = btn.nextElementSibling;
+  var isOpen = answer.classList.contains('open');
+  document.querySelectorAll('.faq-a').forEach(function(a){ a.classList.remove('open'); });
+  document.querySelectorAll('.faq-q').forEach(function(b){ b.classList.remove('open'); });
+  if (!isOpen) { answer.classList.add('open'); btn.classList.add('open'); }
+}
+
+// ── SUCCESS VIDEO ────────────────────────────────────────────────────────
+// Reemplaza este valor con el ID del vídeo cuando lo tengas
+var SUCCESS_VIDEO_URL = 'https://www.instagram.com/reel/C9wXWQ9NaKe/';
+function loadSuccessVideo(wrap) {
+  if (!SUCCESS_VIDEO_URL) return;
+  // Si es YouTube: extraer ID y usar iframe embed
+  var ytMatch = SUCCESS_VIDEO_URL.match(/(?:youtu\.be\/|v=)([\w-]{11})/);
+  if (ytMatch) {
+    wrap.innerHTML = '<iframe src="https://www.youtube.com/embed/' + ytMatch[1] + '?autoplay=1&mute=1" style="width:100%;height:100%;border:none;" allowfullscreen allow="autoplay"></iframe>';
+    return;
+  }
+  // Si es Instagram/otro: abrir en nueva pestaña
+  window.open(SUCCESS_VIDEO_URL, '_blank');
+}
+
+// ── BLUR ON TAP OUTSIDE (iOS fix) ────────────────────────────────────────
+document.addEventListener('touchstart', function(e) {
+  var active = document.activeElement;
+  if (!active || (active.tagName !== 'INPUT' && active.tagName !== 'TEXTAREA')) return;
+  if (!e.target.closest('input, textarea, select, label, .focus-group')) active.blur();
+}, { passive: true });
+</script>
+
+</body>
+</html>
