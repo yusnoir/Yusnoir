@@ -619,7 +619,7 @@
             <p id="zone-limit-msg" style="display:none;font-size:9px;color:#E11D2E;letter-spacing:0.1em;text-transform:uppercase;margin-top:10px;"></p>
           </div>
         </div></div>
-        <div class="focus-group"><div class="field-wrap"><input data-p="SIZE" name="tamano" type="text" placeholder=" " required id="f-tamano" enterkeyhint="next" inputmode="text"/><label class="field-label" data-key="label-size" for="f-tamano">GRÖSSE (CM) *</label><span style="position:absolute;top:18px;right:10px;color:transparent;font-size:10px;pointer-events:none;transition:color 0.2s;" id="check-6">✓</span></div></div>
+        
         <div class="focus-group"><div style="flex:1;"><div style="position:relative;"><textarea id="idea-textarea" name="idea" enterkeyhint="done" data-p="IDEA" placeholder=" " minlength="20" required style="height:80px;resize:none;overflow:hidden;padding-top:24px;padding-bottom:10px;padding-right:24px;"></textarea><label class="field-label" for="idea-textarea" style="position:absolute;left:10px;top:18px;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(120,120,120,0.7);pointer-events:none;transition:all 0.2s ease;" data-key="label-idea">DEINE IDEE *</label></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding:0 2px;"><span id="char-hint" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:#888;transition:color 0.3s;">Minimum 20 Zeichen</span><span id="char-count" style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#555;transition:color 0.3s;">0 / 20</span></div></div></div>
         <div class="focus-group"><div style="flex:1;"><input type="file" id="ref-photos" accept="image/*" multiple style="display:none;"><div id="upload-zone" onclick="document.getElementById('ref-photos').click()" style="position:relative;cursor:pointer;"><div style="position:relative;background:rgba(255,255,255,0.04);border:none;border-bottom:1px solid rgba(255,255,255,0.15);padding:24px 10px 10px 10px;min-height:60px;"><span data-key="photo-label" style="position:absolute;left:10px;top:6px;font-size:7px;text-transform:uppercase;letter-spacing:0.2em;color:#555;font-weight:400;pointer-events:none;">REFERENZBILDER</span><div id="photo-preview" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;min-height:28px;align-items:center;"><span id="photo-placeholder" style="font-size:9px;color:rgba(180,180,180,0.7);text-transform:uppercase;letter-spacing:0.1em;">Fotos hinzufügen</span></div></div></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding:0 2px;"><span data-key="photo-hint" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:#888;">Optional — Max. 8 Fotos</span><span id="photo-count" style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#555;">0 / 8</span></div></div></div>
         <div class="focus-group"><label class="checkbox-wrap" style="flex:1;"><input type="checkbox" id="legal-check"><span data-key="check-text" class="text-[9px] text-zinc-500 uppercase tracking-widest leading-relaxed">Ich habe die Buchungsbedingungen gelesen und stimme zu</span></label></div>
@@ -1053,6 +1053,8 @@ PRICES: Hamburg 1,200€/day. Zürich 1,800CHF/day. Small(1-2h):150-300. Medium(
 
 CANCELLATION: The deposit is non-refundable. If cancelled with enough notice the appointment can be rescheduled, but the deposit secures commitment from both sides.
 
+FORM PRE-FILL: When a user shows booking intent (asks about availability, pricing, dates or wants to book), ask for their first name and email. Tell them: "I can pre-fill the booking form for you so you don't have to type it again." Once you have their name, address them by it. Their email will be auto-filled in the form.
+
 BOOKING: Form on website → 48h reply → discuss → deposit → design sent 2-3 days before → session → free touch-up 3 months.
 
 BEFORE SESSION: Sleep well, eat before, hydrate, loose clothing, no alcohol/ibuprofen 24h before. A companion is welcome.
@@ -1128,6 +1130,31 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
     return d;
   }
 
+
+  // Nova form pre-fill
+  function novaExtractAndFill(messages) {
+    var nameEl = document.getElementById('f-nombre');
+    var emailEl = document.getElementById('f-email');
+    if (!nameEl || !emailEl) return;
+    var userMsgs = messages.filter(function(m){ return m.role === 'user'; }).map(function(m){ return m.content; }).join(' ');
+    var nameMatch = userMsgs.match(/(?:(?:ich bin|i am|me llamo|my name is|ich hei\u00dfe|hei\u00dfe|bin|soy)\s+)([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)/i) || userMsgs.match(/^([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?)\s*[,\.!]?\s*$/m);
+    if (nameMatch && nameMatch[1] && !nameEl.value) {
+      nameEl.value = nameMatch[1].trim();
+      nameEl.dispatchEvent(new Event('input', {bubbles:true}));
+    }
+    var emailMatch = userMsgs.match(/[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}/);
+    if (emailMatch && !emailEl.value) {
+      emailEl.value = emailMatch[0];
+      emailEl.dispatchEvent(new Event('input', {bubbles:true}));
+    }
+  }
+  function novaFillName(name) {
+    var el = document.getElementById('f-nombre');
+    if (el && !el.value) {
+      el.value = name;
+      el.dispatchEvent(new Event('input', {bubbles:true}));
+    }
+  }
   function typeMsg(text, cb) {
     var msgs = document.getElementById('nova-msgs');
     if (!msgs) return;
@@ -1204,7 +1231,8 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
       }
       chatHistory.push({ role: 'assistant', content: reply });
       typeMsg(reply);
-    } catch(e) {
+
+      novaExtractAndFill(chatHistory);    } catch(e) {
       removeTyping();
       var err = { de: 'Entschuldigung, ein Fehler ist aufgetreten. Bitte versuche es erneut.', en: 'Sorry, something went wrong. Please try again.', es: 'Lo siento, hubo un error. Por favor inténtalo de nuevo.' };
       addMsg('bot', err[lang] || err.de);
