@@ -138,7 +138,8 @@
     img[src*="nova.png"]{width:80px!important;height:80px!important;object-fit:cover;}
     @keyframes fadeInLogo{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
     @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
-    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}}
+    @keyframes pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.5;transform:scale(0.8);}
+    @keyframes kontaktPulse{0%,100%{box-shadow:rgba(225,29,46,0.35) 0px 4px 24px;transform:scale(1);}50%{box-shadow:rgba(225,29,46,0.55) 0px 6px 32px;transform:scale(1.04);}}}
     .hero-line{opacity:0;animation:fadeUp 0.9s cubic-bezier(0.22,1,0.36,1) forwards;}
     .hero-line-1{animation-delay:0.3s;}.hero-line-2{animation-delay:0.55s;}.hero-line-3{animation-delay:0.75s;}.hero-line-4{animation-delay:0.95s;}.hero-line-5{animation-delay:1.15s;}.hero-line-6{animation-delay:1.35s;}
     .stat-container{display:flex;justify-content:space-around;align-items:center;width:100%;gap:10px;padding:0 10px;}
@@ -837,15 +838,16 @@ window.addEventListener('load',function(){
     fBtn.id='float-kontakt';
     fBtn.setAttribute('aria-label','Kontakt');
     fBtn.onclick=function(){document.getElementById('booking')?.scrollIntoView({behavior:'smooth'});};
-    fBtn.style.cssText='display:flex;align-items:center;gap:9px;position:fixed;right:24px;bottom:24px;z-index:4000;background:#E11D2E;border:none;cursor:pointer;border-radius:50px;box-shadow:rgba(225,29,46,0.35) 0px 4px 24px;padding:13px 22px;';
-    var fDot=document.createElement('span');
-    fDot.style.cssText='width:7px;height:7px;border-radius:50%;background:white;flex-shrink:0;';
+    fBtn.style.cssText='display:flex;align-items:center;position:fixed;right:24px;bottom:24px;z-index:4000;background:#E11D2E;border:none;cursor:pointer;border-radius:50px;box-shadow:rgba(225,29,46,0.35) 0px 4px 24px;padding:13px 24px;animation:kontaktPulse 2.5s ease-in-out infinite;';
     var fLabel=document.createElement('span');
     fLabel.textContent='KONTAKT';
-    fLabel.style.cssText='font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:white;';
-    fBtn.appendChild(fDot);
+    fLabel.style.cssText='font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.22em;color:white;';
     fBtn.appendChild(fLabel);
     document.body.appendChild(fBtn);
+    if(window.innerWidth<=768){fBtn.style.right='auto';fBtn.style.left='50%';fBtn.style.transform='translateX(-50%)';}
+    window.addEventListener('resize',function(){if(window.innerWidth<=768){fBtn.style.right='auto';fBtn.style.left='50%';fBtn.style.transform='translateX(-50%)';}else{fBtn.style.right='24px';fBtn.style.left='auto';fBtn.style.transform='';}},{passive:true});
+    var fObserver=new IntersectionObserver(function(entries){fBtn.style.opacity=entries[0].isIntersecting?'0':'1';fBtn.style.pointerEvents=entries[0].isIntersecting?'none':'auto';},{threshold:0.2});
+    fObserver.observe(document.getElementById('booking'));
     if(window.innerWidth<=768){fBtn.style.right='auto';fBtn.style.left='50%';fBtn.style.transform='translateX(-50%)';}
     window.addEventListener('resize',function(){if(window.innerWidth<=768){fBtn.style.right='auto';fBtn.style.left='50%';fBtn.style.transform='translateX(-50%)';}else{fBtn.style.right='24px';fBtn.style.left='auto';fBtn.style.transform='';}},{passive:true});
   function checkStep1(){var ok=step1Fields.every(isFieldOk);if(btnNext){btnNext.disabled=!ok;btnNext.style.opacity=ok?'1':'0.4';}step1Fields.forEach(function(id,i){var c=document.getElementById('check-'+(i+1));if(c)c.style.color=isFieldOk(id)?'#4ade80':'transparent';});return ok;}
