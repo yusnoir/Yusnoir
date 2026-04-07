@@ -1456,8 +1456,8 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
 </script>
 
 
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:1px solid rgba(225,29,46,0.3);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-  <p id="cookie-text" style="margin:0;font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.05em;line-height:1.6;max-width:700px;"></p>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(10,10,10,0.97);border-top:1px solid rgba(225,29,46,0.6);backdrop-filter:blur(8px);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <p id="cookie-text" style="margin:0;font-size:11px;color:rgba(255,255,255,0.82);letter-spacing:0.05em;line-height:1.6;max-width:700px;"></p>
   <div style="display:flex;gap:10px;flex-shrink:0;">
     <button id="cookie-accept" onclick="acceptCookies()" style="padding:8px 20px;background:#E11D2E;color:white;border:none;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;"></button>
     <button id="cookie-decline" onclick="declineCookies()" style="padding:8px 20px;background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;"></button>
@@ -1471,7 +1471,7 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
     es:{text:'Este sitio usa cookies para analítica y publicidad (Clarity, Google Analytics, Google Ads). Al aceptar, consientes su uso según nuestra Política de Privacidad.',accept:'Aceptar',decline:'Rechazar'}
   };
   function showBanner(){
-    var lang=getLang&&getLang()||'de';
+    var lang=document.documentElement.lang||'de';
     var t=cookieTexts[lang]||cookieTexts.de;
     var b=document.getElementById('cookie-banner');
     var txt=document.getElementById('cookie-text');
