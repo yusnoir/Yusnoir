@@ -760,7 +760,7 @@ window.addEventListener('load',function(){
   var floatingBtn=document.createElement('button');
   floatingBtn.setAttribute('onclick',"document.getElementById('booking').scrollIntoView({behavior:'smooth'})");
   floatingBtn.style.cssText='display:none;position:fixed;left:24px;right:24px;bottom:24px;z-index:4000;padding:18px 32px;border-radius:14px;background:#E11D2E;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,29,46,0.35);';
-  var fspan=document.createElement('span');fspan.setAttribute('data-key','floating');fspan.style.cssText='font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.25em;color:white;';fspan.textContent=t('floating');
+  var fspan=document.createElement('span');fspan.setAttribute('data-key','floating');fspan.style.cssText='font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.25em;color:white;';fspan.textContent=(translations[getLang()]||translations['de'])['floating'];
   floatingBtn.appendChild(fspan);document.body.appendChild(floatingBtn);
   function isFieldOk(id){var el=document.getElementById(id);if(!el||!el.value.trim())return false;if(id==='f-email')return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());if(id==='f-edad'){var a=parseInt(el.value);return!isNaN(a)&&a>=18&&a<=99;}return true;}
   function checkStep1(){var ok=step1Fields.every(isFieldOk);if(btnNext){btnNext.disabled=!ok;btnNext.style.opacity=ok?'1':'0.4';}step1Fields.forEach(function(id,i){var c=document.getElementById('check-'+(i+1));if(c)c.style.color=isFieldOk(id)?'#4ade80':'transparent';});return ok;}
