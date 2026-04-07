@@ -1346,7 +1346,7 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
     es: ['Hey, soy Nova 👋 ¿Tienes dudas sobre tu tatuaje?', '¿Aún dudando? 🖤 Puedo responder cualquier pregunta.']
   };
   function showProactive() {
-    if (isOpen || isInit) return;
+    if (!novaVisible || isOpen || isInit) return;
     var l = getLang();
     var texts = pTexts[l] || pTexts.de;
     let pCount = 0;
