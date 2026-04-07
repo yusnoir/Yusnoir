@@ -1384,8 +1384,8 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
     }
   }
   window.addEventListener('scroll', handleNovaVisibility, {passive: true});
-  setTimeout(showProactive, 10000);
-  setTimeout(showProactive, 30000);
+  setTimeout(function(){ if(novaBtn.style.opacity !== "0") showProactive(); }, 10000);
+  setTimeout(function(){ if(novaBtn.style.opacity !== "0") showProactive(); }, 30000);
 
   // On mobile, when input is focused scroll messages to bottom
   var novaInp = document.getElementById('nova-input');
