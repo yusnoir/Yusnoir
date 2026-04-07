@@ -514,16 +514,12 @@
 
   <div style="text-align:center;margin-top:40px;padding-bottom:8px;">
     <a href="https://www.instagram.com/yus.noir" target="_blank" rel="noopener"
-      style="display:inline-flex;align-items:center;gap:10px;padding:12px 28px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.04);text-decoration:none;transition:background 0.2s;"
-      onmouseover="this.style.background='rgba(255,255,255,0.08)'"
-      onmouseout="this.style.background='rgba(255,255,255,0.04)'">
-      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-      </svg>
-      <span data-key="gallery-ig" style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:rgba(255,255,255,0.7);">@yus.noir — Galerie auf Instagram</span>
-    </a>
+          style="display:inline-flex;align-items:center;gap:10px;padding:12px 24px;border:1px solid rgba(255,255,255,0.15);background:rgba(255,255,255,0.04);text-decoration:none;transition:background 0.2s;"
+          onmouseover="this.style.background='rgba(255,255,255,0.08)'"
+          onmouseout="this.style.background='rgba(255,255,255,0.04)'">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.75)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.3em;color:rgba(255,255,255,0.75);">Folgen</span>
+        </a>
   </div>
 </section>
 
@@ -836,8 +832,59 @@ window.addEventListener('load',function(){
   var floatingBtn=document.createElement('button');
   floatingBtn.setAttribute('onclick',"document.getElementById('booking').scrollIntoView({behavior:'smooth'})");
   floatingBtn.style.cssText='display:none;position:fixed;right:24px;bottom:24px;z-index:4000;padding:14px 28px;border-radius:50px;background:#E11D2E;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,29,46,0.35);';
-  var fspan=document.createElement('span');fspan.setAttribute('data-key','floating');fspan.style.cssText='font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.25em;color:white;';fspan.textContent=(function(){try{return(translations[getLang()]||translations['de'])['floating']}catch(e){return'KONTAKT'}})();
-  floatingBtn.appendChild(fspan);document.body.appendChild(floatingBtn);
+  // Floating KONTAKT button
+    var fBtn=document.createElement('button');
+    fBtn.id='float-kontakt';
+    fBtn.setAttribute('aria-label','Kontakt');
+    fBtn.onclick=function(){document.getElementById('booking')?.scrollIntoView({behavior:'smooth'});};
+    fBtn.style.cssText='display:none;position:fixed;right:24px;bottom:24px;z-index:4000;background:#E11D2E;border:none;cursor:pointer;border-radius:50px;box-shadow:rgba(225,29,46,0.35) 0px 4px 24px;transition:all 0.3s ease;padding:14px 20px;align-items:center;gap:8px;';
+
+    // Instagram icon
+    var fIcon=document.createElement('span');
+    fIcon.innerHTML='<svg xmlns="http://www.w3.org/2000/svg" width="0" height="0" style="display:none"></svg>';
+    
+    // Pulse dot
+    var fDot=document.createElement('span');
+    fDot.style.cssText='width:8px;height:8px;border-radius:50%;background:white;display:block;flex-shrink:0;';
+    fBtn.appendChild(fDot);
+
+    // Text label (hidden, pulses in)
+    var fLabel=document.createElement('span');
+    fLabel.textContent='KONTAKT';
+    fLabel.style.cssText='font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:white;max-width:0;overflow:hidden;white-space:nowrap;transition:max-width 0.4s ease,opacity 0.4s ease;opacity:0;';
+    fBtn.appendChild(fLabel);
+
+    document.body.appendChild(fBtn);
+
+    // Mobile: center bottom
+    (function applyMobileFloat(){
+      if(window.innerWidth<=768){fBtn.style.right='auto';fBtn.style.left='50%';fBtn.style.transform='translateX(-50%)';}
+      else{fBtn.style.right='24px';fBtn.style.left='auto';fBtn.style.transform='';}
+    })();
+    window.addEventListener('resize',applyMobileFloat);
+
+    // Pulse text every 4s
+    var fPulseInterval=null;
+    function startPulse(){
+      if(fPulseInterval)return;
+      fPulseInterval=setInterval(function(){
+        fLabel.style.maxWidth='100px';fLabel.style.opacity='1';
+        fBtn.style.borderRadius='50px';
+        setTimeout(function(){fLabel.style.maxWidth='0';fLabel.style.opacity='0';fBtn.style.borderRadius='50%';},1800);
+      },4000);
+      // First pulse after 1.5s
+      setTimeout(function(){fLabel.style.maxWidth='100px';fLabel.style.opacity='1';fBtn.style.borderRadius='50px';setTimeout(function(){fLabel.style.maxWidth='0';fLabel.style.opacity='0';fBtn.style.borderRadius='50%';},1800);},1500);
+    }
+
+    // Grow after 5s scroll
+    var fScrollTime=0,fGrown=false;
+    var fScrollTimer=null;
+    window.addEventListener('scroll',function(){
+      if(fScrollTimer)clearTimeout(fScrollTimer);
+      fScrollTime+=100;
+      fScrollTimer=setTimeout(function(){fScrollTime=0;},500);
+      if(fScrollTime>=5000&&!fGrown){fGrown=true;fBtn.style.padding='16px 24px';}
+    },{passive:true});
   function isFieldOk(id){var el=document.getElementById(id);if(!el||!el.value.trim())return false;if(id==='f-email')return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());if(id==='f-edad'){var a=parseInt(el.value);return!isNaN(a)&&a>=18&&a<=99;}return true;}
   function checkStep1(){var ok=step1Fields.every(isFieldOk);if(btnNext){btnNext.disabled=!ok;btnNext.style.opacity=ok?'1':'0.4';}step1Fields.forEach(function(id,i){var c=document.getElementById('check-'+(i+1));if(c)c.style.color=isFieldOk(id)?'#4ade80':'transparent';});return ok;}
   function checkStep2(){var zonaOk=document.getElementById('zona-input')&&document.getElementById('zona-input').value.trim().length>0;var tamEl=document.getElementById('f-tamano');var tamOk=tamEl&&tamEl.value.trim().length>0;var ideaOk=textarea&&textarea.value.length>=20;var checkOk=legalCheck&&legalCheck.checked;var c6=document.getElementById('check-6');if(c6)c6.style.color=tamOk?'#4ade80':'transparent';var allOk=zonaOk&&tamOk&&ideaOk&&checkOk;var filled=[zonaOk,tamOk,ideaOk,checkOk].filter(Boolean).length;var bf=document.getElementById('form-sticky-bar-fill');if(bf)bf.style.width=(50+(filled/4)*50)+'%';if(submitBtn){submitBtn.disabled=!allOk;submitBtn.style.backgroundColor=allOk?'#E11D2E':'#222';}var ptext=document.getElementById('form-progress-text');if(ptext){var labels={de:function(n,t){return n+' von '+t+' ausgefüllt';},en:function(n,t){return n+' of '+t+' completed';},es:function(n,t){return n+' de '+t+' completados';}};ptext.textContent=(labels[currentLang]||labels.de)(filled,4);ptext.style.color=allOk?'#4ade80':filled>0?'#E11D2E':'#555';}return allOk;}
