@@ -1456,20 +1456,21 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
 </script>
 
 
-<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(10,10,10,0.97);border-top:1px solid rgba(225,29,46,0.6);backdrop-filter:blur(8px);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
-  <p id="cookie-text" style="margin:0;font-size:11px;color:rgba(255,255,255,0.82);letter-spacing:0.05em;line-height:1.6;max-width:700px;"></p>
-  <div style="display:flex;gap:10px;flex-shrink:0;">
-    <button id="cookie-accept" onclick="acceptCookies()" style="padding:8px 20px;background:#E11D2E;color:white;border:none;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;"></button>
-    <button id="cookie-decline" onclick="declineCookies()" style="padding:8px 20px;background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;"></button>
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:rgba(10,10,10,0.97);border-top:1px solid rgba(225,29,46,0.6);backdrop-filter:blur(8px);padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:nowrap;">
+  <p id="cookie-text" style="margin:0;font-size:10px;color:rgba(255,255,255,0.82);letter-spacing:0.04em;line-height:1.5;flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;"></p>
+  <div style="display:flex;gap:8px;flex-shrink:0;">
+    <button id="cookie-accept" onclick="acceptCookies()" style="padding:7px 16px;background:#E11D2E;color:white;border:none;border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;white-space:nowrap;"></button>
+    <button id="cookie-decline" onclick="declineCookies()" style="padding:7px 16px;background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:50px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;white-space:nowrap;"></button>
   </div>
 </div>
 <script>
 (function(){
   var cookieTexts={
-    de:{text:'Diese Website verwendet Cookies für Analyse und Werbemessung (Clarity, Google Analytics, Google Ads). Mit dem Akzeptieren stimmst du der Verarbeitung gemäß unserer Datenschutzerklärung zu.',accept:'Akzeptieren',decline:'Ablehnen'},
-    en:{text:'This site uses cookies for analytics and ad measurement (Clarity, Google Analytics, Google Ads). By accepting you agree to our Privacy Policy.',accept:'Accept',decline:'Decline'},
-    es:{text:'Este sitio usa cookies para analítica y publicidad (Clarity, Google Analytics, Google Ads). Al aceptar, consientes su uso según nuestra Política de Privacidad.',accept:'Aceptar',decline:'Rechazar'}
+    de:{text:'Diese Website nutzt Cookies für Analyse & Werbung (Clarity, GA, Google Ads).',accept:'OK',decline:'Ablehnen'},
+    en:{text:'This site uses cookies for analytics & advertising (Clarity, GA, Google Ads).',accept:'OK',decline:'Decline'},
+    es:{text:'Usamos cookies para analítica y publicidad (Clarity, GA, Google Ads).',accept:'OK',decline:'Rechazar'}
   };
+  function getFloatBtn(){return [...document.querySelectorAll('body > button')].find(function(b){return b.textContent.trim()==='KONTAKT'||b.textContent.trim()==='CONTACT'||b.textContent.trim()==='CONTACTAR';});}
   function showBanner(){
     var lang=document.documentElement.lang||'de';
     var t=cookieTexts[lang]||cookieTexts.de;
@@ -1477,27 +1478,31 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
     var txt=document.getElementById('cookie-text');
     var acc=document.getElementById('cookie-accept');
     var dec=document.getElementById('cookie-decline');
-    if(b){b.style.display='flex';}
+    if(b)b.style.display='flex';
     if(txt)txt.textContent=t.text;
     if(acc)acc.textContent=t.accept;
     if(dec)dec.textContent=t.decline;
+    setTimeout(function(){
+      var cb=document.getElementById('cookie-banner');
+      var fb=getFloatBtn();
+      if(cb&&fb)fb.style.bottom=(cb.offsetHeight+12)+'px';
+    },50);
   }
   window.acceptCookies=function(){
     localStorage.setItem('cookie_consent','accepted');
     var b=document.getElementById('cookie-banner');
     if(b)b.style.display='none';
+    var fb=getFloatBtn();if(fb)fb.style.bottom='24px';
   };
   window.declineCookies=function(){
     localStorage.setItem('cookie_consent','declined');
     var b=document.getElementById('cookie-banner');
     if(b)b.style.display='none';
+    var fb=getFloatBtn();if(fb)fb.style.bottom='24px';
   };
   if(!localStorage.getItem('cookie_consent')){
-    if(document.readyState==='loading'){
-      document.addEventListener('DOMContentLoaded',showBanner);
-    } else {
-      setTimeout(showBanner,800);
-    }
+    if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',showBanner);}
+    else{setTimeout(showBanner,800);}
   }
 })();
 </script></body>
