@@ -847,6 +847,7 @@ document.addEventListener('touchstart',function(e){var a=document.activeElement;
 <!-- ═══ NOVA ══════════════════════════════════════════════════ -->
 
 <style>
+body:not(.nova-ready) #nova-proactive-bubble { display: none !important; }
 #nova-btn {
   position: fixed;
   bottom: 160px;
@@ -1379,10 +1380,12 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
       novaBtn.style.opacity = '1';
       novaBtn.style.pointerEvents = 'auto';
       novaVisible = true;
+      document.body.classList.add('nova-ready');
     } else {
       novaBtn.style.opacity = '0';
       novaBtn.style.pointerEvents = 'none';
       novaVisible = false;
+      document.body.classList.remove('nova-ready');
     }
   }
   window.addEventListener('scroll', handleNovaVisibility, {passive: true});
