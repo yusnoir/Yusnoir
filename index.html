@@ -1190,7 +1190,8 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
         body: JSON.stringify({
           model: 'claude-sonnet-4-20250514',
           max_tokens: 1000,
-          messages: [{ role: 'user', content: SYSTEM + '\n\nConversation:\n' + conv + '\n\nuser: ' + text }]
+          system: SYSTEM,
+          messages: chatHistory.concat([{ role: 'user', content: text }])
         })
       });
       var data = await res.json();
