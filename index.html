@@ -832,20 +832,22 @@ window.addEventListener('load',function(){
   var floatingBtn=document.createElement('button');
   floatingBtn.setAttribute('onclick',"document.getElementById('booking').scrollIntoView({behavior:'smooth'})");
   floatingBtn.style.cssText='display:none;position:fixed;right:24px;bottom:24px;z-index:4000;padding:14px 28px;border-radius:50px;background:#E11D2E;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,29,46,0.35);';
-  // Floating KONTAKT button — pill centrado siempre visible
+  // Floating KONTAKT button
     var fBtn=document.createElement('button');
     fBtn.id='float-kontakt';
     fBtn.setAttribute('aria-label','Kontakt');
     fBtn.onclick=function(){document.getElementById('booking')?.scrollIntoView({behavior:'smooth'});};
-    fBtn.style.cssText='display:flex;align-items:center;gap:8px;position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:4000;padding:14px 28px;background:#E11D2E;border:none;cursor:pointer;border-radius:50px;box-shadow:rgba(225,29,46,0.35) 0px 4px 24px;';
+    fBtn.style.cssText='display:flex;align-items:center;gap:9px;position:fixed;right:24px;bottom:24px;z-index:4000;background:#E11D2E;border:none;cursor:pointer;border-radius:50px;box-shadow:rgba(225,29,46,0.35) 0px 4px 24px;padding:13px 22px;';
     var fDot=document.createElement('span');
-    fDot.style.cssText='width:6px;height:6px;border-radius:50%;background:white;display:block;animation:pulse 1.5s infinite;flex-shrink:0;';
-    var fText=document.createElement('span');
-    fText.textContent='KONTAKT';
-    fText.style.cssText='font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:white;';
+    fDot.style.cssText='width:7px;height:7px;border-radius:50%;background:white;flex-shrink:0;';
+    var fLabel=document.createElement('span');
+    fLabel.textContent='KONTAKT';
+    fLabel.style.cssText='font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.2em;color:white;';
     fBtn.appendChild(fDot);
-    fBtn.appendChild(fText);
-    document.body.appendChild(fBtn);  function isFieldOk(id){var el=document.getElementById(id);if(!el||!el.value.trim())return false;if(id==='f-email')return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());if(id==='f-edad'){var a=parseInt(el.value);return!isNaN(a)&&a>=18&&a<=99;}return true;}
+    fBtn.appendChild(fLabel);
+    document.body.appendChild(fBtn);
+    if(window.innerWidth<=768){fBtn.style.right='auto';fBtn.style.left='50%';fBtn.style.transform='translateX(-50%)';}
+    window.addEventListener('resize',function(){if(window.innerWidth<=768){fBtn.style.right='auto';fBtn.style.left='50%';fBtn.style.transform='translateX(-50%)';}else{fBtn.style.right='24px';fBtn.style.left='auto';fBtn.style.transform='';}},{passive:true});
   function checkStep1(){var ok=step1Fields.every(isFieldOk);if(btnNext){btnNext.disabled=!ok;btnNext.style.opacity=ok?'1':'0.4';}step1Fields.forEach(function(id,i){var c=document.getElementById('check-'+(i+1));if(c)c.style.color=isFieldOk(id)?'#4ade80':'transparent';});return ok;}
   function checkStep2(){var zonaOk=document.getElementById('zona-input')&&document.getElementById('zona-input').value.trim().length>0;var tamEl=document.getElementById('f-tamano');var tamOk=tamEl&&tamEl.value.trim().length>0;var ideaOk=textarea&&textarea.value.length>=20;var checkOk=legalCheck&&legalCheck.checked;var c6=document.getElementById('check-6');if(c6)c6.style.color=tamOk?'#4ade80':'transparent';var allOk=zonaOk&&tamOk&&ideaOk&&checkOk;var filled=[zonaOk,tamOk,ideaOk,checkOk].filter(Boolean).length;var bf=document.getElementById('form-sticky-bar-fill');if(bf)bf.style.width=(50+(filled/4)*50)+'%';if(submitBtn){submitBtn.disabled=!allOk;submitBtn.style.backgroundColor=allOk?'#E11D2E':'#222';}var ptext=document.getElementById('form-progress-text');if(ptext){var labels={de:function(n,t){return n+' von '+t+' ausgefüllt';},en:function(n,t){return n+' of '+t+' completed';},es:function(n,t){return n+' de '+t+' completados';}};ptext.textContent=(labels[currentLang]||labels.de)(filled,4);ptext.style.color=allOk?'#4ade80':filled>0?'#E11D2E':'#555';}return allOk;}
   function updateStepIndicator(step){var c1=document.getElementById('step-circle-1'),c2=document.getElementById('step-circle-2');var l1=document.getElementById('step-label-1'),l2=document.getElementById('step-label-2');var conn=document.getElementById('step-connector');if(step===1){c1.style.background='#E11D2E';c1.style.borderColor='#E11D2E';c1.querySelector('span').style.color='white';l1.style.color='#E11D2E';c2.style.background='transparent';c2.style.borderColor='rgba(255,255,255,0.15)';c2.querySelector('span').style.color='rgba(255,255,255,0.3)';l2.style.color='#444';if(conn)conn.style.background='rgba(255,255,255,0.1)';}else{c1.style.background='#4ade80';c1.style.borderColor='#4ade80';c1.querySelector('span').innerHTML='✓';c1.querySelector('span').style.color='white';l1.style.color='#4ade80';c2.style.background='#E11D2E';c2.style.borderColor='#E11D2E';c2.querySelector('span').style.color='white';l2.style.color='#E11D2E';if(conn)conn.style.background='#E11D2E';}var bf=document.getElementById('form-sticky-bar-fill');if(bf)bf.style.width=(step===1?'25':'50')+'%';}
