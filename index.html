@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 
-<html lang="de">
+<html lang="de" id="html-root">
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, interactive-widget=resizes-content" name="viewport"/>
   <title>YUS NOIR | Black & Grey Realism Tattoo — Zürich & Hamburg | Giuseppe Cardona</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v13/UcCO3FwrhK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="https://fonts.gstatic.com/s/inter/v20/UcC73FwrK3iLTeHuS_nVMrMxCp50SjIa1ZL7.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="images/hero.jpg" as="image" fetchpriority="high">
   <link rel="icon" type="image/png" href="images/logo.png">
   <link rel="apple-touch-icon" href="images/logo.png">
@@ -421,6 +421,7 @@
 
     let currentLang='de';
     function changeLang(lang){
+  var r=document.getElementById("html-root");if(r)r.lang=lang;
       currentLang=lang;
       document.documentElement.lang=lang;
       ['de','en','es'].forEach(l=>{var b=document.getElementById('btn-'+l);if(b)b.classList.remove('active');});
@@ -472,7 +473,7 @@
       <button onclick="openModal('faq')" class="nav-link" data-key="nav-faq">Fragen</button>
     </div>
   </div>
-  <img alt="Hero" class="absolute inset-0 w-full h-full object-cover" style="filter:grayscale(100%) brightness(55%);" src="images/hero.jpg" fetchpriority="high" decoding="async">
+  <img alt="Hero" class="absolute inset-0 w-full h-full object-cover" style="filter:grayscale(100%) brightness(55%);" width="768" height="1376" src="images/hero.jpg" fetchpriority="high" decoding="async">
   <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-[#111111] z-[1]"></div>
   <div class="relative z-10 flex flex-col items-center w-full max-w-2xl mx-auto">
     <img src="images/logo.png" alt="YUS NOIR" class="brand-logo-img" decoding="async" width="520" height="440">
@@ -770,7 +771,7 @@ window.addEventListener('load',function(){
   var step1Fields=['f-nombre','f-email'];
   var floatingBtn=document.createElement('button');
   floatingBtn.setAttribute('onclick',"document.getElementById('booking').scrollIntoView({behavior:'smooth'})");
-  floatingBtn.style.cssText='display:none;position:fixed;left:24px;right:24px;bottom:24px;z-index:4000;padding:18px 32px;border-radius:14px;background:#E11D2E;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,29,46,0.35);';
+  floatingBtn.style.cssText='display:none;position:fixed;right:24px;bottom:24px;z-index:4000;padding:14px 28px;border-radius:50px;background:#E11D2E;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,29,46,0.35);';
   var fspan=document.createElement('span');fspan.setAttribute('data-key','floating');fspan.style.cssText='font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.25em;color:white;';fspan.textContent=(function(){try{return(translations[getLang()]||translations['de'])['floating']}catch(e){return'KONTAKT'}})();
   floatingBtn.appendChild(fspan);document.body.appendChild(floatingBtn);
   function isFieldOk(id){var el=document.getElementById(id);if(!el||!el.value.trim())return false;if(id==='f-email')return/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(el.value.trim());if(id==='f-edad'){var a=parseInt(el.value);return!isNaN(a)&&a>=18&&a<=99;}return true;}
@@ -1048,7 +1049,7 @@ transition: opacity 0.5s ease;
 <!-- Button -->
 
 <button id="nova-btn" aria-label="Chat with Nova">
-  <img src="/images/nova.png" alt="Nova" style="width:80px;height:auto;object-fit:contain;display:block;"/>
+  <img src="/images/nova.png" width="80" height="80" alt="Nova" style="width:80px;height:auto;object-fit:contain;display:block;"/>
 </button>
 
 <!-- Chat box -->
@@ -1454,5 +1455,50 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
 })();
 </script>
 
-</body>
+
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#111;border-top:1px solid rgba(225,29,46,0.3);padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;">
+  <p id="cookie-text" style="margin:0;font-size:11px;color:rgba(255,255,255,0.6);letter-spacing:0.05em;line-height:1.6;max-width:700px;"></p>
+  <div style="display:flex;gap:10px;flex-shrink:0;">
+    <button id="cookie-accept" onclick="acceptCookies()" style="padding:8px 20px;background:#E11D2E;color:white;border:none;border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;"></button>
+    <button id="cookie-decline" onclick="declineCookies()" style="padding:8px 20px;background:transparent;color:rgba(255,255,255,0.5);border:1px solid rgba(255,255,255,0.15);border-radius:50px;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;cursor:pointer;"></button>
+  </div>
+</div>
+<script>
+(function(){
+  var cookieTexts={
+    de:{text:'Diese Website verwendet Cookies für Analyse und Werbemessung (Clarity, Google Analytics, Google Ads). Mit dem Akzeptieren stimmst du der Verarbeitung gemäß unserer Datenschutzerklärung zu.',accept:'Akzeptieren',decline:'Ablehnen'},
+    en:{text:'This site uses cookies for analytics and ad measurement (Clarity, Google Analytics, Google Ads). By accepting you agree to our Privacy Policy.',accept:'Accept',decline:'Decline'},
+    es:{text:'Este sitio usa cookies para analítica y publicidad (Clarity, Google Analytics, Google Ads). Al aceptar, consientes su uso según nuestra Política de Privacidad.',accept:'Aceptar',decline:'Rechazar'}
+  };
+  function showBanner(){
+    var lang=getLang&&getLang()||'de';
+    var t=cookieTexts[lang]||cookieTexts.de;
+    var b=document.getElementById('cookie-banner');
+    var txt=document.getElementById('cookie-text');
+    var acc=document.getElementById('cookie-accept');
+    var dec=document.getElementById('cookie-decline');
+    if(b){b.style.display='flex';}
+    if(txt)txt.textContent=t.text;
+    if(acc)acc.textContent=t.accept;
+    if(dec)dec.textContent=t.decline;
+  }
+  window.acceptCookies=function(){
+    localStorage.setItem('cookie_consent','accepted');
+    var b=document.getElementById('cookie-banner');
+    if(b)b.style.display='none';
+  };
+  window.declineCookies=function(){
+    localStorage.setItem('cookie_consent','declined');
+    var b=document.getElementById('cookie-banner');
+    if(b)b.style.display='none';
+  };
+  if(!localStorage.getItem('cookie_consent')){
+    if(document.readyState==='loading'){
+      document.addEventListener('DOMContentLoaded',showBanner);
+    } else {
+      setTimeout(showBanner,800);
+    }
+  }
+})();
+</script></body>
 </html>
