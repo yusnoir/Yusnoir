@@ -3,6 +3,8 @@ export async function onRequestPost({ request, env }) {
     const { email, name } = await request.json();
     if (!email) return new Response('missing email', { status: 400 });
 
+    if (!env.BREVO_API_KEY) return new Response('not configured', { status: 500 });
+
     const res = await fetch('https://api.brevo.com/v3/contacts', {
       method: 'POST',
       headers: {
