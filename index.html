@@ -1363,17 +1363,27 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
     document.body.appendChild(bubble);
     setTimeout(function() { if (bubble.parentNode) bubble.remove(); }, 8000);
   }
-  // Show Nova after scrolling past hero
+  // Nova visibility logic: show after hero, hide during booking form
   var novaBtn = document.getElementById('nova-btn');
-  function showNovaOnScroll() {
+  var novaVisible = false;
+  function handleNovaVisibility() {
     var heroH = document.querySelector('header')?.offsetHeight || window.innerHeight;
-    if (window.scrollY > heroH * 0.6) {
+    var booking = document.getElementById('booking');
+    var pastHero = window.scrollY > heroH * 0.6;
+    var inBooking = false;
+    if (booking) {
+      var r = booking.getBoundingClientRect();
+      inBooking = r.top < window.innerHeight * 0.7 && r.bottom > 0;
+    }
+    if (pastHero && !inBooking) {
       novaBtn.style.opacity = '1';
       novaBtn.style.pointerEvents = 'auto';
-      window.removeEventListener('scroll', showNovaOnScroll);
+    } else {
+      novaBtn.style.opacity = '0';
+      novaBtn.style.pointerEvents = 'none';
     }
   }
-  window.addEventListener('scroll', showNovaOnScroll, {passive: true});
+  window.addEventListener('scroll', handleNovaVisibility, {passive: true});
   setTimeout(showProactive, 10000);
   setTimeout(showProactive, 30000);
 
