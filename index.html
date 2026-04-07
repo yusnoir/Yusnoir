@@ -869,6 +869,25 @@ transition: opacity 0.5s ease;
   overflow: visible;
   padding: 0;
 }
+#nova-calendly-btn {
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  z-index: 8999;
+  background: #c0392b;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.5s ease;
+  white-space: nowrap;
+}
+
   box-shadow: 0 4px 20px rgba(225,29,46,0.45);
 }
 #nova-btn svg { width: 22px; height: 22px; fill: white; }
@@ -1026,6 +1045,7 @@ transition: opacity 0.5s ease;
     <img src="/images/nova.png" alt="Nova" style="width:36px;height:auto;object-fit:contain;flex-shrink:0;"/>
     <div>
       <div id="nova-name">Nova · YUS NOIR</div>
+<a id="nova-calendly-btn" href="https://calendly.com/el-tatuador/30min" target="_blank" rel="noopener">📅 Termin buchen</a>
       <div id="nova-sub">Antwortet sofort · Yus</div>
     </div>
     <a id="nova-wa" href="http://wa.me/34910175496" target="_blank">
@@ -1342,9 +1362,9 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
     document.body.appendChild(bubble);
   }, 2000);
   var pTexts = {
-    de: ['Hey, ich bin Nova 👋 Hast du Fragen zu deinem Tattoo?', 'Noch unsicher? 🖤 Ich beantworte gerne jede Frage.'],
-    en: ["Hey, I'm Nova 👋 Any questions about your tattoo?", 'Still thinking? 🖤 Happy to answer any question.'],
-    es: ['Hey, soy Nova 👋 ¿Tienes dudas sobre tu tatuaje?', '¿Aún dudando? 🖤 Puedo responder cualquier pregunta.']
+    de: ['Nova hier. 👋 Fragen?', 'Lieber kurz sprechen? → calendly.com/el-tatuador/30min'],
+    en: ["Nova here. 👋 Questions?", 'Prefer a quick call? → calendly.com/el-tatuador/30min'],
+    es: ['Soy Nova. 👋 ¿Preguntas?', '¿Prefieres hablar? → calendly.com/el-tatuador/30min']
   };
   function showProactive() {
     if (!novaVisible || isOpen || isInit) return;
@@ -1381,11 +1401,21 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
       novaBtn.style.pointerEvents = 'auto';
       novaVisible = true;
       document.body.classList.add('nova-ready');
+      // Show calendly btn after 10s
+      if (!window._calendlyShown) {
+        window._calendlyShown = true;
+        setTimeout(function(){
+          var cb = document.getElementById('nova-calendly-btn');
+          if (cb && novaVisible) { cb.style.opacity='1'; cb.style.pointerEvents='auto'; }
+        }, 10000);
+      }
     } else {
       novaBtn.style.opacity = '0';
       novaBtn.style.pointerEvents = 'none';
       novaVisible = false;
       document.body.classList.remove('nova-ready');
+      var cb = document.getElementById('nova-calendly-btn');
+      if (cb) { cb.style.opacity='0'; cb.style.pointerEvents='none'; }
     }
   }
   window.addEventListener('scroll', handleNovaVisibility, {passive: true});
