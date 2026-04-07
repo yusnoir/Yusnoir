@@ -480,11 +480,22 @@
     <p data-key="hero-sub" class="hero-line hero-line-2" style="font-size:11px;text-transform:uppercase;letter-spacing:0.3em;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;">Black &amp; Grey Realismus</p>
     <p class="hero-line hero-line-3" style="font-size:10px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.3);">Zürich — Hamburg</p>
     <div class="hero-line hero-line-4" style="margin-top:28px;">
-      <div style="display:inline-flex;align-items:center;gap:8px;padding:7px 16px;border:1px solid rgba(225,29,46,0.35);border-radius:2px;background:rgba(225,29,46,0.06);">
-        <span style="width:5px;height:5px;border-radius:50%;background:#E11D2E;display:inline-block;animation:pulse 1.5s infinite;flex-shrink:0;"></span>
-        <span id="urgency-text" style="font-size:8px;text-transform:uppercase;letter-spacing:0.2em;color:#E11D2E;"></span>
+    <div style="display:inline-flex;align-items:stretch;border:1px solid rgba(225,29,46,0.35);border-radius:2px;background:rgba(225,29,46,0.06);">
+      <div style="display:flex;flex-direction:column;align-items:center;padding:10px 22px;gap:3px;">
+        <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.3em;color:#E11D2E;">ZÜRICH</span>
+        <span id="urgency-zh-dates" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.7);"></span>
+        <span id="urgency-zh-spots" style="font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.45);"></span>
+        <a href="#booking" id="urgency-zh-book" style="font-size:7px;text-transform:uppercase;letter-spacing:0.2em;color:#E11D2E;text-decoration:none;margin-top:3px;"></a>
+      </div>
+      <div style="width:1px;background:rgba(225,29,46,0.2);margin:8px 0;flex-shrink:0;"></div>
+      <div style="display:flex;flex-direction:column;align-items:center;padding:10px 22px;gap:3px;">
+        <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.3em;color:#E11D2E;">HAMBURG</span>
+        <span id="urgency-hh-dates" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.7);"></span>
+        <span id="urgency-hh-spots" style="font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.45);"></span>
+        <a href="#booking" id="urgency-hh-book" style="font-size:7px;text-transform:uppercase;letter-spacing:0.2em;color:#E11D2E;text-decoration:none;margin-top:3px;"></a>
       </div>
     </div>
+  </div>
   </div>
 </header>
 
@@ -811,7 +822,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 var msgs={de:function(n,m){return'Nur noch '+n+' '+(n===1?'Platz':'Plätze')+' frei im '+m;},en:function(n,m){return'Only '+n+' slot'+(n===1?'':'s')+' left in '+m;},es:function(n,m){return'Solo '+n+' '+(n===1?'plaza':'plazas')+' libre'+(n===1?'':'s')+' en '+m;}};
 var submitU={de:'Jede Idee verdient ein einzigartiges Tattoo — nicht irgendwann, jetzt.',en:'Every idea deserves a unique tattoo — not someday, now.',es:'Cada idea merece un tatuaje único — no algún día, ahora.'};
 function getSlots(){var day=new Date().getDate(),total=new Date(new Date().getFullYear(),new Date().getMonth()+1,0).getDate();return Math.max(1,5-Math.floor((day/total)*5));}
-function updateUrgency(lang){var t={de:'ZÜRICH 5–15 MAI · NUR 3 PLÄTZE FREI — HAMBURG 4–14 JUNI · JETZT ANFRAGEN',en:'ZÜRICH MAY 5–15 · ONLY 3 SPOTS LEFT — HAMBURG JUNE 4–14 · BOOK NOW',es:'ZÜRICH 5–15 MAYO · SOLO 3 PLAZAS — HAMBURG 4–14 JUNIO · RESERVA AHORA'};var s=t[lang]||t.de;[document.getElementById('urgency-text'),document.getElementById('urgency-text-2')].forEach(function(el){if(el)el.textContent=s;});}
+function updateUrgency(lang){var n=getSlots();var t={de:{zh:'5 – 15 MAI',hh:'4 – 14 JUNI',spots:(n===1?'NUR 1 PLATZ FREI':'NUR '+n+' PLÄTZE FREI'),book:'JETZT BUCHEN →'},en:{zh:'MAY 5 – 15',hh:'JUNE 4 – 14',spots:(n===1?'ONLY 1 SPOT LEFT':'ONLY '+n+' SPOTS LEFT'),book:'BOOK NOW →'},es:{zh:'5 – 15 MAYO',hh:'4 – 14 JUNIO',spots:(n===1?'SOLO 1 PLAZA':'SOLO '+n+' PLAZAS'),book:'RESERVAR →'}};var s=t[lang]||t.de;var ids=[['urgency-zh-dates',s.zh],['urgency-zh-spots',s.spots],['urgency-zh-book',s.book],['urgency-hh-dates',s.hh],['urgency-hh-spots',s.spots],['urgency-hh-book',s.book]];ids.forEach(function(p){var el=document.getElementById(p[0]);if(el)el.textContent=p[1];});}
 updateUrgency('de');
 document.addEventListener('langchange',function(e){updateUrgency(e.detail);});})();
 
