@@ -668,24 +668,14 @@
             <div class="flex-1 h-px bg-white/10"></div>
           </div>
           <p class="text-white/40 text-xs uppercase tracking-[0.25em] mb-6">Lieber erst sprechen? Kostenloses 20-Min-Gespräch</p>
-          <div style="display:inline-flex;align-items:stretch;border:1px solid rgba(255,255,255,0.12);border-radius:2px;margin-bottom:20px;">
-          <div style="display:flex;flex-direction:column;align-items:center;padding:10px 22px;gap:3px;">
-            <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.3em;color:rgba(255,255,255,0.9);">ZÜRICH</span>
-            <span id="consult-zh-dates" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.5);"></span>
-            <span id="consult-zh-spots" style="font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.3);"></span>
-          </div>
-          <div style="width:1px;background:rgba(255,255,255,0.1);margin:8px 0;flex-shrink:0;"></div>
-          <div style="display:flex;flex-direction:column;align-items:center;padding:10px 22px;gap:3px;">
-            <span style="font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:0.3em;color:rgba(255,255,255,0.9);">HAMBURG</span>
-            <span id="consult-hh-dates" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.5);"></span>
-            <span id="consult-hh-spots" style="font-size:8px;text-transform:uppercase;letter-spacing:0.12em;color:rgba(255,255,255,0.3);"></span>
-          </div>
-        </div>
-        <a href="https://calendly.com/el-tatuador/30min" target="_blank" rel="noopener"
-             style="background-color:#c0392b;"
-             class="inline-block text-white uppercase tracking-widest text-sm px-14 py-5 hover:opacity-90 transition-opacity duration-300 font-light">
-            <span data-key="book-consultation">Beratungsgespräch buchen →</span>
-          </a>
+          <a href="https://calendly.com/el-tatuador/30min" target="_blank" rel="noopener"
+              data-key="book-consultation"
+              style="display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border:1px solid rgba(225,29,46,0.45);border-radius:2px;background:rgba(225,29,46,0.08);text-decoration:none;transition:background 0.2s;"
+              onmouseover="this.style.background='rgba(225,29,46,0.16)'"
+              onmouseout="this.style.background='rgba(225,29,46,0.08)'">
+              <span style="width:5px;height:5px;border-radius:50%;background:#E11D2E;display:inline-block;animation:pulse 1.5s infinite;flex-shrink:0;"></span>
+              <span style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.25em;color:#E11D2E;"></span>
+            </a>
         </div>
     <div id="success-msg" style="display:none;max-width:500px;margin:0 auto;text-align:center;padding:60px 20px;">
       <div class="success-circle"><svg class="success-check" viewBox="0 0 32 32"><path d="M6 16 L13 23 L26 10"/></svg></div>
@@ -881,7 +871,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 var msgs={de:function(n,m){return'Nur noch '+n+' '+(n===1?'Platz':'Plätze')+' frei im '+m;},en:function(n,m){return'Only '+n+' slot'+(n===1?'':'s')+' left in '+m;},es:function(n,m){return'Solo '+n+' '+(n===1?'plaza':'plazas')+' libre'+(n===1?'':'s')+' en '+m;}};
 var submitU={de:'Jede Idee verdient ein einzigartiges Tattoo — nicht irgendwann, jetzt.',en:'Every idea deserves a unique tattoo — not someday, now.',es:'Cada idea merece un tatuaje único — no algún día, ahora.'};
 function getSlots(){var day=new Date().getDate(),total=new Date(new Date().getFullYear(),new Date().getMonth()+1,0).getDate();return Math.max(1,5-Math.floor((day/total)*5));}
-function updateUrgency(lang){var nZH=getSlots();var nHH=Math.max(1,Math.min(5,((nZH+2)%5)+1));var t={de:{zh:'5 – 15 MAI',hh:'4 – 14 JUNI',zhSpots:(nZH===1?'NUR 1 PLATZ FREI':'NUR '+nZH+' PLÄTZE FREI'),hhSpots:(nHH===1?'NUR 1 PLATZ FREI':'NUR '+nHH+' PLÄTZE FREI'),book:'JETZT BUCHEN →'},en:{zh:'MAY 5 – 15',hh:'JUNE 4 – 14',zhSpots:(nZH===1?'ONLY 1 SPOT LEFT':'ONLY '+nZH+' SPOTS LEFT'),hhSpots:(nHH===1?'ONLY 1 SPOT LEFT':'ONLY '+nHH+' SPOTS LEFT'),book:'BOOK NOW →'},es:{zh:'5 – 15 MAYO',hh:'4 – 14 JUNIO',zhSpots:(nZH===1?'SOLO 1 PLAZA':'SOLO '+nZH+' PLAZAS'),hhSpots:(nHH===1?'SOLO 1 PLAZA':'SOLO '+nHH+' PLAZAS'),book:'RESERVAR →'}};var s=t[lang]||t.de;[['urgency-zh-dates',s.zh],['urgency-zh-spots',s.zhSpots],['urgency-zh-book',s.book],['urgency-hh-dates',s.hh],['urgency-hh-spots',s.hhSpots],['urgency-hh-book',s.book]].forEach(function(p){var el=document.getElementById(p[0]);if(el)el.textContent=p[1];});;[['consult-zh-dates',s.zh],['consult-zh-spots',s.zhSpots],['consult-hh-dates',s.hh],['consult-hh-spots',s.hhSpots]].forEach(function(p){var el=document.getElementById(p[0]);if(el)el.textContent=p[1];});}
+function updateUrgency(lang){var nZH=getSlots();var nHH=Math.max(1,Math.min(5,((nZH+2)%5)+1));var t={de:{zh:'5 – 15 MAI',hh:'4 – 14 JUNI',zhSpots:(nZH===1?'NUR 1 PLATZ FREI':'NUR '+nZH+' PLÄTZE FREI'),hhSpots:(nHH===1?'NUR 1 PLATZ FREI':'NUR '+nHH+' PLÄTZE FREI'),book:'JETZT BUCHEN →'},en:{zh:'MAY 5 – 15',hh:'JUNE 4 – 14',zhSpots:(nZH===1?'ONLY 1 SPOT LEFT':'ONLY '+nZH+' SPOTS LEFT'),hhSpots:(nHH===1?'ONLY 1 SPOT LEFT':'ONLY '+nHH+' SPOTS LEFT'),book:'BOOK NOW →'},es:{zh:'5 – 15 MAYO',hh:'4 – 14 JUNIO',zhSpots:(nZH===1?'SOLO 1 PLAZA':'SOLO '+nZH+' PLAZAS'),hhSpots:(nHH===1?'SOLO 1 PLAZA':'SOLO '+nHH+' PLAZAS'),book:'RESERVAR →'}};var s=t[lang]||t.de;[['urgency-zh-dates',s.zh],['urgency-zh-spots',s.zhSpots],['urgency-zh-book',s.book],['urgency-hh-dates',s.hh],['urgency-hh-spots',s.hhSpots],['urgency-hh-book',s.book]].forEach(function(p){var el=document.getElementById(p[0]);if(el)el.textContent=p[1];});}
 updateUrgency('de');
 document.addEventListener('langchange',function(e){updateUrgency(e.detail);});})();
 
