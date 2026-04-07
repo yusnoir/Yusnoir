@@ -847,7 +847,9 @@ document.addEventListener('touchstart',function(e){var a=document.activeElement;
 <!-- ═══ NOVA ══════════════════════════════════════════════════ -->
 
 <style>
-body:not(.nova-ready) #nova-proactive-bubble { display: none !important; }
+body:not(.nova-ready) #nova-proactive-bubble,
+body:not(.nova-ready) [id*="nova"][id*="bubble"],
+body:not(.nova-ready) .nova-bubble { display: none !important; }
 #nova-btn {
   position: fixed;
   bottom: 160px;
@@ -1359,7 +1361,7 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
     bubble.style.cssText = 'position:fixed;bottom:250px;right:20px;z-index:8997;background:#1a1a1a;border:1px solid rgba(255,255,255,0.1);border-radius:12px 12px 4px 12px;padding:12px 14px;max-width:200px;font-size:12px;color:#ddd;line-height:1.5;box-shadow:0 8px 24px rgba(0,0,0,0.4);cursor:pointer;animation:fadeUp 0.4s ease;';
     bubble.textContent = welcomeText[l] || welcomeText.de;
     bubble.addEventListener('click', function() { bubble.remove(); toggle(); });
-    document.body.appendChild(bubble);
+    if (novaVisible) { document.body.appendChild(bubble); }
   }, 2000);
   var pTexts = {
     de: ['Nova hier. 👋 Fragen?', 'Lieber kurz sprechen? → calendly.com/el-tatuador/30min'],
