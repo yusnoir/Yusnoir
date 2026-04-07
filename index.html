@@ -778,7 +778,7 @@ if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded'
 var msgs={de:function(n,m){return'Nur noch '+n+' '+(n===1?'Platz':'Plätze')+' frei im '+m;},en:function(n,m){return'Only '+n+' slot'+(n===1?'':'s')+' left in '+m;},es:function(n,m){return'Solo '+n+' '+(n===1?'plaza':'plazas')+' libre'+(n===1?'':'s')+' en '+m;}};
 var submitU={de:'Jede Idee verdient ein einzigartiges Tattoo — nicht irgendwann, jetzt.',en:'Every idea deserves a unique tattoo — not someday, now.',es:'Cada idea merece un tatuaje único — no algún día, ahora.'};
 function getSlots(){var day=new Date().getDate(),total=new Date(new Date().getFullYear(),new Date().getMonth()+1,0).getDate();return Math.max(1,5-Math.floor((day/total)*5));}
-function updateUrgency(lang){[document.getElementById('urgency-text'),document.getElementById('urgency-text-2')].forEach(function(el){if(!el)return;var now=new Date(),m=(months[lang]||months.de)[now.getMonth()];el.textContent=(msgs[lang]||msgs.de)(getSlots(),m);});var su=document.getElementById('submit-urgency-text');if(su)su.textContent=submitU[lang]||submitU.de;document.querySelectorAll('[data-key="floating"]').forEach(function(el){var t=translations[lang];if(t&&t['floating'])el.textContent=t['floating'];});}
+function updateUrgency(lang){var t={de:'ZÜRICH 5–15 MAI · NUR 3 PLÄTZE FREI — HAMBURG 4–14 JUNI · JETZT ANFRAGEN',en:'ZÜRICH MAY 5–15 · ONLY 3 SPOTS LEFT — HAMBURG JUNE 4–14 · BOOK NOW',es:'ZÜRICH 5–15 MAYO · SOLO 3 PLAZAS — HAMBURG 4–14 JUNIO · RESERVA AHORA'};var s=t[lang]||t.de;[document.getElementById('urgency-text'),document.getElementById('urgency-text-2')].forEach(function(el){if(el)el.textContent=s;});}
 updateUrgency('de');
 document.addEventListener('langchange',function(e){updateUrgency(e.detail);});})();
 
