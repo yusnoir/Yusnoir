@@ -203,8 +203,9 @@
     #submit-btn:disabled{opacity:0.5;cursor:not-allowed;}
     #submit-btn:not(:disabled){background-color:#E11D2E;}
     #submit-btn:not(:disabled):hover{background-color:#c8172a;transform:translateY(-1px);box-shadow:0 8px 32px rgba(225,29,46,0.35);}
-    .lang-btn{font-size:13px;text-transform:uppercase;letter-spacing:0.12em;background:none;border:1px solid transparent;cursor:pointer;transition:all 0.2s;opacity:0.4;color:white;font-weight:400;padding:3px 7px;border-radius:3px;}
-    .lang-btn.active{opacity:1;color:#E11D2E;font-weight:700;border-color:rgba(225,29,46,0.4);background:rgba(225,29,46,0.08);}
+    .lang-btn{background:none;border:1px solid transparent;cursor:pointer;transition:all 0.2s;opacity:0.45;padding:3px;border-radius:4px;line-height:0;}
+    .lang-btn.active{opacity:1;border-color:rgba(225,29,46,0.5);background:rgba(225,29,46,0.1);}
+    .lang-btn svg{display:block;border-radius:2px;}
     .nav-link{font-size:10px;text-transform:uppercase;letter-spacing:0.15em;color:rgba(255,255,255,0.55);text-decoration:none;transition:color 0.2s;font-weight:400;background:none;border:none;cursor:pointer;}
     .nav-link:hover{color:white;}
     .hero-headline{font-size:clamp(2rem,8vw,3.8rem);font-weight:700;text-transform:uppercase;letter-spacing:-0.02em;line-height:1.05;color:white;text-align:center;}
@@ -462,11 +463,17 @@
 <header class="relative w-full overflow-hidden flex flex-col items-center text-center px-6 pt-24 pb-20 bg-brand-black justify-center" style="min-height:820px;">
   <div class="lang-header">
     <div class="lang-wrap">
-      <button onclick="changeLang('de')" id="btn-de" class="lang-btn active">DE</button>
+      <button onclick="changeLang('de')" id="btn-de" class="lang-btn active" aria-label="Deutsch" title="Deutsch">
+        <svg width="22" height="16" viewBox="0 0 5 3" xmlns="http://www.w3.org/2000/svg"><rect width="5" height="3" fill="#000"/><rect width="5" height="2" y="1" fill="#DD0000"/><rect width="5" height="1" y="2" fill="#FFCE00"/></svg>
+      </button>
       <span style="color:rgba(255,255,255,0.15);font-size:13px;font-weight:300;line-height:1;">|</span>
-      <button onclick="changeLang('en')" id="btn-en" class="lang-btn">EN</button>
+      <button onclick="changeLang('en')" id="btn-en" class="lang-btn" aria-label="English" title="English">
+        <svg width="22" height="16" viewBox="0 0 60 36" xmlns="http://www.w3.org/2000/svg"><defs><clipPath id="ukclip"><rect width="60" height="36"/></clipPath></defs><g clip-path="url(#ukclip)"><rect width="60" height="36" fill="#00247d"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#fff" stroke-width="7.2"/><path d="M0,0 L60,36 M60,0 L0,36" stroke="#cf142b" stroke-width="2.4"/><path d="M30,0 V36 M0,18 H60" stroke="#fff" stroke-width="12"/><path d="M30,0 V36 M0,18 H60" stroke="#cf142b" stroke-width="7.2"/></g></svg>
+      </button>
       <span style="color:rgba(255,255,255,0.15);font-size:13px;font-weight:300;line-height:1;">|</span>
-      <button onclick="changeLang('es')" id="btn-es" class="lang-btn">ES</button>
+      <button onclick="changeLang('es')" id="btn-es" class="lang-btn" aria-label="Español" title="Español">
+        <svg width="22" height="16" viewBox="0 0 3 2" xmlns="http://www.w3.org/2000/svg"><rect width="3" height="2" fill="#AA151B"/><rect width="3" height="1" y="0.5" fill="#F1BF00"/></svg>
+      </button>
     </div>
     <div class="nav-wrap">
       <button onclick="openModal('proceso')" class="nav-link" data-key="nav-process">Ablauf</button>
