@@ -230,7 +230,7 @@
         "hero-cta":"CONTACTAR",
         "gallery-link":"Folgen",
         "stat-1":"Jahre Erf.","stat-2":"Tattoos","stat-3":"Custom",
-        "book-title":"Tattoo Anfragen — Zürich & Hamburg",
+        "book-title":"Tattoo Anfragen\n— Zürich & Hamburg",
         "btn-send":"Anfrage senden →","book-consultation":"Beratungsgespräch buchen →","btn-sending":"Wird gesendet…",
         "btn-next":"Weiter →","btn-back":"Zurück",
         "step-label-1":"Du","step-label-2":"Tattoo",
@@ -303,7 +303,7 @@
         "hero-cta":"CONTACTAR",
         "gallery-link":"Follow",
         "stat-1":"Years Exp.","stat-2":"Tattoos","stat-3":"Custom",
-        "book-title":"Tattoo Booking — Zürich & Hamburg",
+        "book-title":"Tattoo Booking\n— Zürich & Hamburg",
         "btn-send":"Send inquiry →","btn-sending":"Sending…",
         "btn-next":"Continue →","btn-back":"Back",
         "step-label-1":"You","step-label-2":"Tattoo",
@@ -376,7 +376,7 @@
         "hero-cta":"CONTACTAR",
         "gallery-link":"Sígueme",
         "stat-1":"Años Exp.","stat-2":"Tatuajes","stat-3":"Personalizado",
-        "book-title":"Reserva tu Tatuaje — Zürich & Hamburgo",
+        "book-title":"Reserva tu Tatuaje\n— Zürich & Hamburgo",
         "btn-send":"Enviar solicitud →","book-consultation":"Reservar consulta gratis →","btn-sending":"Enviando…",
         "btn-next":"Continuar →","btn-back":"Volver",
         "step-label-1":"Tú","step-label-2":"Tattoo",
@@ -475,7 +475,7 @@
       var t=translations[lang];
       document.querySelectorAll('[data-key]').forEach(el=>{
         var key=el.getAttribute('data-key');
-        if(t[key]!==undefined){if(key==='hero-headline')el.innerHTML=t[key].replace(/\n/g,'<br>');else el.innerText=t[key];}
+        if(t[key]!==undefined){if(key==='hero-headline'||key==='book-title')el.innerHTML=t[key].replace(/\n/g,'<br>');else el.innerText=t[key];}
       });
       document.querySelectorAll('[data-p]').forEach(el=>{var k=el.getAttribute('data-p');if(t[k])el.placeholder=t[k];});
       document.dispatchEvent(new CustomEvent('langchange',{detail:lang}));
@@ -631,7 +631,7 @@
 
 <section class="px-8 py-24 reveal-on-scroll" id="booking" style="background:#1a1a1a;">
   <div class="text-center mb-10">
-    <h2 data-key="book-title" class="text-3xl font-bold uppercase tracking-tighter text-white">Terminanfragen</h2>
+    <h2 data-key="book-title" class="text-3xl font-bold uppercase tracking-tighter text-white">Tattoo Anfragen<br>— Zürich &amp; Hamburg</h2>
     <div class="h-0.5 w-10 bg-brand-red mx-auto mt-4 opacity-80"></div>
        
   </div>
