@@ -133,7 +133,7 @@
     .lang-header{position:absolute;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:linear-gradient(to bottom,rgba(0,0,0,0.5),transparent);}
     .lang-wrap{display:flex;gap:8px;align-items:center;}
     .nav-wrap{display:flex;gap:12px;align-items:center;}
-    .brand-logo-img{width:95%;max-width:520px;height:auto;filter:invert(1) contrast(150%) brightness(1.2);mix-blend-mode:screen;opacity:0;animation:fadeInLogo 0.5s ease forwards;margin-bottom:1.5rem;}
+    .brand-logo-img{width:auto;max-width:95%;height:auto;max-height:320px;filter:invert(1) contrast(150%) brightness(1.2);mix-blend-mode:screen;opacity:0;animation:fadeInLogo 0.5s ease forwards;margin-bottom:1.5rem;}
     .footer-logo-img{max-width:100px;filter:invert(1) brightness(1.5);margin-bottom:0.5rem;opacity:0.8;}
     img[src*="nova.png"]{width:80px!important;height:80px!important;object-fit:cover;}
     @keyframes fadeInLogo{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
@@ -483,7 +483,7 @@
   <img alt="Hero" class="absolute inset-0 w-full h-full object-cover" style="filter:grayscale(100%) brightness(55%);" width="768" height="1376" src="images/hero.webp" fetchpriority="high" decoding="async">
   <div class="absolute inset-0 bg-gradient-to-b from-black/20 via-black/50 to-[#111111] z-[1]"></div>
   <div class="relative z-10 flex flex-col items-center w-full max-w-2xl mx-auto">
-    <img src="images/logo.webp" alt="YUS NOIR" class="brand-logo-img" decoding="async" width="520" height="440">
+    <img src="images/logo.svg" alt="YUS NOIR" class="brand-logo-img" decoding="async" width="818" height="1143">
     <h1 data-key="hero-headline" class="hero-headline hero-line hero-line-1" style="margin-bottom:1.2rem;">Deine Haut.<br>Deine Geschichte.</h1>
     <p data-key="hero-sub" class="hero-line hero-line-2" style="font-size:11px;text-transform:uppercase;letter-spacing:0.3em;color:rgba(255,255,255,0.5);margin-bottom:0.8rem;">Black &amp; Grey Realismus</p>
     <p class="hero-line hero-line-3" style="font-size:15px;letter-spacing:0.25em;text-transform:uppercase;color:rgba(255,255,255,0.4);">Zürich — Hamburg</p>
@@ -694,7 +694,7 @@
 
 <footer class="py-10 border-t border-white/5" style="background:#0d0d0d;">
   <div class="flex flex-col items-center gap-4">
-    <img src="images/logo.webp" alt="YUS NOIR" class="footer-logo-img" loading="lazy" decoding="async">
+    <img src="images/logo.svg" alt="YUS NOIR" class="footer-logo-img" loading="lazy" decoding="async">
     <p data-key="copy" class="text-[8px] tracking-[0.35em] text-zinc-600 uppercase">© 2026 YUS NOIR</p>
 <div id="cookie-row" style="display:flex;align-items:center;gap:10px;margin-top:8px;">
   <span id="cookie-row-text" style="font-size:8px;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.25);"></span>
