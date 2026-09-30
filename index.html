@@ -65,6 +65,22 @@
     gtag('config', 'AW-17933753185');
   </script>
 
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1895543434971873');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1895543434971873&ev=PageView&noscript=1"/></noscript>
+  <!-- End Meta Pixel Code -->
+
   <style>
     /* ── Tailwind replacements ─────────────────────────────── */
     *,::before,::after{box-sizing:border-box;}
@@ -753,7 +769,7 @@
           </div>
           <p class="text-white/40 text-xs uppercase tracking-[0.25em] mb-6">Lieber erst sprechen? Kostenloses 20-Min-Gespräch</p>
           <a href="https://calendly.com/el-tatuador/30min" target="_blank" rel="noopener"
-              onclick="if(window.gtag)gtag('event','contact_click',{click_location:'booking_calendly'})"
+              onclick="if(window.gtag)gtag('event','contact_click',{click_location:'booking_calendly'});if(window.fbq)fbq('track','Contact')"
               style="display:inline-flex;align-items:center;gap:10px;padding:10px 24px;border:1px solid rgba(225,29,46,0.45);border-radius:2px;background:rgba(225,29,46,0.08);text-decoration:none;transition:background 0.2s;"
               onmouseover="this.style.background='rgba(225,29,46,0.16)'"
               onmouseout="this.style.background='rgba(225,29,46,0.08)'">
@@ -906,7 +922,7 @@ window.addEventListener('load',function(){
   var textarea=document.getElementById('idea-textarea');
   var step1Fields=['f-nombre','f-email'];
   var floatingBtn=document.createElement('button');
-  floatingBtn.setAttribute('onclick',"if(window.gtag)gtag('event','contact_click',{click_location:'floating_button'});document.getElementById('booking').scrollIntoView({behavior:'smooth'})");
+  floatingBtn.setAttribute('onclick',"if(window.gtag)gtag('event','contact_click',{click_location:'floating_button'});if(window.fbq)fbq('track','Contact');document.getElementById('booking').scrollIntoView({behavior:'smooth'})");
   floatingBtn.style.cssText='display:flex;position:fixed;right:24px;bottom:24px;z-index:4000;padding:14px 28px;border-radius:50px;background:#E11D2E;border:none;cursor:pointer;box-shadow:0 4px 24px rgba(225,29,46,0.35);';
   var fspan=document.createElement('span');fspan.setAttribute('data-key','floating');fspan.style.cssText='font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.25em;color:white;';fspan.textContent=(function(){try{return(translations[getLang()]||translations['de'])['floating']}catch(e){return'KONTAKT'}})();
   floatingBtn.appendChild(fspan);document.body.appendChild(floatingBtn);
@@ -936,7 +952,7 @@ window.addEventListener('load',function(){
   function stopDots(){if(btn&&btn._di){clearInterval(btn._di);btn._di=null;}}
   var fd=new FormData();fd.append('_subject','Nueva solicitud — YUS NOIR');fd.append('_captcha','false');fd.append('_template','table');
   fd.append('nombre',document.getElementById('f-nombre')?.value||'');fd.append('email',document.getElementById('f-email')?.value||'');fd.append('telefono',document.getElementById('f-telefono')?.value||'');fd.append('edad',document.getElementById('f-edad')?.value||'');fd.append('zona',document.getElementById('zona-input')?.value||'');fd.append('tamano',document.getElementById('f-tamano')?.value||'');fd.append('idea',document.getElementById('idea-textarea')?.value||'');
-  Promise.all(selectedFiles.map(function(file,i){return compressImage(file,600,0.70).then(function(blob){fd.append('foto_'+(i+1),blob,'foto_'+(i+1)+'.jpg');});})).then(function(){return fetch('https://formsubmit.co/el.tatuador@outlook.es',{method:'POST',body:fd});}).then(function(res){stopDots();if(res.ok){gtag('event','form_submit',{form_id:'tattoo-form'});gtag('event','conversion',{'send_to':'AW-17933753185/9EtqCK7TzZUcEOG2vedC','value':1.0,'currency':'EUR'});fetch('https://brevo-proxy.el-tatuador.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:fd.get('email')||'',name:fd.get('nombre')||''})}).catch(function(){});tattooForm.style.opacity='0';tattooForm.style.transition='opacity 0.4s ease';var si=document.getElementById('step-indicator');if(si){si.style.opacity='0';si.style.transition='opacity 0.4s';}setTimeout(function(){tattooForm.style.display='none';if(si)si.style.display='none';var nombre=(document.getElementById('f-nombre')||{}).value||'';var fn=nombre.trim().split(' ')[0];var msgs={de:fn?fn+', deine Anfrage ist eingegangen.\nIch melde mich innerhalb von 48 Stunden.\n— Giuseppe':t['success-body'],en:fn?fn+', your request has been received.\nI\'ll get back to you within 48 hours.\n— Giuseppe':t['success-body'],es:fn?fn+', tu solicitud ha sido recibida.\nMe pondré en contacto en 48 horas.\n— Giuseppe':t['success-body']};var stitle=document.getElementById('success-title'),sbody=document.getElementById('success-body'),sig=document.getElementById('success-ig');if(stitle)stitle.innerText=t['success-title'];if(sbody)sbody.innerText=msgs[currentLang]||msgs.de;if(sig)sig.innerText=t['success-ig'];successMsg.style.display='block';successMsg.style.opacity='0';successMsg.style.transition='opacity 0.6s ease';setTimeout(function(){successMsg.style.opacity='1';},50);successMsg.scrollIntoView({behavior:'smooth',block:'center'});
+  Promise.all(selectedFiles.map(function(file,i){return compressImage(file,600,0.70).then(function(blob){fd.append('foto_'+(i+1),blob,'foto_'+(i+1)+'.jpg');});})).then(function(){return fetch('https://formsubmit.co/el.tatuador@outlook.es',{method:'POST',body:fd});}).then(function(res){stopDots();if(res.ok){gtag('event','form_submit',{form_id:'tattoo-form'});gtag('event','conversion',{'send_to':'AW-17933753185/9EtqCK7TzZUcEOG2vedC','value':1.0,'currency':'EUR'});if(window.fbq)fbq('track','Lead');fetch('https://brevo-proxy.el-tatuador.workers.dev',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({email:fd.get('email')||'',name:fd.get('nombre')||''})}).catch(function(){});tattooForm.style.opacity='0';tattooForm.style.transition='opacity 0.4s ease';var si=document.getElementById('step-indicator');if(si){si.style.opacity='0';si.style.transition='opacity 0.4s';}setTimeout(function(){tattooForm.style.display='none';if(si)si.style.display='none';var nombre=(document.getElementById('f-nombre')||{}).value||'';var fn=nombre.trim().split(' ')[0];var msgs={de:fn?fn+', deine Anfrage ist eingegangen.\nIch melde mich innerhalb von 48 Stunden.\n— Giuseppe':t['success-body'],en:fn?fn+', your request has been received.\nI\'ll get back to you within 48 hours.\n— Giuseppe':t['success-body'],es:fn?fn+', tu solicitud ha sido recibida.\nMe pondré en contacto en 48 horas.\n— Giuseppe':t['success-body']};var stitle=document.getElementById('success-title'),sbody=document.getElementById('success-body'),sig=document.getElementById('success-ig');if(stitle)stitle.innerText=t['success-title'];if(sbody)sbody.innerText=msgs[currentLang]||msgs.de;if(sig)sig.innerText=t['success-ig'];successMsg.style.display='block';successMsg.style.opacity='0';successMsg.style.transition='opacity 0.6s ease';setTimeout(function(){successMsg.style.opacity='1';},50);successMsg.scrollIntoView({behavior:'smooth',block:'center'});
               // ── Google Ads Conversion Tracking ──
               gtag('event', 'conversion', {
                 'send_to': 'AW-17933753185/TPKjCJ7wvIgcEOG2vedC',
@@ -1207,7 +1223,7 @@ transition: opacity 0.5s ease;
     <img src="/images/nova.webp" alt="Nova" style="width:36px;height:auto;object-fit:contain;flex-shrink:0;"/>
     <div>
       <div id="nova-name">Nova · YUS NOIR</div>
-<a id="nova-calendly-btn" href="https://calendly.com/el-tatuador/30min" target="_blank" rel="noopener" onclick="if(window.gtag)gtag('event','contact_click',{click_location:'nova_calendly'})">📅 Termin buchen</a>
+<a id="nova-calendly-btn" href="https://calendly.com/el-tatuador/30min" target="_blank" rel="noopener" onclick="if(window.gtag)gtag('event','contact_click',{click_location:'nova_calendly'});if(window.fbq)fbq('track','Contact')">📅 Termin buchen</a>
       <div id="nova-sub">Antwortet sofort · Yus</div>
     </div>
     <a id="nova-wa" href="http://wa.me/34910175496" target="_blank">
