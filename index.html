@@ -152,6 +152,12 @@
     .bzone{fill:#2e2e2e;stroke:#666;stroke-width:1.2;transition:fill 0.2s,stroke 0.2s;cursor:pointer;}
     @media(hover:hover) and (pointer:fine){.bzone:hover{fill:#333;stroke:rgba(225,29,46,0.5);}}
     .bzone.selected{fill:rgba(225,29,46,0.3)!important;stroke:#E11D2E!important;stroke-width:2!important;}
+    .size-chip{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.12);color:rgba(255,255,255,0.6);padding:10px 14px;border-radius:2px;font-size:9px;text-transform:uppercase;letter-spacing:0.1em;cursor:pointer;transition:all 0.2s;font-family:inherit;text-align:left;line-height:1.5;}
+    .size-chip:hover{border-color:rgba(225,29,46,0.4);}
+    .size-chip.selected{background:rgba(225,29,46,0.12);border-color:#E11D2E;color:white;}
+    .size-chip .sz-label{display:block;font-weight:700;font-size:10px;}
+    .size-chip .sz-hint{display:block;color:rgba(255,255,255,0.4);font-size:8px;letter-spacing:0.05em;margin-top:2px;text-transform:none;}
+    .size-chip.selected .sz-hint{color:rgba(255,255,255,0.65);}
     .faq-item{border-bottom:1px solid rgba(255,255,255,0.06);}
     .faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:20px 0;background:none;border:none;color:white;font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:0.2em;cursor:pointer;text-align:left;}
     .faq-icon{color:#E11D2E;font-size:20px;font-weight:300;transition:transform 0.3s;flex-shrink:0;margin-left:16px;}
@@ -249,6 +255,12 @@
         "price-large-note":"Größere Projekte (z.B. Sleeves) — mehrere Sessions, Preis auf Anfrage",
         "email-error-text":"Ungültige E-Mail-Adresse",
         "phone-error-text":"Bitte Telefonnummer prüfen",
+        "size-label":"Ungefähre Größe",
+        "size-xs-hint":"Bis 5cm — kleines Symbol",
+        "size-s-hint":"5–10cm — Handfläche",
+        "size-m-hint":"10–20cm — Unterarm",
+        "size-l-hint":"20–35cm — halber Arm",
+        "size-xl-hint":"35cm+ — Sleeve, Rücken",
         "process-title":"Wie es läuft","nav-process":"Ablauf","nav-faq":"Fragen",
         "process-1-title":"Anfrage stellen",
         "process-1-body":"Füll das Formular vollständig aus: Körperstelle, Größe, Stil und deine Idee. Je genauer du bist, desto gezielter kann ich antworten. Referenzbilder sind willkommen — auch wenn es nur eine Stimmung ist.",
@@ -270,7 +282,7 @@
         "faq-5-q":"Wie weit im Voraus muss ich buchen?",
         "faq-5-a":"Je nach Auslastung liegt die Wartezeit zwischen 4 und 12 Wochen. Für große Projekte oder bestimmte Wunschtermine: so früh wie möglich anfragen. Kurzfristig kann manchmal etwas bei Absagen freiwerden — es lohnt sich zu fragen.",
         "faq-6-q":"Was kostet mein Tattoo?",
-        "faq-6-a":"Das hängt von Größe, Platzierung und Komplexität ab. Kleine Motive (1–2h): ab 150–300 €/CHF. Mittlere Stücke (3–5h): 450–750 €/CHF. Große Projekte wie Sleeves oder Rücken (6h+): auf Anfrage. Die genaue Einschätzung bekommst du in der kostenlosen Beratung.",
+        "faq-6-a":"Ich arbeite mit einem Ganztagspreis (6h): 1.000 € in Hamburg, 1.500 CHF in Zürich. Kleinere Motive, die weniger Zeit brauchen, können günstiger sein — das besprechen wir individuell in der kostenlosen Beratung. Größere Projekte wie Sleeves oder Rücken (mehrere Sessions): Preis auf Anfrage.",
         "faq-7-q":"Nimmst du jedes Projekt an?",
         "faq-7-a":"Nein — und das ist ein gutes Zeichen. Ich arbeite nur an Projekten, bei denen ich weiß, dass ich das Beste herausholen kann. Cover-ups mache ich nicht, Kopien auch nicht. Wenn deine Idee nicht zu mir passt, sage ich es dir direkt.",
         "privacy-consent-text":"Mit dem Absenden akzeptierst du die ",
@@ -283,7 +295,7 @@
         "legal-1":"Rechtliche Bestimmungen","legal-2":"Datenschutz",
         "required-note":"* Pflichtfelder",
         "autosave-restored":"Deine Eingaben wurden wiederhergestellt",
-        "photo-label":"Referenzbilder","photo-hint":"Optional — Max. 8 Fotos",
+        "photo-label":"Referenzbilder","photo-hint":"Optional — auch Fotos der Körperstelle hilfreich · Max. 8",
         "consult-title":"Kostenlose Beratung — ohne Verpflichtung",
         "consult-body":"Bevor ich auch nur einen Strich zeichne, reden wir. Deine Idee, deine Geschichte, deine Fragen. Erst wenn wir beide überzeugt sind, geht es los. Kein Druck. Kein Depot bis zur Bestätigung.",
         "review-1-text":"\"Ich hab mir ein Tattoo von Yus stechen lassen. Absolut der Hammer. War super nett, hat mich komplett aufgeklärt, gut beraten und einfach super gestochen. Kann ich nur empfehlen.\"",
@@ -325,6 +337,12 @@
         "price-large-note":"Larger projects (e.g. sleeves) — multiple sessions, price on request",
         "email-error-text":"Invalid email address",
         "phone-error-text":"Please check your phone number",
+        "size-label":"Approximate size",
+        "size-xs-hint":"Up to 5cm — small symbol",
+        "size-s-hint":"5–10cm — palm of hand",
+        "size-m-hint":"10–20cm — forearm",
+        "size-l-hint":"20–35cm — half arm",
+        "size-xl-hint":"35cm+ — sleeve, back",
         "process-title":"The Process","nav-process":"Process","nav-faq":"Questions",
         "process-1-title":"Send your request",
         "process-1-body":"Fill out the booking form completely: placement, size, style and your idea. The more detail you provide, the better I can respond. Reference images are welcome.",
@@ -346,7 +364,7 @@
         "faq-5-q":"How far in advance should I book?",
         "faq-5-a":"Depending on my schedule, wait times range from 4 to 12 weeks. For large projects or specific dates, reach out as early as possible. Last-minute slots sometimes open from cancellations.",
         "faq-6-q":"What will my tattoo cost?",
-        "faq-6-a":"It depends on size, placement and complexity. Small pieces (1–2h): from 150–300 €/CHF. Medium pieces (3–5h): 450–750 €/CHF. Large projects (6h+): on request. You get an accurate estimate in the free consultation.",
+        "faq-6-a":"I work with a full-day rate (6h): 1,000 € in Hamburg, 1,500 CHF in Zürich. Smaller pieces that need less time can be cheaper — we discuss that individually in the free consultation. Larger projects like sleeves or back pieces (multiple sessions): price on request.",
         "faq-7-q":"Do you take every project?",
         "faq-7-a":"No — and that's a good sign. I only work on projects where I know I can give my best. No cover-ups, no copies. If your idea isn't right for me, I'll tell you straight.",
         "privacy-consent-text":"By submitting you accept the ",
@@ -359,7 +377,7 @@
         "legal-1":"Legal Terms","legal-2":"Privacy",
         "required-note":"* Required fields",
         "autosave-restored":"Your data has been restored",
-        "photo-label":"Reference photos","photo-hint":"Optional — Max. 8 photos",
+        "photo-label":"Reference photos","photo-hint":"Optional — photos of the body area help too · Max. 8",
         "consult-title":"Free consultation — no commitment",
         "consult-body":"Before I draw a single line, we talk. Your idea, your story, your questions. Only when we're both convinced do we begin. No pressure. No deposit until confirmed.",
         "review-1-text":"\"I got a tattoo from Yus. Absolutely amazing. He was super friendly, explained everything, gave great advice, and the work itself was excellent. Highly recommend.\"",
@@ -401,6 +419,12 @@
         "price-large-note":"Proyectos más grandes (ej. mangas) — varias sesiones, precio a consultar",
         "email-error-text":"Correo electrónico no válido",
         "phone-error-text":"Revisa el número de teléfono",
+        "size-label":"Tamaño aproximado",
+        "size-xs-hint":"Hasta 5cm — símbolo pequeño",
+        "size-s-hint":"5–10cm — palma de la mano",
+        "size-m-hint":"10–20cm — antebrazo",
+        "size-l-hint":"20–35cm — medio brazo",
+        "size-xl-hint":"35cm+ — manga, espalda",
         "process-title":"Cómo funciona","nav-process":"Proceso","nav-faq":"Preguntas",
         "process-1-title":"Enviar solicitud",
         "process-1-body":"Rellena el formulario: zona, tamaño, estilo y tu idea. Cuanta más información, mejor podré responderte. Las fotos de referencia son bienvenidas.",
@@ -422,7 +446,7 @@
         "faq-5-q":"¿Con cuánta antelación debo reservar?",
         "faq-5-a":"Según mi agenda, la espera es de entre 4 y 12 semanas. Para proyectos grandes o fechas concretas, contacta lo antes posible. A veces hay huecos por cancelaciones.",
         "faq-6-q":"¿Qué costará mi tatuaje?",
-        "faq-6-a":"Depende del tamaño, la zona y la complejidad. Motivos pequeños (1–2h): desde 150–300 €/CHF. Piezas medianas (3–5h): 450–750 €/CHF. Proyectos grandes (6h+): a consultar. La estimación exacta en la consulta gratuita.",
+        "faq-6-a":"Trabajo con un precio de día completo (6h): 1.000 € en Hamburgo, 1.500 CHF en Zúrich. Los motivos más pequeños, que requieren menos tiempo, pueden salir más económicos — lo hablamos de forma individual en la consulta gratuita. Proyectos grandes como mangas o espalda (varias sesiones): precio a consultar.",
         "faq-7-q":"¿Aceptas cualquier proyecto?",
         "faq-7-a":"No — y eso es buena señal. Solo trabajo en proyectos donde sé que puedo dar lo mejor. Sin cover-ups, sin copias. Si tu idea no es para mí, te lo digo directamente.",
         "privacy-consent-text":"Al enviar aceptas la ",
@@ -435,7 +459,7 @@
         "legal-1":"Términos Legales","legal-2":"Privacidad",
         "required-note":"* Campos obligatorios",
         "autosave-restored":"Tus datos han sido recuperados",
-        "photo-label":"Fotos de referencia","photo-hint":"Opcional — Máx. 8 fotos",
+        "photo-label":"Fotos de referencia","photo-hint":"Opcional — fotos de la zona también ayudan · Máx. 8",
         "consult-title":"Consulta gratuita — sin compromiso",
         "consult-body":"Antes de dibujar una sola línea, hablamos. Tu idea, tu historia, tus dudas. Solo cuando los dos estamos convencidos, empezamos. Sin presión. Sin depósito hasta la confirmación.",
         "review-1-text":"\"Me hice un tatuaje con Yus. Una pasada. Súper amable, me explicó todo, me aconsejó muy bien y el trabajo quedó excelente. Solo puedo recomendarlo.\"",
@@ -708,7 +732,19 @@
             <p id="zone-limit-msg" style="display:none;font-size:9px;color:#E11D2E;letter-spacing:0.1em;text-transform:uppercase;margin-top:10px;"></p>
           </div>
         </div></div>
-        
+
+        <div class="focus-group"><div style="flex:1;">
+          <input type="hidden" id="f-tamano" name="tamano"/>
+          <p id="size-label" data-key="size-label" style="font-size:9px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(120,120,120,0.7);margin-bottom:12px;">Ungefähre Größe</p>
+          <div id="size-chips" style="display:flex;flex-wrap:wrap;gap:8px;">
+            <button type="button" class="size-chip" data-size="XS"><span class="sz-label">XS</span><span class="sz-hint" data-key="size-xs-hint">Bis 5cm — kleines Symbol</span></button>
+            <button type="button" class="size-chip" data-size="S"><span class="sz-label">S</span><span class="sz-hint" data-key="size-s-hint">5–10cm — Handfläche</span></button>
+            <button type="button" class="size-chip" data-size="M"><span class="sz-label">M</span><span class="sz-hint" data-key="size-m-hint">10–20cm — Unterarm</span></button>
+            <button type="button" class="size-chip" data-size="L"><span class="sz-label">L</span><span class="sz-hint" data-key="size-l-hint">20–35cm — halber Arm</span></button>
+            <button type="button" class="size-chip" data-size="XL"><span class="sz-label">XL</span><span class="sz-hint" data-key="size-xl-hint">35cm+ — Sleeve, Rücken</span></button>
+          </div>
+        </div></div>
+
         <div class="focus-group"><div style="flex:1;"><div style="position:relative;"><textarea id="idea-textarea" name="idea" enterkeyhint="done" data-p="IDEA" placeholder=" " minlength="20" required style="height:80px;resize:none;overflow:hidden;padding-top:24px;padding-bottom:10px;padding-right:24px;"></textarea><label class="field-label" for="idea-textarea" style="position:absolute;left:10px;top:18px;font-size:10px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(120,120,120,0.7);pointer-events:none;transition:all 0.2s ease;" data-key="label-idea">DEINE IDEE *</label></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding:0 2px;"><span id="char-hint" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:#888;transition:color 0.3s;">Minimum 20 Zeichen</span><span id="char-count" style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#555;transition:color 0.3s;">0 / 20</span></div></div></div>
         <div class="focus-group"><div style="flex:1;"><input type="file" id="ref-photos" accept="image/*" multiple style="display:none;"><div id="upload-zone" onclick="document.getElementById('ref-photos').click()" style="position:relative;cursor:pointer;"><div style="position:relative;background:rgba(255,255,255,0.04);border:none;border-bottom:1px solid rgba(255,255,255,0.15);padding:24px 10px 10px 10px;min-height:60px;"><span data-key="photo-label" style="position:absolute;left:10px;top:6px;font-size:7px;text-transform:uppercase;letter-spacing:0.2em;color:#555;font-weight:400;pointer-events:none;">REFERENZBILDER</span><div id="photo-preview" style="display:flex;flex-wrap:wrap;gap:8px;margin-top:4px;min-height:28px;align-items:center;"><span id="photo-placeholder" style="font-size:9px;color:rgba(180,180,180,0.7);text-transform:uppercase;letter-spacing:0.1em;">Fotos hinzufügen</span></div></div></div><div style="display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding:0 2px;"><span data-key="photo-hint" style="font-size:8px;text-transform:uppercase;letter-spacing:0.15em;color:#888;">Optional — Max. 8 Fotos</span><span id="photo-count" style="font-size:9px;font-weight:700;letter-spacing:0.1em;color:#555;">0 / 8</span></div></div></div>
         <div class="focus-group"><label class="checkbox-wrap" style="flex:1;"><input type="checkbox" id="legal-check"><span data-key="check-text" class="text-[9px] text-zinc-500 uppercase tracking-widest leading-relaxed">Ich habe die Buchungsbedingungen gelesen und stimme zu</span></label></div>
@@ -929,7 +965,7 @@ window.addEventListener('load',function(){
 
 (function(){var SK='yusnoir_form';var fields=[{id:'f-nombre',key:'nombre'},{id:'f-email',key:'email'},{id:'f-telefono',key:'telefono'},{id:'f-edad',key:'edad'},{id:'f-tamano',key:'tamano'},{id:'idea-textarea',key:'idea'}];
 function save(){var d={};fields.forEach(function(f){var el=document.getElementById(f.id);if(el)d[f.key]=el.value;});var z=document.getElementById('zona-input');if(z)d.zona=z.value;try{localStorage.setItem(SK,JSON.stringify(d));}catch(e){}}
-function restore(){var raw;try{raw=localStorage.getItem(SK);}catch(e){}if(!raw)return;var data;try{data=JSON.parse(raw);}catch(e){return;}var any=false;fields.forEach(function(f){var el=document.getElementById(f.id);if(el&&data[f.key]){el.value=data[f.key];el.dispatchEvent(new Event('input'));any=true;}});if(data.zona&&data.zona.trim()){data.zona.split(', ').forEach(function(z){if(z)setTimeout(function(){if(window.toggleZone)window.toggleZone(z);},200);});any=true;}if(any){var b=document.getElementById('autosave-banner');if(b){b.style.display='flex';setTimeout(function(){b.style.opacity='0';setTimeout(function(){b.style.display='none';b.style.opacity='1';},600);},3500);}}}
+function restore(){var raw;try{raw=localStorage.getItem(SK);}catch(e){}if(!raw)return;var data;try{data=JSON.parse(raw);}catch(e){return;}var any=false;fields.forEach(function(f){var el=document.getElementById(f.id);if(el&&data[f.key]){el.value=data[f.key];el.dispatchEvent(new Event('input'));any=true;}});if(data.zona&&data.zona.trim()){data.zona.split(', ').forEach(function(z){if(z)setTimeout(function(){if(window.toggleZone)window.toggleZone(z);},200);});any=true;}if(data.tamano){setTimeout(function(){document.querySelectorAll('.size-chip').forEach(function(c){c.classList.toggle('selected',c.getAttribute('data-size')===data.tamano);});},200);}if(any){var b=document.getElementById('autosave-banner');if(b){b.style.display='flex';setTimeout(function(){b.style.opacity='0';setTimeout(function(){b.style.display='none';b.style.opacity='1';},600);},3500);}}}
 function wire(){fields.forEach(function(f){var el=document.getElementById(f.id);if(el){el.addEventListener('input',save);el.addEventListener('change',save);}});var z=document.getElementById('zona-input');if(z)z.addEventListener('change',save);}
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',function(){wire();restore();});}else{wire();restore();}})();
 
@@ -963,6 +999,9 @@ function showLim(){var el=document.getElementById('zone-limit-msg');if(!el)retur
 function hideLim(){var el=document.getElementById('zone-limit-msg');if(el)el.style.display='none';}
 document.addEventListener('langchange',function(e){currentLangBM=e.detail;renderSel();});
 if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initBodyMap);}else{initBodyMap();}})();
+
+(function(){function initSizeChips(){var chips=document.querySelectorAll('.size-chip'),input=document.getElementById('f-tamano');if(!chips.length||!input)return;chips.forEach(function(c){c.addEventListener('click',function(){var already=c.classList.contains('selected');chips.forEach(function(x){x.classList.remove('selected');});if(!already){c.classList.add('selected');input.value=c.getAttribute('data-size');}else{input.value='';}input.dispatchEvent(new Event('change'));});});}
+if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',initSizeChips);}else{initSizeChips();}})();
 
 function toggleFaq(btn){var a=btn.nextElementSibling,open=a.classList.contains('open');document.querySelectorAll('.faq-a').forEach(function(x){x.classList.remove('open');});document.querySelectorAll('.faq-q').forEach(function(x){x.classList.remove('open');});if(!open){a.classList.add('open');btn.classList.add('open');}}
 
@@ -1236,7 +1275,7 @@ STYLE: Black & Grey Realism only. No cover-ups, no copies of other artists' work
 
 LOCATION: Yus works freelance in different studios in Zürich and Hamburg. The exact location is confirmed when the appointment is booked.
 
-PRICES: Hamburg 1,000€/day (6h). Zürich 1,500CHF/day (6h). Small(1-2h):150-300. Medium(3-5h):450-750. Large:on request. Deposit 30%. Prices are not negotiable — they reflect the time, experience and exclusive design work. If the budget doesn't fit, it's better to be honest from the start than to compromise on quality.
+PRICES: Full-day rate (6h): Hamburg 1,000€. Zürich 1,500CHF. Smaller pieces needing less time can be cheaper — discussed individually in the free consultation. Larger projects (sleeves, back pieces, multiple sessions): price on request. Deposit 30%. Prices are not negotiable — they reflect the time, experience and exclusive design work. If the budget doesn't fit, it's better to be honest from the start than to compromise on quality.
 
 CANCELLATION: The deposit is non-refundable. If cancelled with enough notice the appointment can be rescheduled, but the deposit secures commitment from both sides.
 
