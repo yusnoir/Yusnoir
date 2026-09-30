@@ -263,11 +263,11 @@
         "email-error-text":"Ungültige E-Mail-Adresse",
         "phone-error-text":"Bitte Telefonnummer prüfen",
         "size-label":"Ungefähre Größe",
-        "size-xs-hint":"Bis 5cm — kleines Symbol",
-        "size-s-hint":"5–10cm — Handfläche",
-        "size-m-hint":"10–20cm — Unterarm",
-        "size-l-hint":"20–35cm — halber Arm",
-        "size-xl-hint":"35cm+ — Sleeve, Rücken",
+        "size-xs-hint":"< 10 cm",
+        "size-s-hint":"10–20 cm",
+        "size-m-hint":"20–30 cm",
+        "size-l-hint":"30+ cm",
+        "size-xl-hint":"Größeres Projekt",
         "process-title":"Wie es läuft","nav-process":"Ablauf","nav-faq":"Fragen",
         "process-1-title":"Anfrage stellen",
         "process-1-body":"Füll das Formular vollständig aus: Körperstelle, Größe, Stil und deine Idee. Je genauer du bist, desto gezielter kann ich antworten. Referenzbilder sind willkommen — auch wenn es nur eine Stimmung ist.",
@@ -345,11 +345,11 @@
         "email-error-text":"Invalid email address",
         "phone-error-text":"Please check your phone number",
         "size-label":"Approximate size",
-        "size-xs-hint":"Up to 5cm — small symbol",
-        "size-s-hint":"5–10cm — palm of hand",
-        "size-m-hint":"10–20cm — forearm",
-        "size-l-hint":"20–35cm — half arm",
-        "size-xl-hint":"35cm+ — sleeve, back",
+        "size-xs-hint":"< 10 cm",
+        "size-s-hint":"10–20 cm",
+        "size-m-hint":"20–30 cm",
+        "size-l-hint":"30+ cm",
+        "size-xl-hint":"Larger project",
         "process-title":"The Process","nav-process":"Process","nav-faq":"Questions",
         "process-1-title":"Send your request",
         "process-1-body":"Fill out the booking form completely: placement, size, style and your idea. The more detail you provide, the better I can respond. Reference images are welcome.",
@@ -427,11 +427,11 @@
         "email-error-text":"Correo electrónico no válido",
         "phone-error-text":"Revisa el número de teléfono",
         "size-label":"Tamaño aproximado",
-        "size-xs-hint":"Hasta 5cm — símbolo pequeño",
-        "size-s-hint":"5–10cm — palma de la mano",
-        "size-m-hint":"10–20cm — antebrazo",
-        "size-l-hint":"20–35cm — medio brazo",
-        "size-xl-hint":"35cm+ — manga, espalda",
+        "size-xs-hint":"< 10 cm",
+        "size-s-hint":"10–20 cm",
+        "size-m-hint":"20–30 cm",
+        "size-l-hint":"30+ cm",
+        "size-xl-hint":"Proyecto más grande",
         "process-title":"Cómo funciona","nav-process":"Proceso","nav-faq":"Preguntas",
         "process-1-title":"Enviar solicitud",
         "process-1-body":"Rellena el formulario: zona, tamaño, estilo y tu idea. Cuanta más información, mejor podré responderte. Las fotos de referencia son bienvenidas.",
@@ -744,11 +744,11 @@
           <input type="hidden" id="f-tamano" name="tamano"/>
           <p id="size-label" data-key="size-label" style="font-size:9px;text-transform:uppercase;letter-spacing:0.2em;color:rgba(120,120,120,0.7);margin-bottom:12px;">Ungefähre Größe</p>
           <div id="size-chips" style="display:flex;flex-wrap:wrap;gap:8px;">
-            <button type="button" class="size-chip" data-size="XS"><span class="sz-label">XS</span><span class="sz-hint" data-key="size-xs-hint">Bis 5cm — kleines Symbol</span></button>
-            <button type="button" class="size-chip" data-size="S"><span class="sz-label">S</span><span class="sz-hint" data-key="size-s-hint">5–10cm — Handfläche</span></button>
-            <button type="button" class="size-chip" data-size="M"><span class="sz-label">M</span><span class="sz-hint" data-key="size-m-hint">10–20cm — Unterarm</span></button>
-            <button type="button" class="size-chip" data-size="L"><span class="sz-label">L</span><span class="sz-hint" data-key="size-l-hint">20–35cm — halber Arm</span></button>
-            <button type="button" class="size-chip" data-size="XL"><span class="sz-label">XL</span><span class="sz-hint" data-key="size-xl-hint">35cm+ — Sleeve, Rücken</span></button>
+            <button type="button" class="size-chip" data-size="&lt; 10 cm"><span class="sz-label" data-key="size-xs-hint">&lt; 10 cm</span></button>
+            <button type="button" class="size-chip" data-size="10–20 cm"><span class="sz-label" data-key="size-s-hint">10–20 cm</span></button>
+            <button type="button" class="size-chip" data-size="20–30 cm"><span class="sz-label" data-key="size-m-hint">20–30 cm</span></button>
+            <button type="button" class="size-chip" data-size="30+ cm"><span class="sz-label" data-key="size-l-hint">30+ cm</span></button>
+            <button type="button" class="size-chip" data-size="Größeres Projekt"><span class="sz-label" data-key="size-xl-hint">Größeres Projekt</span></button>
           </div>
         </div></div>
 
@@ -1230,7 +1230,7 @@ transition: opacity 0.5s ease;
 <a id="nova-calendly-btn" href="https://calendly.com/el-tatuador/30min" target="_blank" rel="noopener" onclick="if(window.gtag)gtag('event','contact_click',{click_location:'nova_calendly'});if(window.fbq)fbq('track','Contact')">📅 Termin buchen</a>
       <div id="nova-sub">Antwortet sofort · Yus</div>
     </div>
-    <a id="nova-wa" href="http://wa.me/34910175496" target="_blank">
+    <a id="nova-wa" href="http://wa.me/34910175496" target="_blank" onclick="if(window.gtag)gtag('event','contact_click',{click_location:'whatsapp'});if(window.fbq)fbq('track','Contact')">
       <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       <span>WhatsApp</span>
     </a>
