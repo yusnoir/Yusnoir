@@ -1457,7 +1457,7 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
           model: 'claude-sonnet-5-5',
           max_tokens: 1000,
           system: SYSTEM,
-          messages: chatHistory.concat([{ role: 'user', content: text }])
+          messages: chatHistory
         })
       });
       var data = await res.json();
@@ -1483,22 +1483,24 @@ WHATSAPP: After 3-4 messages if client seems unsure or asks to speak directly wi
   // Wire up buttons
   document.getElementById('nova-btn').addEventListener('click', function(e) { e.stopPropagation(); toggle(); });
   document.getElementById('nova-x').addEventListener('click', function(e) { e.stopPropagation(); close(); });
-  document.getElementById('nova-send').addEventListener('touchend', function(e) {
+  var novaSendLock = 0;
+  function submitNovaInput(e) {
     e.preventDefault();
     e.stopPropagation();
+    var now = Date.now();
+    if (now - novaSendLock < 400) return; // touchend + click both fire on mobile
     var inp = document.getElementById('nova-input');
     if (!inp) return;
     var text = inp.value.trim();
     if (!text) return;
+    novaSendLock = now;
     inp.value = '';
     inp.style.height = 'auto';
     sendMsg(text);
     setTimeout(function() { inp.focus(); }, 50);
-  });
-  document.getElementById('nova-send').addEventListener('click', function(e) {
-    e.preventDefault();
-    e.stopPropagation();
-  });
+  }
+  document.getElementById('nova-send').addEventListener('touchend', submitNovaInput);
+  document.getElementById('nova-send').addEventListener('click', submitNovaInput);
   document.getElementById('nova-input').addEventListener('keydown', function(e) {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
