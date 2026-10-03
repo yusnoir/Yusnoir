@@ -252,7 +252,7 @@
         "gallery-link":"Folgen",
         "stat-1":"Jahre Erf.","stat-2":"Tattoos","stat-3":"Custom",
         "book-title":"Tattoo Anfragen\n— Zürich —",
-        "btn-send":"Anfrage senden →","book-consultation":"Beratungsgespräch buchen →","btn-sending":"Wird gesendet…",
+        "btn-send":"Anfrage senden →","btn-sending":"Wird gesendet…",
         "btn-next":"Weiter →","btn-back":"Zurück",
         "step-label-1":"Du","step-label-2":"Tattoo",
         "success-title":"Anfrage erhalten",
@@ -389,7 +389,7 @@
         "gallery-link":"Follow",
         "stat-1":"Years Exp.","stat-2":"Tattoos","stat-3":"Custom",
         "book-title":"Tattoo Booking\n— Zürich —",
-        "btn-send":"Send inquiry →","book-consultation":"Book a consultation →","btn-sending":"Sending…",
+        "btn-send":"Send inquiry →","btn-sending":"Sending…",
         "btn-next":"Continue →","btn-back":"Back",
         "step-label-1":"You","step-label-2":"Tattoo",
         "success-title":"Request received",
@@ -526,7 +526,7 @@
         "gallery-link":"Sígueme",
         "stat-1":"Años Exp.","stat-2":"Tatuajes","stat-3":"Personalizado",
         "book-title":"Reserva tu Tatuaje\n— Zürich —",
-        "btn-send":"Enviar solicitud →","book-consultation":"Reservar consulta gratis →","btn-sending":"Enviando…",
+        "btn-send":"Enviar solicitud →","btn-sending":"Enviando…",
         "btn-next":"Continuar →","btn-back":"Volver",
         "step-label-1":"Tú","step-label-2":"Tattoo",
         "success-title":"Solicitud recibida",
@@ -975,23 +975,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         <p style="font-size:9px;color:#777;text-align:center;margin-top:16px;letter-spacing:0.08em;line-height:1.8;"><span data-key="privacy-consent-text">Mit dem Absenden akzeptierst du die </span><button type="button" onclick="openModal('privacy')" style="background:none;border:none;padding:0;color:#999;font-size:9px;letter-spacing:0.08em;cursor:pointer;text-decoration:underline;font-family:inherit;" data-key="privacy-consent-link">Datenschutzerklärung</button> <span data-key="mf-consent-and">und die</span> <button type="button" onclick="openModal('legal')" style="background:none;border:none;padding:0;color:#999;font-size:9px;letter-spacing:0.08em;cursor:pointer;text-decoration:underline;font-family:inherit;" data-key="mf-consent-terms">Buchungsbedingungen</button>.</p>
       </div>
     </form>
-        <div class="text-center mt-8 mb-4" id="calendly-alt">
-          <div class="flex items-center gap-6 mb-8 max-w-sm mx-auto">
-            <div class="flex-1 h-px bg-white/10"></div>
-            <span class="text-white/25 text-xs uppercase tracking-widest">oder</span>
-            <div class="flex-1 h-px bg-white/10"></div>
-          </div>
-          <p class="text-white/40 text-xs uppercase tracking-[0.25em] mb-6">Lieber erst sprechen? Kostenloses 20-Min-Gespräch</p>
-          <a href="https://calendly.com/el-tatuador/30min" target="_blank" rel="noopener"
-              onclick="if(window.gtag)gtag('event','contact_click',{click_location:'booking_calendly'});if(window.fbq)fbq('track','Contact')"
-              style="display:inline-flex;align-items:center;gap:10px;padding:10px 24px;border:1px solid rgba(225,29,46,0.45);border-radius:2px;background:rgba(225,29,46,0.08);text-decoration:none;transition:background 0.2s;"
-              onmouseover="this.style.background='rgba(225,29,46,0.16)'"
-              onmouseout="this.style.background='rgba(225,29,46,0.08)'">
-              <span style="width:5px;height:5px;border-radius:50%;background:#E11D2E;display:inline-block;animation:pulse 1.5s infinite;flex-shrink:0;"></span>
-              <span data-key="book-consultation" style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.25em;color:#E11D2E;">Beratungsgespräch buchen →</span>
-            </a>
-          <div class="h-0.5 w-10 bg-brand-red mx-auto mt-10 opacity-80"></div>
-        </div>
     <div id="success-msg" style="display:none;max-width:500px;margin:0 auto;text-align:center;padding:60px 20px;">
       <div class="success-circle"><svg class="success-check" viewBox="0 0 32 32"><path d="M6 16 L13 23 L26 10"/></svg></div>
       <h3 id="success-title" data-key="success-title" style="font-size:1.1rem;font-weight:700;text-transform:uppercase;letter-spacing:0.15em;color:white;margin-bottom:16px;">Anfrage erhalten</h3>
@@ -1361,7 +1344,6 @@ document.querySelectorAll('.swiper-slide img').forEach(function(img){img.addEven
     var ab=$('autosave-banner');if(ab)ab.style.display='none';
     form.style.display='none';
     var top=$('mf-top');if(top)top.style.display='none';
-    var cal=$('calendly-alt');if(cal)cal.style.display='none';
     var sm=$('success-msg');if(!sm)return;
     sm.style.display='block';sm.style.opacity='0';sm.style.transition='opacity 0.6s ease';
     setTimeout(function(){sm.style.opacity='1';},50);
@@ -1406,24 +1388,6 @@ transition: opacity 0.5s ease;
   box-shadow: none;
   overflow: visible;
   padding: 0;
-}
-#nova-calendly-btn {
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  z-index: 8999;
-  background: #c0392b;
-  color: white;
-  border: none;
-  padding: 8px 14px;
-  font-size: 11px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: pointer;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.5s ease;
-  white-space: nowrap;
 }
 
   box-shadow: 0 4px 20px rgba(225,29,46,0.45);
@@ -1583,7 +1547,6 @@ transition: opacity 0.5s ease;
     <img src="/images/nova.webp" alt="Nova" style="width:36px;height:auto;object-fit:contain;flex-shrink:0;"/>
     <div>
       <div id="nova-name">Nova · YUS NOIR</div>
-<a id="nova-calendly-btn" href="https://calendly.com/el-tatuador/30min" target="_blank" rel="noopener" onclick="if(window.gtag)gtag('event','contact_click',{click_location:'nova_calendly'});if(window.fbq)fbq('track','Contact')">📅 Termin buchen</a>
       <div id="nova-sub">Antwortet sofort · Yus</div>
     </div>
     <a id="nova-wa" data-wa href="https://wa.me/4915253534850?text=Hallo%20Yus%2C%20ich%20interessiere%20mich%20f%C3%BCr%20ein%20Tattoo%20in%20Z%C3%BCrich.%20Ich%20erz%C3%A4hle%20dir%20kurz%20meine%20Idee." target="_blank" onclick="if(window.gtag)gtag('event','contact_click',{click_location:'whatsapp'});if(window.fbq)fbq('track','Contact')">
@@ -1904,9 +1867,9 @@ WHATSAPP: The easiest and fastest way to reach Yus is WhatsApp (https://wa.me/49
     if (novaVisible) { document.body.appendChild(bubble); }
   }, 2000);
   var pTexts = {
-    de: ['Nova hier. 👋 Fragen?', 'Lieber kurz sprechen? → calendly.com/el-tatuador/30min'],
-    en: ["Nova here. 👋 Questions?", 'Prefer a quick call? → calendly.com/el-tatuador/30min'],
-    es: ['Soy Nova. 👋 ¿Preguntas?', '¿Prefieres hablar? → calendly.com/el-tatuador/30min']
+    de: ['Nova hier. 👋 Fragen?', 'Lieber direkt schreiben? → WhatsApp'],
+    en: ["Nova here. 👋 Questions?", 'Prefer to just write? → WhatsApp'],
+    es: ['Soy Nova. 👋 ¿Preguntas?', '¿Prefieres escribir directo? → WhatsApp']
   };
   function showProactive() {
     if (!novaVisible || isOpen || isInit) return;
@@ -1948,21 +1911,11 @@ WHATSAPP: The easiest and fastest way to reach Yus is WhatsApp (https://wa.me/49
         window._novaGreeted = true;
         setTimeout(function(){ if(novaVisible) showProactive(); }, 500);
       }
-      // Show calendly btn after 10s
-      if (!window._calendlyShown) {
-        window._calendlyShown = true;
-        setTimeout(function(){
-          var cb = document.getElementById('nova-calendly-btn');
-          if (cb && novaVisible) { cb.style.opacity='1'; cb.style.pointerEvents='auto'; }
-        }, 10000);
-      }
     } else {
       novaBtn.style.opacity = '0';
       novaBtn.style.pointerEvents = 'none';
       novaVisible = false;
       document.body.classList.remove('nova-ready');
-      var cb = document.getElementById('nova-calendly-btn');
-      if (cb) { cb.style.opacity='0'; cb.style.pointerEvents='none'; }
     }
   }
   window.addEventListener('scroll', handleNovaVisibility, {passive: true});
