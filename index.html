@@ -304,7 +304,6 @@
         "body-front":"Vorne","body-back":"Hinten",
         "floating":"KONTAKT","wa-cta":"Per WhatsApp schreiben","wa-alt":"Lieber direkt schreiben? Antwort meist schneller per WhatsApp:",
         "mf-s1-title":"Was möchtest du tätowieren?",
-        "mf-style-real":"Realismus",
         "mf-style-bg":"Black & Grey",
         "mf-style-micro":"Microrealismus",
         "mf-style-fine":"Fineline",
@@ -442,7 +441,6 @@
         "body-front":"Front","body-back":"Back",
         "floating":"CONTACT","wa-cta":"Message on WhatsApp","wa-alt":"Prefer to just write? Usually a faster reply on WhatsApp:",
         "mf-s1-title":"What would you like to get tattooed?",
-        "mf-style-real":"Realism",
         "mf-style-bg":"Black & Grey",
         "mf-style-micro":"Micro-realism",
         "mf-style-fine":"Fineline",
@@ -580,7 +578,6 @@
         "body-front":"Frente","body-back":"Espalda",
         "floating":"CONTACTAR","wa-cta":"Escribir por WhatsApp","wa-alt":"¿Prefieres escribir directo? Respuesta más rápida por WhatsApp:",
         "mf-s1-title":"¿Qué te gustaría tatuarte?",
-        "mf-style-real":"Realismo",
         "mf-style-bg":"Black & Grey",
         "mf-style-micro":"Microrealismo",
         "mf-style-fine":"Fineline",
@@ -909,7 +906,6 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="mf-step active" id="mf-step-1">
         <h3 class="mf-title" data-key="mf-s1-title">Was möchtest du tätowieren?</h3>
         <div class="mf-chips" role="radiogroup">
-          <button type="button" class="size-chip mf-chip" data-group="estilo" data-value="Realismus" aria-pressed="false"><span class="sz-label" data-key="mf-style-real">Realismus</span></button>
           <button type="button" class="size-chip mf-chip" data-group="estilo" data-value="Black & Grey" aria-pressed="false"><span class="sz-label" data-key="mf-style-bg">Black &amp; Grey</span></button>
           <button type="button" class="size-chip mf-chip" data-group="estilo" data-value="Microrealismus" aria-pressed="false"><span class="sz-label" data-key="mf-style-micro">Microrealismus</span></button>
           <button type="button" class="size-chip mf-chip" data-group="estilo" data-value="Fineline" aria-pressed="false"><span class="sz-label" data-key="mf-style-fine">Fineline</span></button>
@@ -1320,7 +1316,7 @@ document.querySelectorAll('.swiper-slide img').forEach(function(img){img.addEven
     var raw;try{raw=localStorage.getItem(SK);}catch(e){}if(!raw)return;
     var d;try{d=JSON.parse(raw);}catch(e){return;}if(!d)return;
     var any=false;
-    ['estilo','zona','tamano'].forEach(function(g){if(d[g]){setChip(g,d[g]);any=true;}});
+    ['estilo','zona','tamano'].forEach(function(g){if(d[g]&&document.querySelector('.mf-chip[data-group="'+g+'"][data-value="'+d[g].replace(/"/g,'')+'"]')){setChip(g,d[g]);any=true;}});
     if(d.contacto==='mail')setChip('contacto','mail');
     if(d.idea){$('idea-textarea').value=d.idea;any=true;}
     if(d.zonaOther)$('mf-zone-other').value=d.zonaOther;
