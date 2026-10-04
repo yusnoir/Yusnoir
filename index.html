@@ -21,7 +21,7 @@
     #ck-decline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,0.35);}
     @media(min-width:700px){#cookie-banner.on{display:flex;align-items:center;justify-content:center;gap:24px;}#cookie-banner p{margin:0;}#cookie-banner .ck-btns{flex:0 0 auto;}#cookie-banner .ck-btns button{min-width:140px;}}
     body.ck-open{padding-bottom:calc(90px + var(--ck-h,0px));}
-    body.ck-open #float-cta{display:none!important;}
+    body.ck-open #float-cta{bottom:calc(24px + var(--ck-h,0px))!important;}
     body.ck-open header.relative.overflow-hidden{padding-bottom:calc(5rem + var(--ck-h,0px));}
     body.ck-open #btt{bottom:calc(90px + var(--ck-h,0px))!important;}
     body.ck-open #nova-btn{bottom:calc(160px + var(--ck-h,0px))!important;}
@@ -244,7 +244,8 @@
     .lang-header{position:absolute;top:0;left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:20px 22px;background:linear-gradient(to bottom,rgba(0,0,0,0.5),transparent);}
     .lang-wrap{display:flex;gap:8px;align-items:center;}
     .nav-wrap{display:flex;gap:12px;align-items:center;}
-    .brand-logo-img{width:auto;max-width:95%;height:auto;max-height:320px;filter:invert(1) contrast(150%) brightness(1.2);mix-blend-mode:screen;opacity:0;animation:fadeInLogo 0.5s ease forwards;margin-bottom:1.5rem;}
+    .brand-logo-img{width:auto;max-width:95%;height:auto;max-height:120px;filter:invert(1) contrast(150%) brightness(1.2);mix-blend-mode:screen;opacity:0;animation:fadeInLogo 0.5s ease forwards;margin-bottom:1.5rem;}
+    @media(min-width:769px){.brand-logo-img{max-height:160px;}}
     .footer-logo-img{max-width:100px;filter:invert(1) brightness(1.5);margin-bottom:0.5rem;opacity:0.8;}
     img[src*="nova.png"]{width:80px!important;height:80px!important;object-fit:cover;}
     @keyframes fadeInLogo{from{opacity:0;transform:translateY(-28px);}to{opacity:1;transform:translateY(-38px);}}
@@ -1282,7 +1283,7 @@ window.addEventListener('load',function(){
     if(!document.getElementById('kbs')){var ks=document.createElement('style');ks.id='kbs';ks.textContent='@keyframes kBreathe{0%,100%{font-size:10px;opacity:0.5;}50%{font-size:12px;opacity:1;}}';document.head.appendChild(ks);}
     (function m(){if(window.innerWidth<=768){floatingBtn.style.right='auto';floatingBtn.style.left='50%';floatingBtn.style.transform='translateX(-50%)';}else{floatingBtn.style.right='24px';floatingBtn.style.left='auto';floatingBtn.style.transform='';}})();
     window.addEventListener('resize',function(){if(window.innerWidth<=768){floatingBtn.style.right='auto';floatingBtn.style.left='50%';floatingBtn.style.transform='translateX(-50%)';}else{floatingBtn.style.right='24px';floatingBtn.style.left='auto';floatingBtn.style.transform='';}});
-  function updateFloat(){if(!floatingBtn)return;var bk=document.getElementById('booking');var bkr=bk?bk.getBoundingClientRect():null;var bkv=bkr&&bkr.top<window.innerHeight&&bkr.bottom>0;if(bkv||(window.innerHeight+window.scrollY)>=document.documentElement.scrollHeight-80){floatingBtn.style.display='none';}else{floatingBtn.style.display='block';}}
+  function updateFloat(){if(!floatingBtn)return;var bk=document.getElementById('booking');var bkr=bk?bk.getBoundingClientRect():null;var bkv=bkr&&bkr.top<window.innerHeight&&bkr.bottom>0;var hc=document.getElementById('hero-cta')||document.querySelector('.hero-cities');var hcr=hc?hc.getBoundingClientRect():null;var heroOn=!!hcr&&hcr.bottom>0&&hcr.top<window.innerHeight;if(bkv||heroOn||(window.innerHeight+window.scrollY)>=document.documentElement.scrollHeight-80){floatingBtn.style.display='none';}else{floatingBtn.style.display='block';}}
   updateFloat();
   var bookSec=document.getElementById('booking');
   var btt=document.createElement('button');btt.id='btt';btt.style.cssText='position:fixed;bottom:90px;right:20px;z-index:3998;width:42px;height:42px;border-radius:50%;background:#111;border:1px solid rgba(255,255,255,0.12);color:white;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity 0.3s;';btt.innerHTML='↑';btt.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});};document.body.appendChild(btt);
