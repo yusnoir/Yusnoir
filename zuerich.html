@@ -65,6 +65,7 @@
     .nav-link{padding:16px 8px;margin:-16px -8px;}
     .foot-link{display:inline-flex;align-items:center;min-height:40px;padding:0 4px;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:#8a8a8a;text-decoration:none;background:none;border:none;cursor:pointer;font-family:inherit;transition:color 0.2s;}
     .foot-link:hover,.foot-link:focus-visible{color:#fff;}
+    .foot-link[hidden]{display:none;}
     .foot-row{display:flex;flex-wrap:wrap;justify-content:center;column-gap:24px;row-gap:0;margin-top:8px;}
   </style>
   <!-- Google Tag Manager -->
@@ -502,7 +503,7 @@
         "NAME":"NAME","EMAIL":"E-MAIL","PHONE":"TELEFON","AGE":"ALTER",
         "PLACE":"KÖRPERSTELLE","SIZE":"GRÖSSE (CM)","IDEA":"DEINE IDEE",
         "label-name":"NAME *","label-email":"E-MAIL *","label-phone":"TELEFON","label-age":"ALTER","label-size":"GRÖSSE (CM) *","label-idea":"DEINE IDEE *",
-        "legal-1":"Rechtliche Bestimmungen","legal-2":"Datenschutz","footer-nav-home":"Startseite",
+        "legal-1":"Rechtliche Bestimmungen","legal-2":"Datenschutz","legal-3":"Impressum","footer-nav-home":"Startseite",
         "required-note":"* Pflichtfelder",
         "autosave-restored":"Deine Eingaben wurden wiederhergestellt",
         "photo-label":"Referenzbilder","photo-hint":"Optional — auch Fotos der Körperstelle hilfreich · Max. 8",
@@ -652,7 +653,7 @@
         "NAME":"NAME","EMAIL":"E-MAIL","PHONE":"PHONE","AGE":"AGE",
         "PLACE":"PLACEMENT","SIZE":"SIZE (CM)","IDEA":"YOUR IDEA",
         "label-name":"NAME *","label-email":"E-MAIL *","label-phone":"PHONE","label-age":"AGE","label-size":"SIZE (CM) *","label-idea":"YOUR IDEA *",
-        "legal-1":"Legal Terms","legal-2":"Privacy","footer-nav-home":"Home",
+        "legal-1":"Legal Terms","legal-2":"Privacy","legal-3":"Legal Notice","footer-nav-home":"Home",
         "required-note":"* Required fields",
         "autosave-restored":"Your data has been restored",
         "photo-label":"Reference photos","photo-hint":"Optional — photos of the body area help too · Max. 8",
@@ -802,7 +803,7 @@
         "NAME":"NOMBRE","EMAIL":"EMAIL","PHONE":"TELÉFONO","AGE":"EDAD",
         "PLACE":"ZONA DEL CUERPO","SIZE":"TAMAÑO (CM)","IDEA":"TU IDEA",
         "label-name":"NOMBRE *","label-email":"EMAIL *","label-phone":"TELÉFONO","label-age":"EDAD","label-size":"TAMAÑO (CM) *","label-idea":"TU IDEA *",
-        "legal-1":"Términos Legales","legal-2":"Privacidad","footer-nav-home":"Inicio",
+        "legal-1":"Términos Legales","legal-2":"Privacidad","legal-3":"Aviso legal","footer-nav-home":"Inicio",
         "required-note":"* Campos obligatorios",
         "autosave-restored":"Tus datos han sido recuperados",
         "photo-label":"Fotos de referencia","photo-hint":"Opcional — fotos de la zona también ayudan · Máx. 8",
@@ -820,6 +821,26 @@
     const G='display:grid;grid-template-columns:1fr 1fr;gap:2rem;font-size:10px;line-height:1.8;color:#d1d1d1';
     const GM='display:grid;grid-template-columns:1fr;gap:1.5rem;font-size:10px;line-height:1.8;color:#d1d1d1';
 
+
+    /* IMPRESSUM — stays hidden (link and modal) until every required field below is filled in.
+       Required: name, street, zipCity, country, email, phone. Optional: taxId (Umsatzsteuer-ID / Steuernummer). */
+    const IMPRESSUM={name:'',street:'',zipCity:'',country:'',email:'el.tatuador@outlook.es',phone:'',taxId:''};
+    const IMPRESSUM_READY=['name','street','zipCity','country','email','phone'].every(function(k){return String(IMPRESSUM[k]||'').trim()!=='';});
+    function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+    function impressumHtml(lang){
+      var I=IMPRESSUM,L={
+        de:{h:'Impressum',a:'Angaben gemäß § 5 DDG',c:'Kontakt',e:'E-Mail',p:'Telefon',t:'Umsatzsteuer-ID / Steuernummer',r:'Verantwortlich für den Inhalt',s:'Anschrift wie oben.'},
+        en:{h:'Legal Notice (Impressum)',a:'Information pursuant to § 5 DDG',c:'Contact',e:'Email',p:'Phone',t:'VAT ID / Tax number',r:'Responsible for content',s:'Address as above.'},
+        es:{h:'Aviso legal (Impressum)',a:'Datos conforme al § 5 DDG',c:'Contacto',e:'Correo electrónico',p:'Teléfono',t:'NIF-IVA / Número fiscal',r:'Responsable del contenido',s:'Dirección como arriba.'}
+      }[lang]||{};
+      var out='<h2 style="'+H+'">'+L.h+'</h2><p style="font-size:10px;color:#888;margin-bottom:2rem">'+L.a+'</p><div style="'+GM+'">';
+      out+='<section><p>'+esc(I.name)+'<br>YUS NOIR<br>'+esc(I.street)+'<br>'+esc(I.zipCity)+'<br>'+esc(I.country)+'</p></section>';
+      out+='<section><h3 style="'+S+'">'+L.c+'</h3><p>'+L.e+': <a href="mailto:'+esc(I.email)+'" style="color:#E11D2E">'+esc(I.email)+'</a><br>'+L.p+': '+esc(I.phone)+'</p></section>';
+      if(String(I.taxId||'').trim())out+='<section><p>'+L.t+': '+esc(I.taxId)+'</p></section>';
+      out+='<section><h3 style="'+S+'">'+L.r+'</h3><p>'+esc(I.name)+', '+L.s+'</p></section></div>';
+      return out;
+    }
+
     const legalData={
       de:{
         legal:`<h2 style="${H}">Allgemeine Geschäftsbedingungen — YUS NOIR</h2><p style="font-size:10px;color:#888;margin-bottom:2rem">Stand: Januar 2026 · Zürich (CH) und Hamburg (DE) · Giuseppe Cardona · el.tatuador@outlook.es</p><div style="${G}"><section><h3 style="${S}">1. Buchung & Anzahlung</h3><p>Jede Terminbuchung erfordert eine Anzahlung von 100 oder 200 CHF, je nach Projekt. Die Anzahlung wird nach Abschluss der Session mit dem Restbetrag verrechnet. Ohne geleistete Anzahlung gilt kein Termin als verbindlich bestätigt. Die Anzahlung ist nicht erstattungsfähig, außer der Termin wird vom Künstler abgesagt.</p></section><section><h3 style="${S}">2. Stornierung & Absage</h3><p>Stornierungen durch den Kunden müssen mindestens 24 Stunden vor dem vereinbarten Termin schriftlich mitgeteilt werden. Bei Stornierung innerhalb von 24 Stunden oder bei Nichterscheinen verfällt die Anzahlung vollständig. Muss der Künstler einen Termin absagen, wird die Anzahlung vollständig zurückerstattet oder auf einen neuen Termin übertragen — nach Wahl des Kunden.</p></section><section><h3 style="${S}">3. Nachstich & Korrektur</h3><p>Auf jedes gefertigte Tattoo wird ein kostenloser Nachstich angeboten, sofern die Heilung korrekt verlaufen ist und der Kunde die Pflegeanweisungen eingehalten hat. Der Nachstich muss innerhalb von 3 Monaten nach der Session in Anspruch genommen werden. Schäden durch unsachgemäße Pflege, Sonneneinstrahlung oder mechanische Einwirkung begründen keinen Anspruch auf kostenlosen Nachstich.</p></section><section><h3 style="${S}">4. Gesundheit & Eignung</h3><p>Der Kunde ist verpflichtet, vor der Session über alle relevanten gesundheitlichen Einschränkungen zu informieren, insbesondere Hauterkrankungen, Allergien, Diabetes, Blutgerinnungsstörungen, Schwangerschaft oder die Einnahme blutverdünnender Medikamente. Das Tätowieren unter dem Einfluss von Alkohol oder Drogen ist strengstens untersagt. Der Künstler behält sich das Recht vor, die Session bei gesundheitlichen Bedenken abzulehnen.</p></section><section><h3 style="${S}">5. Mindestalter</h3><p>Tätowierungen werden ausschließlich an Personen ab 18 Jahren durchgeführt. Ein gültiger Lichtbildausweis ist vor der Session vorzulegen. Bei Zweifeln am Alter wird die Session ohne Vorlage eines Ausweises nicht durchgeführt.</p></section><section><h3 style="${S}">6. Urheberrecht & Designs</h3><p>Alle angefertigten Designs sind das geistige Eigentum von Giuseppe Cardona — YUS NOIR. Eine Weitergabe, Reproduktion oder Nutzung der Designs durch Dritte ist ohne ausdrückliche schriftliche Genehmigung untersagt. Die Nutzung von Designs für das Training von KI-Systemen ist ausdrücklich verboten. Der Künstler behält sich das Recht vor, das fertige Tattoo für sein Portfolio und seine sozialen Medien zu fotografieren, sofern der Kunde nicht ausdrücklich widerspricht.</p></section><section><h3 style="${S}">7. Fotografie & Veröffentlichung</h3><p>Der Künstler kann das fertige Tattoo fotografieren und in sozialen Medien oder im Portfolio veröffentlichen. Der Kunde wird im Buchungsformular gefragt, ob er damit einverstanden ist. Eine Ablehnung hat keinerlei Auswirkung auf die Durchführung der Session. Bereits veröffentlichte Inhalte können auf Wunsch entfernt werden.</p></section><section><h3 style="${S}">8. Haftung</h3><p>Der Künstler haftet nicht für Schäden, die durch Nichtbefolgen der Pflegeanweisungen entstehen. Allergische Reaktionen auf Farben oder Pflegeprodukte, die trotz sorgfältiger Arbeit auftreten, begründen keinen Schadensersatzanspruch. Bei Komplikationen steht der Künstler für Rückfragen zur Verfügung.</p></section></div>`,
@@ -836,6 +857,7 @@
     };
 
     let currentLang='de';
+    document.addEventListener('DOMContentLoaded',function(){var b=document.getElementById('foot-impressum');if(b&&IMPRESSUM_READY)b.hidden=false;});
     function changeLang(lang){
   var r=document.getElementById("html-root");if(r)r.lang=lang;
       currentLang=lang;
@@ -853,11 +875,13 @@
       if(legalData[lang]){
         var lc=document.getElementById('legal-body-content');var pc=document.getElementById('privacy-body-content');
         if(lc)lc.innerHTML=legalData[lang].legal;if(pc)pc.innerHTML=legalData[lang].privacy;
+        var ic=document.getElementById('impressum-body-content');if(ic&&IMPRESSUM_READY)ic.innerHTML=impressumHtml(lang);
       }
     }
     function openModal(id){
       document.getElementById('legal-body-content').innerHTML=legalData[currentLang].legal;
       document.getElementById('privacy-body-content').innerHTML=legalData[currentLang].privacy;
+      var ib=document.getElementById('impressum-body-content');if(ib&&IMPRESSUM_READY)ib.innerHTML=impressumHtml(currentLang);
       document.getElementById('modal-'+id).classList.add('active');
       document.body.style.overflow='hidden';
     }
@@ -1230,11 +1254,13 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
   <div class="foot-row">
     <button onclick="openModal('legal')" data-key="legal-1" class="foot-link" type="button">Rechtliche Bestimmungen</button>
     <button onclick="openModal('privacy')" data-key="legal-2" class="foot-link" type="button">Datenschutz</button>
+    <button onclick="openModal('impressum')" data-key="legal-3" id="foot-impressum" class="foot-link" type="button" hidden>Impressum</button>
   </div>
 </footer>
 
 <div id="modal-legal" class="legal-modal"><span class="close-modal" onclick="closeModal('legal')">×</span><div class="legal-content" id="legal-body-content"></div></div>
 <div id="modal-privacy" class="legal-modal"><span class="close-modal" onclick="closeModal('privacy')">×</span><div class="legal-content" id="privacy-body-content"></div></div>
+<div id="modal-impressum" class="legal-modal"><span class="close-modal" onclick="closeModal('impressum')">×</span><div class="legal-content" id="impressum-body-content"></div></div>
 
 <div id="modal-proceso" class="legal-modal">
   <span class="close-modal" onclick="closeModal('proceso')">×</span>
