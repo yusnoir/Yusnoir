@@ -825,20 +825,21 @@
 
 
     /* IMPRESSUM — link and modal stay hidden until every required field is filled in.
-       Required: name, email, phone. */
-    const IMPRESSUM={name:'Giuseppe Cardona Arroyave',email:'el.tatuador@outlook.es',phone:'+49 152 53534850'};
-    const IMPRESSUM_READY=['name','email','phone'].every(function(k){return String(IMPRESSUM[k]||'').trim()!=='';});
+       Required: name, street, zipCity, email, phone. Optional: taxId (NIF), shown only when filled in. */
+    const IMPRESSUM={name:'Giuseppe Cardona Arroyave',street:'Calle Embajadores 144',zipCity:'28045 Madrid',country:{de:'Spanien',en:'Spain',es:'España'},email:'el.tatuador@outlook.es',phone:'+49 152 53534850',taxId:''};
+    const IMPRESSUM_READY=['name','street','zipCity','email','phone'].every(function(k){return String(IMPRESSUM[k]||'').trim()!=='';});
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
     function impressumHtml(lang){
       var I=IMPRESSUM,L={
-        de:{h:'Impressum',c:'Kontakt',e:'E-Mail',p:'Telefon',r:'Verantwortlich für den Inhalt'},
-        en:{h:'Legal Notice (Impressum)',c:'Contact',e:'Email',p:'Phone',r:'Responsible for content'},
-        es:{h:'Aviso legal (Impressum)',c:'Contacto',e:'Correo electrónico',p:'Teléfono',r:'Responsable del contenido'}
+        de:{h:'Impressum',c:'Kontakt',e:'E-Mail',p:'Telefon',t:'Steuernummer (NIF)',r:'Verantwortlich für den Inhalt',s:'Anschrift wie oben.'},
+        en:{h:'Legal Notice (Impressum)',c:'Contact',e:'Email',p:'Phone',t:'Tax number (NIF)',r:'Responsible for content',s:'Address as above.'},
+        es:{h:'Aviso legal (Impressum)',c:'Contacto',e:'Correo electrónico',p:'Teléfono',t:'NIF',r:'Responsable del contenido',s:'Dirección como arriba.'}
       }[lang]||{};
       var out='<h2 style="'+H+'">'+L.h+'</h2><div style="'+GM+'">';
-      out+='<section><p>'+esc(I.name)+'<br>YUS NOIR</p></section>';
+      out+='<section><p>'+esc(I.name)+'<br>YUS NOIR<br>'+esc(I.street)+'<br>'+esc(I.zipCity)+'<br>'+esc(I.country[lang]||I.country.de)+'</p></section>';
       out+='<section><h3 style="'+S+'">'+L.c+'</h3><p>'+L.e+': <a href="mailto:'+esc(I.email)+'" style="color:#E11D2E">'+esc(I.email)+'</a><br>'+L.p+': '+esc(I.phone)+'</p></section>';
-      out+='<section><h3 style="'+S+'">'+L.r+'</h3><p>'+esc(I.name)+'</p></section></div>';
+      if(String(I.taxId||'').trim())out+='<section><p>'+L.t+': '+esc(I.taxId)+'</p></section>';
+      out+='<section><h3 style="'+S+'">'+L.r+'</h3><p>'+esc(I.name)+', '+L.s+'</p></section></div>';
       return out;
     }
 
