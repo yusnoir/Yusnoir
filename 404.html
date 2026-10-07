@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="de" id="html-root">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 | YUS NOIR</title>
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#111111">
+  <link rel="icon" type="image/png" href="/images/logo.webp">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
+  <link rel="apple-touch-icon" href="/images/logo.webp">
+  <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <style>
+    @font-face{font-family:'Inter';font-style:normal;font-weight:400;font-display:swap;src:url(/fonts/inter-latin.woff2) format('woff2');}
+    @font-face{font-family:'Inter';font-style:normal;font-weight:700;font-display:swap;src:url(/fonts/inter-latin.woff2) format('woff2');}
+    *{box-sizing:border-box;}
+    html,body{margin:0;min-height:100%;}
+    body{background:#111111;color:#fff;font-family:'Inter',sans-serif;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;min-height:100dvh;padding:40px 24px;text-align:center;}
+    .logo{width:90px;height:auto;filter:invert(1) brightness(1.5);opacity:0.85;margin-bottom:36px;}
+    .code{font-size:11px;letter-spacing:0.4em;text-transform:uppercase;color:#E11D2E;font-weight:700;margin:0 0 14px;}
+    h1{font-size:1.6rem;font-weight:700;letter-spacing:0.02em;line-height:1.25;margin:0 0 36px;max-width:20ch;}
+    .btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:0 36px;background:#E11D2E;color:#fff;text-decoration:none;font-size:11px;font-weight:700;letter-spacing:0.3em;text-transform:uppercase;border-radius:2px;transition:background 0.2s;}
+    .btn:hover,.btn:focus-visible{background:#c8172a;}
+    .links{display:flex;flex-wrap:wrap;justify-content:center;column-gap:28px;margin-top:20px;}
+    .links a{display:inline-flex;align-items:center;min-height:44px;padding:0 4px;color:#8a8a8a;text-decoration:none;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;transition:color 0.2s;}
+    .links a:hover,.links a:focus-visible{color:#fff;}
+    .lang{margin-top:28px;display:flex;gap:6px;}
+    .lang button{background:none;border:1px solid transparent;color:#8a8a8a;font:inherit;font-size:11px;letter-spacing:0.15em;min-width:44px;min-height:36px;cursor:pointer;border-radius:3px;}
+    .lang button.active{color:#fff;border-color:rgba(225,29,46,0.5);background:rgba(225,29,46,0.1);}
+  </style>
+</head>
+<body>
+  <a href="/" aria-label="YUS NOIR"><img src="/images/logo.svg" alt="YUS NOIR" class="logo" width="90" height="126"></a>
+  <p class="code">404</p>
+  <h1 id="t-title">Diese Seite gibt es nicht.</h1>
+  <a href="/" class="btn" id="t-home">Zur Startseite</a>
+  <nav class="links" aria-label="YUS NOIR">
+    <a href="/hamburg">Hamburg</a>
+    <a href="/zuerich">Zürich</a>
+  </nav>
+  <div class="lang" role="group" aria-label="Sprache / Language / Idioma">
+    <button type="button" data-l="de" class="active">DE</button>
+    <button type="button" data-l="en">EN</button>
+    <button type="button" data-l="es">ES</button>
+  </div>
+  <script>
+    (function(){
+      var T={
+        de:{t:'Diese Seite gibt es nicht.',h:'Zur Startseite'},
+        en:{t:"This page doesn't exist.",h:'Back to home'},
+        es:{t:'Esta página no existe.',h:'Ir al inicio'}
+      };
+      function set(l){
+        var d=T[l]||T.de;
+        document.documentElement.lang=l;
+        document.getElementById('t-title').textContent=d.t;
+        document.getElementById('t-home').textContent=d.h;
+        document.querySelectorAll('.lang button').forEach(function(b){b.classList.toggle('active',b.getAttribute('data-l')===l);});
+      }
+      document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){set(b.getAttribute('data-l'));});});
+      var n=((navigator.language||'de')+'').slice(0,2).toLowerCase();
+      if(T[n]&&n!=='de')set(n);
+    })();
+  </script>
+</body>
+</html>
