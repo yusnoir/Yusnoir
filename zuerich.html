@@ -825,20 +825,20 @@
 
 
     /* IMPRESSUM — stays hidden (link and modal) until every required field below is filled in.
-       Required: name, street, zipCity, country, email, phone. Optional: taxId (Umsatzsteuer-ID / Steuernummer). */
-    const IMPRESSUM={name:'',street:'',zipCity:'',country:'',email:'el.tatuador@outlook.es',phone:'',taxId:''};
-    const IMPRESSUM_READY=['name','street','zipCity','country','email','phone'].every(function(k){return String(IMPRESSUM[k]||'').trim()!=='';});
+       Required: name, street, zipCity, country, email, taxId (NIF). Optional: phone. */
+    const IMPRESSUM={name:'Giuseppe Cardona Arroyave',street:'Calle Embajadores 144',zipCity:'28045 Madrid',country:{de:'Spanien',en:'Spain',es:'España'},email:'el.tatuador@outlook.es',phone:'',taxId:''};
+    const IMPRESSUM_READY=['name','street','zipCity','email','taxId'].every(function(k){return String(IMPRESSUM[k]||'').trim()!=='';});
     function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
     function impressumHtml(lang){
       var I=IMPRESSUM,L={
-        de:{h:'Impressum',a:'Angaben gemäß § 5 DDG',c:'Kontakt',e:'E-Mail',p:'Telefon',t:'Umsatzsteuer-ID / Steuernummer',r:'Verantwortlich für den Inhalt',s:'Anschrift wie oben.'},
-        en:{h:'Legal Notice (Impressum)',a:'Information pursuant to § 5 DDG',c:'Contact',e:'Email',p:'Phone',t:'VAT ID / Tax number',r:'Responsible for content',s:'Address as above.'},
-        es:{h:'Aviso legal (Impressum)',a:'Datos conforme al § 5 DDG',c:'Contacto',e:'Correo electrónico',p:'Teléfono',t:'NIF-IVA / Número fiscal',r:'Responsable del contenido',s:'Dirección como arriba.'}
+        de:{h:'Impressum',a:'Angaben gemäß § 5 DDG',c:'Kontakt',e:'E-Mail',p:'Telefon',t:'Steuernummer (NIF)',r:'Verantwortlich für den Inhalt',s:'Anschrift wie oben.'},
+        en:{h:'Legal Notice (Impressum)',a:'Information pursuant to § 5 DDG',c:'Contact',e:'Email',p:'Phone',t:'Tax number (NIF)',r:'Responsible for content',s:'Address as above.'},
+        es:{h:'Aviso legal (Impressum)',a:'Datos conforme al § 5 DDG',c:'Contacto',e:'Correo electrónico',p:'Teléfono',t:'NIF',r:'Responsable del contenido',s:'Dirección como arriba.'}
       }[lang]||{};
       var out='<h2 style="'+H+'">'+L.h+'</h2><p style="font-size:10px;color:#888;margin-bottom:2rem">'+L.a+'</p><div style="'+GM+'">';
-      out+='<section><p>'+esc(I.name)+'<br>YUS NOIR<br>'+esc(I.street)+'<br>'+esc(I.zipCity)+'<br>'+esc(I.country)+'</p></section>';
-      out+='<section><h3 style="'+S+'">'+L.c+'</h3><p>'+L.e+': <a href="mailto:'+esc(I.email)+'" style="color:#E11D2E">'+esc(I.email)+'</a><br>'+L.p+': '+esc(I.phone)+'</p></section>';
-      if(String(I.taxId||'').trim())out+='<section><p>'+L.t+': '+esc(I.taxId)+'</p></section>';
+      out+='<section><p>'+esc(I.name)+'<br>YUS NOIR<br>'+esc(I.street)+'<br>'+esc(I.zipCity)+'<br>'+esc(I.country[lang]||I.country.de)+'</p></section>';
+      out+='<section><h3 style="'+S+'">'+L.c+'</h3><p>'+L.e+': <a href="mailto:'+esc(I.email)+'" style="color:#E11D2E">'+esc(I.email)+'</a>'+(String(I.phone||'').trim()?'<br>'+L.p+': '+esc(I.phone):'')+'</p></section>';
+      out+='<section><p>'+L.t+': '+esc(I.taxId)+'</p></section>';
       out+='<section><h3 style="'+S+'">'+L.r+'</h3><p>'+esc(I.name)+', '+L.s+'</p></section></div>';
       return out;
     }
